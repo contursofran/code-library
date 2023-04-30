@@ -8,17 +8,26 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/ui/dropdown-menu"
-import { Music } from "tabler-icons-react"
+import { Music, Search } from "tabler-icons-react"
 
 import { siteConfig } from "@/config/site"
 import NavbarLink from "./NavLinks"
 import { ThemeToggle } from "./ThemeToggle"
 
-export function MainNav() {
-  const items = siteConfig.mainNav
+interface MainNavProps {
+  href: string
+  title: string
+}
 
+export function MainNav({
+  items,
+  searchBar,
+}: {
+  items: MainNavProps[]
+  searchBar?: boolean
+}) {
   return (
-    <div className="flex w-full justify-between gap-6 md:gap-10">
+    <div className="flex w-full gap-6 md:gap-10">
       <div className="hidden items-center space-x-2 md:flex">
         <span className="hidden font-bold dark:text-white sm:inline-block">
           {siteConfig.name}
@@ -65,7 +74,10 @@ export function MainNav() {
           )}
         </DropdownMenuContent>
       </DropdownMenu>
-      <ThemeToggle />
+      <div className=" items-center gap-2 ">
+        {searchBar ? <Search className="h-4 w-4" /> : null}
+        <ThemeToggle />
+      </div>
     </div>
   )
 }

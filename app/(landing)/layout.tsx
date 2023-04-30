@@ -1,5 +1,16 @@
 import { MainNav } from "@/components/MainNav"
 
+const NavItems = [
+  {
+    title: "Home",
+    href: "/home",
+  },
+  {
+    title: "Features",
+    href: "/features",
+  },
+]
+
 interface HomeLayoutProps {
   children: React.ReactNode
 }
@@ -9,7 +20,7 @@ export default async function HomeLayout({ children }: HomeLayoutProps) {
     <div className="flex h-screen flex-col">
       <header className="sticky top-0 z-40 w-full bg-white dark:bg-dark-background">
         <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
-          <MainNav />
+          <MainNav items={NavItems} />
         </div>
       </header>
       <main className="mx-10 flex-1 md:mx-12 lg:mx-20">{children}</main>
