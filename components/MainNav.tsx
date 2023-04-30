@@ -28,13 +28,13 @@ export function MainNav({
 }) {
   return (
     <div className="flex w-full gap-6 md:gap-10">
-      <div className="hidden items-center space-x-2 md:flex">
+      <div className="hidden flex-1 items-center space-x-2 text-left md:flex">
         <span className="hidden font-bold dark:text-white sm:inline-block">
           {siteConfig.name}
         </span>
       </div>
       {items?.length ? (
-        <nav className="hidden gap-6 md:flex">
+        <nav className="mx-auto hidden gap-6 md:flex">
           {items?.map(
             (item, index) =>
               item.href && (
@@ -74,7 +74,7 @@ export function MainNav({
           )}
         </DropdownMenuContent>
       </DropdownMenu>
-      <div className=" items-center gap-2 ">
+      <div className="flex-1 items-center gap-2 text-right ">
         {searchBar ? <Search className="h-4 w-4" /> : null}
         <ThemeToggle />
       </div>
