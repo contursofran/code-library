@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import { Button } from "@/ui/button"
 import {
@@ -11,7 +13,7 @@ import {
 import { Music, Search } from "tabler-icons-react"
 
 import { siteConfig } from "@/config/site"
-import NavbarLink from "./NavLinks"
+import { NavbarLink } from "./NavLinks"
 import { ThemeToggle } from "./ThemeToggle"
 
 interface MainNavProps {
@@ -19,7 +21,7 @@ interface MainNavProps {
   title: string
 }
 
-export function MainNav({
+export default function MainNav({
   items,
   searchBar,
 }: {
@@ -74,9 +76,20 @@ export function MainNav({
           )}
         </DropdownMenuContent>
       </DropdownMenu>
-      <div className="flex-1 items-center gap-2 text-right ">
-        {searchBar ? <Search className="h-4 w-4" /> : null}
-        <ThemeToggle />
+      <div className="flex-1 gap-2 text-right">
+        <div className="flex items-center justify-end">
+          {searchBar ? (
+            <Button
+              disabled
+              className=" hover:bg-white disabled:cursor-not-allowed disabled:opacity-50"
+              size="sm"
+              variant="transparent"
+            >
+              <Search className="h-5" />
+            </Button>
+          ) : null}
+          <ThemeToggle />
+        </div>
       </div>
     </div>
   )

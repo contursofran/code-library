@@ -7,7 +7,7 @@ import { useTheme } from "next-themes"
 import darkHero from "../public/dark-hero.svg"
 import lightHero from "../public/light-hero.svg"
 
-export function Hero() {
+export default function Hero() {
   const { resolvedTheme } = useTheme()
   const [hero, setHero] = useState(lightHero)
 

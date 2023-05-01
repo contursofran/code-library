@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
-import { Hero } from "@/components/Hero"
+import Hero from "@/components/Hero"
 
 export default async function Home({}) {
   return (

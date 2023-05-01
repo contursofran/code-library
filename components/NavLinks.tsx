@@ -11,7 +11,7 @@ interface NavbarLinkProps {
   text: string
 }
 
-export default function NavbarLink({ href, icon, text }: NavbarLinkProps) {
+export function NavbarLink({ href, icon, text }: NavbarLinkProps) {
   const pathName = usePathname()
   const isActive = pathName === href
 

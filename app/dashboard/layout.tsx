@@ -1,18 +1,18 @@
-import { MainNav } from "@/components/MainNav"
+import MainNav from "@/components/MainNav"
 
 const NavItems = [
   {
     title: "Snippets",
     href: "/dashboard/snippets",
   },
-  // {
-  //   title: "Bugs",
-  //   href: "/dashboard/bugs",
-  // },
-  // {
-  //   title: "Settings",
-  //   href: "/dashboard/settings",
-  // },
+  {
+    title: "Bugs",
+    href: "/dashboard/bugs",
+  },
+  {
+    title: "Settings",
+    href: "/dashboard/settings",
+  },
 ]
 
 interface DashboardLayoutProps {
