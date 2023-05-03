@@ -1,3 +1,4 @@
+import Header from "@/components/Header"
 import MainNav from "@/components/MainNav"
 
 const NavItems = [
@@ -26,7 +27,7 @@ export default async function DashboardLayout({
     <div className="flex h-screen flex-col">
       <header className="sticky top-0 z-40 w-full bg-white dark:bg-dark-background">
         <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
-          <MainNav searchBar items={NavItems} />
+          <Header />
         </div>
       </header>
       <div className="flex h-full">

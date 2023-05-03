@@ -21,13 +21,7 @@ interface MainNavProps {
   title: string
 }
 
-export default function MainNav({
-  items,
-  searchBar,
-}: {
-  items: MainNavProps[]
-  searchBar?: boolean
-}) {
+export default function MainNav({ items }: { items: MainNavProps[] }) {
   return (
     <div className="flex w-full gap-6 md:gap-10">
       <div className="hidden flex-1 items-center space-x-2 text-left md:flex">
@@ -78,16 +72,6 @@ export default function MainNav({
       </DropdownMenu>
       <div className="flex-1 gap-2 text-right">
         <div className="flex items-center justify-end">
-          {searchBar ? (
-            <Button
-              disabled
-              className=" hover:bg-white disabled:cursor-not-allowed disabled:opacity-50"
-              size="sm"
-              variant="transparent"
-            >
-              <Search className="h-5" />
-            </Button>
-          ) : null}
           <ThemeToggle />
         </div>
       </div>

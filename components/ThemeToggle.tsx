@@ -11,7 +11,7 @@ import {
 import { useTheme } from "next-themes"
 import { DeviceLaptop, Moon, Sun } from "tabler-icons-react"
 
-export function ThemeToggle() {
+export default function ThemeToggle() {
   const { setTheme } = useTheme()
 
   return (
