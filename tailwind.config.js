@@ -1,12 +1,6 @@
 const { fontFamily } = require("tailwindcss/defaultTheme")
 const colors = require("tailwindcss/colors")
 
-delete colors["lightBlue"]
-delete colors["warmGray"]
-delete colors["trueGray"]
-delete colors["coolGray"]
-delete colors["blueGray"]
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -19,10 +13,7 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: "1.5rem",
-      screens: {
-        "2xl": "1360px",
-      },
+      padding: "3rem",
     },
     colors: {
       ...colors,
