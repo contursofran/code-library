@@ -1,18 +1,21 @@
 import Header from "@/components/Header"
-import MainNav from "@/components/MainNav"
+import Tabs from "@/components/Tabs"
 
-const NavItems = [
+const tabsItems = [
   {
     title: "Snippets",
     href: "/dashboard/snippets",
+    id: "1",
   },
   {
     title: "Bugs",
     href: "/dashboard/bugs",
+    id: "2",
   },
   {
     title: "Settings",
     href: "/dashboard/settings",
+    id: "3",
   },
 ]
 
@@ -26,8 +29,9 @@ export default async function DashboardLayout({
   return (
     <div className="flex h-screen flex-col">
       <header className="sticky top-0 z-40 w-full bg-white dark:bg-dark-background">
-        <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
+        <div className="container flex flex-col">
           <Header />
+          <Tabs tabs={tabsItems} />
         </div>
       </header>
       <div className="flex h-full">

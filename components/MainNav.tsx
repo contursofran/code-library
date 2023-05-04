@@ -14,7 +14,7 @@ import { Music, Search } from "tabler-icons-react"
 
 import { siteConfig } from "@/config/site"
 import { NavbarLink } from "./NavLinks"
-import { ThemeToggle } from "./ThemeToggle"
+import ThemeToggle from "./ThemeToggle"
 
 interface MainNavProps {
   href: string
