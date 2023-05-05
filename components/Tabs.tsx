@@ -1,33 +1,17 @@
-"use client"
-
-import { useState } from "react"
-import HomeLayout from "app/(landing)/layout"
+import NavLink from "@/components/NavLink"
 
 interface TabsProps {
   href: string
-  id: string
-  title: string
+  text: string
 }
 
 export default function Tabs({ tabs }: { tabs: TabsProps[] }) {
-  const [activeTab, setActiveTab] = useState(tabs[0].id)
-
   return (
-    <div className="-mt-6">
-      <div className=" border-b-2 border-gray-800">
-        <nav aria-label="Tabs" className="mb-[-2px] flex space-x-6">
-          {tabs.map((tab) => (
-            <button
-              className={`${
-                activeTab === tab.id
-                  ? "border-gray-200 text-gray-200"
-                  : "border-transparent text-gray-400 hover:text-gray-200"
-              } border-b-2 py-4 text-sm font-medium`}
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-            >
-              {tab.title}
-            </button>
+    <div className="mt-[-14px]">
+      <div className=" border-b-2 border-gray-100 dark:border-gray-800">
+        <nav aria-label="Tabs" className="mb-[-2px] flex space-x-6 pl-10">
+          {tabs.map((tab, index) => (
+            <NavLink isTab href={tab.href} key={index} text={tab.text} />
           ))}
         </nav>
       </div>

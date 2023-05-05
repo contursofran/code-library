@@ -3,19 +3,16 @@ import Tabs from "@/components/Tabs"
 
 const tabsItems = [
   {
-    title: "Snippets",
+    text: "Snippets",
     href: "/dashboard/snippets",
-    id: "1",
   },
   {
-    title: "Bugs",
+    text: "Bugs",
     href: "/dashboard/bugs",
-    id: "2",
   },
   {
-    title: "Settings",
+    text: "Settings",
     href: "/dashboard/settings",
-    id: "3",
   },
 ]
 
@@ -29,7 +26,7 @@ export default async function DashboardLayout({
   return (
     <div className="flex h-screen flex-col">
       <header className="sticky top-0 z-40 w-full bg-white dark:bg-dark-background">
-        <div className="container flex flex-col">
+        <div className="flex flex-col">
           <Header />
           <Tabs tabs={tabsItems} />
         </div>
