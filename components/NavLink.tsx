@@ -1,17 +1,18 @@
 "use client"
 
+import { text } from "stream/consumers"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 
-interface NavbarLinkProps {
+export interface NavItem {
   href: string
   isTab?: boolean
-  text: string
+  title: string
 }
 
-export default function NavLink({ href, isTab, text }: NavbarLinkProps) {
+export default function NavLink({ href, isTab, title }: NavItem) {
   const isCurrentPage = usePathname() === href
 
   const baseLinkStyles = "flex items-center text-lg font-medium transition-all"
@@ -35,7 +36,7 @@ export default function NavLink({ href, isTab, text }: NavbarLinkProps) {
 
   return (
     <Link className={linkStyle} href={href}>
-      <div className="text-sm">{text}</div>
+      <div className="text-sm">{title}</div>
     </Link>
   )
 }

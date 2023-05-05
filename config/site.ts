@@ -1,5 +1,3 @@
-import { NavItem } from "@/types/nav"
-
 interface SiteConfig {
   description: string
   links: {

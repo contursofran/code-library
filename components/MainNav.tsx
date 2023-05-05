@@ -10,18 +10,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/ui/dropdown-menu"
-import { Music, Search } from "tabler-icons-react"
+import { Music } from "tabler-icons-react"
 
 import { siteConfig } from "@/config/site"
-import { NavLink } from "./NavLink"
+import NavLink, { NavItem } from "./NavLink"
 import ThemeToggle from "./ThemeToggle"
 
-interface MainNavProps {
-  href: string
-  title: string
-}
-
-export default function MainNav({ items }: { items: MainNavProps[] }) {
+export default function MainNav({ items }: { items: NavItem[] }) {
   return (
     <div className="flex w-full gap-6 md:gap-10">
       <div className="hidden flex-1 items-center space-x-2 text-left md:flex">
@@ -34,7 +29,7 @@ export default function MainNav({ items }: { items: MainNavProps[] }) {
           {items?.map(
             (item, index) =>
               item.href && (
-                <NavLink href={item.href} key={index} text={item.title} />
+                <NavLink href={item.href} key={index} title={item.title} />
               )
           )}
         </nav>
