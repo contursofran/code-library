@@ -13,7 +13,7 @@ import {
 import { Music, Search } from "tabler-icons-react"
 
 import { siteConfig } from "@/config/site"
-import { NavbarLink } from "./NavLinks"
+import { NavLink } from "./NavLink"
 import ThemeToggle from "./ThemeToggle"
 
 interface MainNavProps {
@@ -34,7 +34,7 @@ export default function MainNav({ items }: { items: MainNavProps[] }) {
           {items?.map(
             (item, index) =>
               item.href && (
-                <NavbarLink href={item.href} key={index} text={item.title} />
+                <NavLink href={item.href} key={index} text={item.title} />
               )
           )}
         </nav>
