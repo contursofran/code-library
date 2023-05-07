@@ -5,7 +5,7 @@ import ThemeToggle from "./ThemeToggle"
 
 export default function Header() {
   return (
-    <div className="flex h-16 w-full items-center gap-6 md:gap-10">
+    <div className="flex h-16 w-full items-center gap-6 px-10 md:gap-10">
       <div className="hidden flex-1 items-center space-x-2 text-left md:flex">
         <span className="hidden font-bold dark:text-white sm:inline-block">
           {siteConfig.name}

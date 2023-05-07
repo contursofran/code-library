@@ -1,17 +1,19 @@
 import Header from "@/components/Header"
+import { NavItem } from "@/components/NavLink"
+import PageHeader from "@/components/PageHeader"
 import Tabs from "@/components/Tabs"
 
-const tabsItems = [
+const tabsItems: NavItem[] = [
   {
-    text: "Snippets",
+    title: "Snippets",
     href: "/dashboard/snippets",
   },
   {
-    text: "Bugs",
+    title: "Bugs",
     href: "/dashboard/bugs",
   },
   {
-    text: "Settings",
+    title: "Settings",
     href: "/dashboard/settings",
   },
 ]
@@ -31,8 +33,11 @@ export default async function DashboardLayout({
           <Tabs tabs={tabsItems} />
         </div>
       </header>
-      <div className="flex h-full">
-        <main className="mx-5 flex-1  lg:mx-10">{children}</main>
+      <PageHeader />
+      <div className="flex h-full bg-neutral-50">
+        <main className="flex-1">
+          <div className="mx-5 lg:mx-20">{children}</div>
+        </main>
       </div>
     </div>
   )
