@@ -3,7 +3,7 @@ import Link from "next/link"
 import { siteConfig } from "@/config/site"
 import Hero from "@/components/Hero"
 
-export default async function Home({}) {
+export default function Home({}) {
   return (
     <section className="container flex h-full flex-col-reverse items-center justify-center gap-24 sm:flex-row sm:justify-between">
       <div className="flex-col space-y-4">

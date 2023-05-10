@@ -22,9 +22,7 @@ interface DashboardLayoutProps {
   children: React.ReactNode
 }
 
-export default async function DashboardLayout({
-  children,
-}: DashboardLayoutProps) {
+export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <div className="flex h-screen flex-col">
       <header className="sticky top-0 z-40 w-full bg-white dark:bg-dark-background">
@@ -34,7 +32,7 @@ export default async function DashboardLayout({
         </div>
       </header>
       <PageHeader />
-      <div className="flex h-full bg-neutral-50">
+      <div className="flex h-full bg-gray-50">
         <main className="flex-1">
           <div className="mx-5 lg:mx-20">{children}</div>
         </main>

@@ -15,7 +15,7 @@ interface HomeLayoutProps {
   children: React.ReactNode
 }
 
-export default async function HomeLayout({ children }: HomeLayoutProps) {
+export default function HomeLayout({ children }: HomeLayoutProps) {
   return (
     <div className="flex h-screen flex-col">
       <header className="sticky top-0 z-40 w-full bg-white dark:bg-dark-background">

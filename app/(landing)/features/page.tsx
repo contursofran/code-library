@@ -2,7 +2,7 @@ import { BrandAdobe, BrandReact, BrandTailwind } from "tabler-icons-react"
 
 import { FeaturesCard } from "@/components/FeaturesCard"
 
-export default async function Features({}) {
+export default function Features({}) {
   return (
     <section className="container flex h-full flex-col justify-start gap-16  pt-6 pb-8 sm:gap-6 md:pt-10  md:pb-12 lg:pt-16 lg:pb-24">
       <div className="flex-col space-y-4">
