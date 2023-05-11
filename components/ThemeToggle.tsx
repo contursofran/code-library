@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/ui/button"
+import { Button, ButtonVariantProps } from "@/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,13 +11,17 @@ import {
 import { useTheme } from "next-themes"
 import { DeviceLaptop, Moon, Sun } from "tabler-icons-react"
 
-export default function ThemeToggle() {
+interface ThemeToggleProps {
+  variant: ButtonVariantProps
+}
+
+export default function ThemeToggle({ variant }: ThemeToggleProps) {
   const { setTheme } = useTheme()
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button size="sm" variant="transparent">
+        <Button size="sm" variant={variant}>
           <Sun className="h-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <Moon className="absolute h-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 " />
           <span className="sr-only">Toggle theme</span>

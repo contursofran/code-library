@@ -13,19 +13,33 @@ import {
 import { Music } from "tabler-icons-react"
 
 import { siteConfig } from "@/config/site"
+import { cn } from "@/lib/utils"
 import NavLink, { NavItem } from "./NavLink"
 import ThemeToggle from "./ThemeToggle"
 
-export default function MainNav({ items }: { items: NavItem[] }) {
+interface MainNavProps {
+  isLandingPage?: boolean
+  items?: NavItem[]
+}
+
+export default function MainNav({ isLandingPage, items }: MainNavProps) {
   return (
     <div className="flex w-full gap-6 md:gap-10">
-      <div className="hidden flex-1 items-center space-x-2 text-left md:flex">
-        <span className="hidden font-bold dark:text-white sm:inline-block">
-          {siteConfig.name}
-        </span>
-      </div>
+      {isLandingPage && (
+        <div className="hidden flex-1 items-center space-x-2 text-left md:flex">
+          <span className="hidden font-bold dark:text-white sm:inline-block">
+            {siteConfig.name}
+          </span>
+        </div>
+      )}
       {items?.length ? (
-        <nav className="mx-auto hidden gap-6 md:flex">
+        <nav
+          className={cn(
+            isLandingPage
+              ? "mx-auto hidden gap-6 md:flex"
+              : "hidden gap-6 md:flex"
+          )}
+        >
           {items?.map(
             (item, index) =>
               item.href && (
@@ -67,7 +81,11 @@ export default function MainNav({ items }: { items: NavItem[] }) {
       </DropdownMenu>
       <div className="flex-1 gap-2 text-right">
         <div className="flex items-center justify-end">
-          <ThemeToggle />
+          {isLandingPage ? (
+            <ThemeToggle variant="transparent" />
+          ) : (
+            <ThemeToggle variant="outline" />
+          )}
         </div>
       </div>
     </div>

@@ -20,7 +20,7 @@ export default function HomeLayout({ children }: HomeLayoutProps) {
     <div className="flex h-screen flex-col">
       <header className="sticky top-0 z-40 w-full bg-white dark:bg-dark-background">
         <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
-          <MainNav items={NavItems} />
+          <MainNav isLandingPage items={NavItems} />
         </div>
       </header>
       <main className="mx-10 flex-1 md:mx-12 lg:mx-20">{children}</main>

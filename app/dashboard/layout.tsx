@@ -1,7 +1,7 @@
 import Header from "@/components/Header"
+import MainNav from "@/components/MainNav"
 import { NavItem } from "@/components/NavLink"
 import PageHeader from "@/components/PageHeader"
-import Tabs from "@/components/Tabs"
 
 const tabsItems: NavItem[] = [
   {
@@ -12,10 +12,6 @@ const tabsItems: NavItem[] = [
     title: "Bugs",
     href: "/dashboard/bugs",
   },
-  {
-    title: "Settings",
-    href: "/dashboard/settings",
-  },
 ]
 
 interface DashboardLayoutProps {
@@ -24,11 +20,10 @@ interface DashboardLayoutProps {
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
-    <div className="flex h-screen flex-col">
+    <div className="flex h-screen flex-col py-4 px-8">
       <header className="sticky top-0 z-40 w-full bg-white dark:bg-dark-background">
         <div className="flex flex-col">
-          <Header />
-          <Tabs tabs={tabsItems} />
+          <MainNav items={tabsItems} />
         </div>
       </header>
       <PageHeader />
