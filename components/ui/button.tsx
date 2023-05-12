@@ -13,7 +13,7 @@ const buttonVariants = cva(
         destructive:
           "bg-red-500 text-white hover:bg-red-600 dark:hover:bg-red-600",
         outline:
-          "bg-transparent border border-slate-200 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-100",
+          "bg-transparent border border-slate-200 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-100 text-gray-500 hover:text-slate-900 dark:hover:text-slate-100",
         subtle:
           "bg-slate-100 text-slate-900 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-100",
         ghost:
@@ -24,8 +24,8 @@ const buttonVariants = cva(
       },
       size: {
         default: "h-10 py-2 px-4",
-        sm: "h-9 px-2 rounded-md",
-        lg: "h-11 px-8 rounded-md",
+        sm: "h-9 p-[5px] rounded-full",
+        lg: "h-11 px-6 rounded-full",
       },
     },
     defaultVariants: {
