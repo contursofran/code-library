@@ -25,7 +25,7 @@ interface MainNavProps {
 
 export default function MainNav({ isLandingPage, items }: MainNavProps) {
   return (
-    <div className="flex w-full gap-6 md:gap-10">
+    <div className="flex w-full gap-6 py-4 md:gap-10">
       {isLandingPage && (
         <div className="hidden flex-1 items-center space-x-2 text-left md:flex">
           <span className="hidden font-bold dark:text-white sm:inline-block">
