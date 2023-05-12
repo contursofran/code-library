@@ -1,7 +1,11 @@
 "use client"
 
 import Link from "next/link"
-import { Button } from "@/ui/button"
+import { Music } from "tabler-icons-react"
+
+import { siteConfig } from "@/config/site"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,11 +13,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/ui/dropdown-menu"
-import { Music } from "tabler-icons-react"
+} from "@/components/ui/dropdown-menu"
 
-import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
 import NavLink, { NavItem } from "./NavLink"
 import ThemeToggle from "./ThemeToggle"
 

@@ -1,15 +1,16 @@
 "use client"
 
 import * as React from "react"
-import { Button, ButtonVariantProps } from "@/ui/button"
+import { useTheme } from "next-themes"
+import { DeviceLaptop, Moon, Sun } from "tabler-icons-react"
+
+import { Button, ButtonVariantProps } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/ui/dropdown-menu"
-import { useTheme } from "next-themes"
-import { DeviceLaptop, Moon, Sun } from "tabler-icons-react"
+} from "@/components/ui/dropdown-menu"
 
 interface ThemeToggleProps {
   variant: ButtonVariantProps
