@@ -9,3 +9,19 @@ export function upperFirst(str?: string) {
   if (!str) return ""
   return str[0].toUpperCase() + str.slice(1)
 }
+
+export function formatDate(date: string): string {
+  const dateObj = new Date(date)
+  const currentDate = new Date()
+
+  const options: Intl.DateTimeFormatOptions = {
+    month: "short",
+    day: "numeric",
+    year:
+      currentDate.getFullYear() === dateObj.getFullYear()
+        ? undefined
+        : "numeric",
+  }
+
+  return dateObj.toLocaleDateString(undefined, options)
+}
