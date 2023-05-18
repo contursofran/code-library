@@ -1,5 +1,4 @@
 import { Separator } from "@/components/ui/separator"
-import Header from "@/components/Header"
 import MainNav from "@/components/MainNav"
 import { NavItem } from "@/components/NavLink"
 import PageHeader from "@/components/PageHeader"

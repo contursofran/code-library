@@ -4,28 +4,28 @@ import { usePathname } from "next/navigation"
 
 import { upperFirst } from "@/lib/utils"
 
-import SearchBar from "./SearchBar"
+import CreateSnippetButton from "./CreateSnippetButton"
 import SortFilter from "./SortFilter"
 import TagFilter from "./TagFilter"
-import { Button } from "./ui/button"
 
 export default function PageHeader() {
   const pageName = usePathname()?.split("/")?.[2]
+
   return (
-    <div className="z-10 w-full">
+    <div className="w-full">
       <div className="flex flex-col gap-1 py-6">
         <h1 className="text-2xl font-medium">{upperFirst(pageName)}</h1>
         <div className="text-gray-600 dark:text-gray-400 ">
           {pageName === "snippets" &&
             "A place where you can store your code snippets"}
         </div>
-        <div className="flex items-center justify-between pt-4">
-          <SearchBar />
-          <div className="flex gap-4">
-            <TagFilter />
-            <SortFilter />
-          </div>
+      </div>
+      <div className="flex items-center justify-between pt-2">
+        <div className="flex gap-4">
+          <TagFilter />
+          <SortFilter />
         </div>
+        <CreateSnippetButton />
       </div>
     </div>
   )

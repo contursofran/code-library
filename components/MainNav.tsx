@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 import NavLink, { NavItem } from "./NavLink"
+import SearchBar from "./SearchBar"
 import ThemeToggle from "./ThemeToggle"
 
 interface MainNavProps {
@@ -25,7 +26,7 @@ interface MainNavProps {
 
 export default function MainNav({ isLandingPage, items }: MainNavProps) {
   return (
-    <div className="flex w-full gap-6 py-4 md:gap-10">
+    <div className="flex h-16 w-full items-center gap-6 py-4 md:gap-10">
       {isLandingPage && (
         <div className="hidden flex-1 items-center space-x-2 text-left md:flex">
           <span className="hidden font-bold dark:text-white sm:inline-block">
@@ -85,7 +86,10 @@ export default function MainNav({ isLandingPage, items }: MainNavProps) {
           {isLandingPage ? (
             <ThemeToggle variant="transparent" />
           ) : (
-            <ThemeToggle variant="outline" />
+            <div className="flex gap-6">
+              <SearchBar />
+              <ThemeToggle variant="outline" />
+            </div>
           )}
         </div>
       </div>
