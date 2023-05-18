@@ -11,12 +11,12 @@ import {
 export default function SortFilter({}) {
   return (
     <Select>
-      <SelectTrigger className="w-40 lg:w-48">
+      <SelectTrigger className="h-9 w-36">
         <SelectValue
           placeholder={
             <div className="flex items-center">
               <ArrowsSort size={18} />
-              <span className="ml-2">Sort by</span>
+              <span className="ml-[5px]">Sort by</span>
             </div>
           }
         />
@@ -24,17 +24,17 @@ export default function SortFilter({}) {
       <SelectContent>
         <SelectItem value="Ascending">
           {
-            <div className="flex">
+            <div className="flex items-center">
               <SortAscending size={18} />
-              <span className="ml-2">Ascending</span>
+              <span className="ml-[5px]">Ascending</span>
             </div>
           }
         </SelectItem>
         <SelectItem value="Descending">
           {
-            <div className="flex">
+            <div className="flex items-center">
               <SortDescending size={18} />
-              <span className="ml-2">Descending</span>
+              <span className="ml-[5px]">Descending</span>
             </div>
           }
         </SelectItem>

@@ -1,4 +1,4 @@
-import { SortAscending, SortDescending, Tag } from "tabler-icons-react"
+import { Tag } from "tabler-icons-react"
 
 import {
   Select,
@@ -11,12 +11,12 @@ import {
 export default function TagFilter({}) {
   return (
     <Select>
-      <SelectTrigger className="w-40 lg:w-48">
+      <SelectTrigger className="h-9 w-36">
         <SelectValue
           placeholder={
             <div className="flex items-center">
               <Tag size={18} />
-              <span className="ml-2">Filter by tag</span>
+              <span className="ml-[5px]">Filter by</span>
             </div>
           }
         />
@@ -26,7 +26,7 @@ export default function TagFilter({}) {
           {
             <div className="flex items-center">
               <div className="h-2 w-2 rounded-full bg-blue-400" />
-              <span className="ml-2">Typescript</span>
+              <span className="ml-[5px]">Typescript</span>
             </div>
           }
         </SelectItem>
@@ -34,7 +34,7 @@ export default function TagFilter({}) {
           {
             <div className="flex items-center">
               <div className="h-2 w-2 rounded-full bg-yellow-400" />
-              <span className="ml-2">Javascript</span>
+              <span className="ml-[5px]">Javascript</span>
             </div>
           }
         </SelectItem>

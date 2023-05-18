@@ -2,13 +2,7 @@
 
 import * as React from "react"
 import * as SelectPrimitive from "@radix-ui/react-select"
-import {
-  ArrowsSort,
-  Check,
-  ChevronDown,
-  Filter,
-  MenuOrder,
-} from "tabler-icons-react"
+import { Check, ChevronDown } from "tabler-icons-react"
 
 import { cn } from "@/lib/utils"
 
@@ -24,7 +18,7 @@ const SelectTrigger = React.forwardRef<
 >(({ children, className, ...props }, ref) => (
   <SelectPrimitive.Trigger
     className={cn(
-      "flex h-10 w-full items-center justify-between rounded-md border border-input bg-transparent px-3 py-2 text-sm text-gray-700 ring-offset-background focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-gray-300 placeholder:dark:text-slate-500",
+      "flex h-10 w-full items-center justify-between rounded-md border border-input bg-transparent p-2 text-sm text-gray-700 ring-offset-background focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-gray-300 placeholder:dark:text-slate-500",
       className
     )}
     ref={ref}
@@ -91,7 +85,7 @@ const SelectItem = React.forwardRef<
     ref={ref}
     {...props}
   >
-    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span className="absolute right-2 flex h-3.5 w-3.5 items-center justify-center">
       <SelectPrimitive.ItemIndicator>
         <Check className="h-4 w-4" />
       </SelectPrimitive.ItemIndicator>
