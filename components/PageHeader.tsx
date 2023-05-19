@@ -13,14 +13,16 @@ export default function PageHeader() {
 
   return (
     <div className="w-full">
-      <div className="flex flex-col gap-1 py-6">
-        <h1 className="text-2xl font-medium">{upperFirst(pageName)}</h1>
-        <div className="text-gray-600 dark:text-gray-400 ">
-          {pageName === "snippets" &&
-            "A place where you can store your code snippets"}
+      <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-1 py-8">
+          <h1 className="text-2xl font-medium">{upperFirst(pageName)}</h1>
+          <div className="pt-1 text-gray-600 dark:text-gray-400">
+            {pageName === "snippets" &&
+              "A place where you can store your code snippets"}
+          </div>
         </div>
       </div>
-      <div className="flex items-center justify-between pt-2">
+      <div className="flex items-center justify-between">
         <div className="flex gap-4">
           <TagFilter />
           <SortFilter />
