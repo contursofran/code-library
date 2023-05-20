@@ -23,5 +23,5 @@ export function formatDate(date: string): string {
         : "numeric",
   }
 
-  return dateObj.toLocaleDateString(undefined, options)
+  return Intl.DateTimeFormat("en-US", options).format(dateObj)
 }
