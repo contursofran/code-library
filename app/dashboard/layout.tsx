@@ -1,5 +1,5 @@
+import { NavItem } from "@/types/index"
 import MainNav from "@/components/MainNav"
-import { NavItem } from "@/components/NavLink"
 import PageHeader from "@/components/PageHeader"
 
 const tabsItems: NavItem[] = [

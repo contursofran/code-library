@@ -6,11 +6,7 @@ import { usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 
-export interface NavItem {
-  href: string
-  isTab?: boolean
-  title: string
-}
+import { NavItem } from "../types"
 
 export default function NavLink({ href, isTab, title }: NavItem) {
   const isCurrentPage = usePathname() === href

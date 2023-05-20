@@ -1,32 +1,28 @@
+import { Snippet } from "@/types/index"
 import SnippetCard from "@/components/SnippetCard"
 
-const snippets = [
+const snippets: Snippet[] = [
   {
-    code: "console.log('hello world')",
+    content: {
+      code: "console.log('hello world')",
+      description: "Print hello world",
+      title: "Hello world",
+      language: "javascript",
+    },
     date: "2023-03-03",
-    description: "Print hello world",
     id: "1",
-    language: "javascript",
     tags: ["tag1", "tag2"],
-    title: "Hello world",
   },
   {
-    code: "some code",
+    content: {
+      code: "console.log('hello world')",
+      description: "Print hello world",
+      title: "Hello world",
+      language: "javascript",
+    },
     date: "2023-03-03",
-    description: "Make nav bar sticky",
     id: "2",
-    language: "typescript",
     tags: ["tag1", "tag2"],
-    title: "Nav bar sticky",
-  },
-  {
-    code: "some code",
-    date: "2023-03-03",
-    description: "Make nav bar sticky",
-    id: "3",
-    language: "typescript",
-    tags: ["tag1", "tag2"],
-    title: "Nav bar sticky",
   },
 ]
 
