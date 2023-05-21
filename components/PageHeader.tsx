@@ -22,11 +22,7 @@ export default function PageHeader() {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-between">
-        <div className="flex gap-4">
-          <TagFilter />
-          <SortFilter />
-        </div>
+      <div className="flex items-center justify-end">
         <CreateSnippetButton />
       </div>
     </div>
