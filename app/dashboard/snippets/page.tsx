@@ -1,5 +1,6 @@
 import { Snippet } from "@/types/index"
 import { DataTable } from "@/components/SnippetsTable"
+import { columns } from "@/components/SnippetsTableColumns"
 
 const snippets: Snippet[] = [
   {
@@ -29,7 +30,7 @@ const snippets: Snippet[] = [
 export default function SnippetsPage({}) {
   return (
     <div className="mt-8 flex flex-col divide-y divide-border rounded-md border dark:divide-slate-700 dark:border-slate-700">
-      <DataTable data={snippets} />
+      <DataTable columns={columns} data={snippets} />
     </div>
   )
 }
