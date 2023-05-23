@@ -13,8 +13,8 @@ import {
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
 
 import { Snippet } from "../types"
-import { columns } from "./SnippetsTableColumns"
-import { SnippetsTableToolbar } from "./SnippetsTableToolbar"
+import { columns } from "./TableColumns"
+import { SnippetsTableToolbar } from "./TableToolbar"
 
 interface DataTableProps<TData> {
   columns: ColumnDef<TData, any>[]

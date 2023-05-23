@@ -30,6 +30,9 @@ export const columns = [
         <div className="p-1">{upperFirst(row.getValue())}</div>
       </Badge>
     ),
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id))
+    },
   }),
   columnHelper.accessor("tags", {
     cell: (row) => (

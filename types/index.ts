@@ -1,8 +1,16 @@
+import { Icon } from "tabler-icons-react"
+
 export interface Snippet {
   content: SnippetContent
   date: string
   id: string
   tags: string[]
+}
+
+export interface FilterOptions {
+  icon?: Icon
+  label: string
+  value: string
 }
 
 export interface SnippetContent {
