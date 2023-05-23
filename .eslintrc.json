@@ -8,7 +8,8 @@
     "tailwindcss",
     "@typescript-eslint",
     "typescript-sort-keys",
-    "sort-destructure-keys"
+    "sort-destructure-keys",
+    "no-relative-import-paths"
   ],
   "settings": {
     "tailwindcss": {
@@ -26,6 +27,10 @@
         "noSortAlphabetically": false,
         "shorthandFirst": true
       }
+    ],
+    "no-relative-import-paths/no-relative-import-paths": [
+      "warn",
+      { "allowSameFolder": false, "prefix": "@" }
     ]
   }
 }

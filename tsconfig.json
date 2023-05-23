@@ -14,13 +14,9 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": ".",
+
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/ui/*": ["components/ui/*"],
-      "@/lib/*": ["lib/*"],
-      "@/types/*": ["types/*"],
-      "@/styles/*": ["styles/*"],
-      "@/config/*": ["config/*"]
+      "@/*": ["./*"]
     },
     "plugins": [
       {
