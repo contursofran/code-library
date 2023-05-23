@@ -1,6 +1,6 @@
 import { BrandReact } from "tabler-icons-react"
 
-import { FilterOptions, Snippet } from "../types"
+import { LanguageFilter, Snippet } from "../types"
 
 export const snippets: Snippet[] = [
   {
@@ -12,7 +12,6 @@ export const snippets: Snippet[] = [
     },
     date: "2023-03-03",
     id: "1",
-    tags: ["tag1", "tag2"],
   },
   {
     content: {
@@ -23,11 +22,10 @@ export const snippets: Snippet[] = [
     },
     date: "2023-03-03",
     id: "2",
-    tags: ["tag1", "tag2"],
   },
 ]
 
-export const languages: FilterOptions[] = [
+export const languages: LanguageFilter[] = [
   {
     value: "javascript",
     label: "Javascript",

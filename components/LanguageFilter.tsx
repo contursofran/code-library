@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Column } from "@tanstack/react-table"
-import { Check, Icon, Plus } from "tabler-icons-react"
+import { Check, Plus } from "tabler-icons-react"
 
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
@@ -20,21 +20,16 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { Separator } from "@/components/ui/separator"
+import { LanguageFilter } from "@/types"
 
 interface DataTableFacetedFilter<TData, TValue> {
   column?: Column<TData, TValue>
-  options: {
-    icon?: Icon
-    label: string
-    value: string
-  }[]
-  title?: string
+  languages: LanguageFilter[]
 }
 
-export default function DataTableFacetedFilter<TData, TValue>({
+export default function LanguageFilter<TData, TValue>({
   column,
-  options,
-  title,
+  languages,
 }: DataTableFacetedFilter<TData, TValue>) {
   const facets = column?.getFacetedUniqueValues()
   const selectedValues = new Set(column?.getFilterValue() as string[])
@@ -44,7 +39,7 @@ export default function DataTableFacetedFilter<TData, TValue>({
       <PopoverTrigger asChild>
         <Button className="h-8 border-dashed" size="sm" variant="outline">
           <Plus className="mr-2 h-4 w-4" />
-          {title}
+          {"languages"}
           {selectedValues?.size > 0 && (
             <>
               <Separator className="mx-2 h-4" orientation="vertical" />
@@ -63,7 +58,7 @@ export default function DataTableFacetedFilter<TData, TValue>({
                     {selectedValues.size} selected
                   </Badge>
                 ) : (
-                  options
+                  languages
                     .filter((option) => selectedValues.has(option.value))
                     .map((option) => (
                       <Badge
@@ -82,11 +77,11 @@ export default function DataTableFacetedFilter<TData, TValue>({
       </PopoverTrigger>
       <PopoverContent align="start" className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder={title} />
+          <CommandInput placeholder={"languages"} />
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup>
-              {options.map((option) => {
+              {languages.map((option) => {
                 const isSelected = selectedValues.has(option.value)
                 return (
                   <CommandItem
@@ -113,9 +108,6 @@ export default function DataTableFacetedFilter<TData, TValue>({
                     >
                       <Check className={cn("h-4 w-4")} />
                     </div>
-                    {option.icon && (
-                      <option.icon className="mr-2 h-4 w-4 text-muted-foreground" />
-                    )}
                     <span>{option.label}</span>
                     {facets?.get(option.value) && (
                       <span className="ml-auto flex h-4 w-4 items-center justify-center font-mono text-xs">

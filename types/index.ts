@@ -4,19 +4,19 @@ export interface Snippet {
   content: SnippetContent
   date: string
   id: string
-  tags: string[]
 }
 
-export interface FilterOptions {
-  icon?: Icon
+export type Language = "javascript" | "typescript" | "css" | "html"
+
+export interface LanguageFilter {
   label: string
-  value: string
+  value: Language
 }
 
 export interface SnippetContent {
   code: string
   description: string
-  language: string
+  language: Language
   title: string
 }
 

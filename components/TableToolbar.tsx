@@ -3,8 +3,8 @@
 import { Table } from "@tanstack/react-table"
 import { languages } from "data/data"
 
-import FacetedFilter from "./FacetedFilter"
-import { Input } from "./ui/input"
+import { Input } from "@/components/ui/input"
+import LanguageFilter from "@/components/LanguageFilter"
 
 interface SnippetsTableToolbarProps<TData> {
   table: Table<TData>
@@ -24,10 +24,9 @@ export function SnippetsTableToolbar<TData>({
           }
         />
         {table.getColumn("language") && (
-          <FacetedFilter
+          <LanguageFilter
             column={table.getColumn("language")}
-            options={languages}
-            title="Language"
+            languages={languages}
           />
         )}
       </div>
