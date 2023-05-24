@@ -1,12 +1,10 @@
-import { BrandReact } from "tabler-icons-react"
-
-import { LanguageFilter, Snippet } from "../types"
+import { LanguageFilter, Snippet } from "@/types"
 
 export const snippets: Snippet[] = [
   {
     content: {
-      code: "console.log('hello world')",
-      description: "Print hello world",
+      code: "<nav>",
+      description: "Sticky navbar",
       title: "Test",
       language: "javascript",
     },

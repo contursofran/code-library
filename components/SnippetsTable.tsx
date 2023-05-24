@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { Snippet } from "@/types"
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -11,10 +12,8 @@ import {
 } from "@tanstack/react-table"
 
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
-
-import { Snippet } from "../types"
-import { columns } from "./TableColumns"
-import { SnippetsTableToolbar } from "./TableToolbar"
+import { columns } from "@/components/TableColumns"
+import { SnippetsTableToolbar } from "@/components/TableToolbar"
 
 interface DataTableProps<TData> {
   columns: ColumnDef<TData, any>[]
