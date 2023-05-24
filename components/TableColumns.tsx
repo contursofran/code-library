@@ -1,27 +1,19 @@
 "use client"
 
-import { createColumnHelper } from "@tanstack/react-table"
+import { useState } from "react"
+import Link from "next/link"
+import { Snippet } from "@/types"
+import { CellContext, createColumnHelper } from "@tanstack/react-table"
 
-import { formatDate, upperFirst } from "@/lib/utils"
-
-import { Snippet } from "../types"
-import { Badge } from "./ui/badge"
+import { cn, formatDate, upperFirst } from "@/lib/utils"
+import { Badge } from "@/components/ui/badge"
 
 const columnHelper = createColumnHelper<Snippet>()
 
 export const columns = [
   columnHelper.accessor("content.title", {
     id: "title",
-    cell: (props) => (
-      <div className="flex flex-col space-y-1">
-        <div className="text-lg font-medium leading-none tracking-tight">
-          {upperFirst(props.row.original.content.title)}
-        </div>
-        <div className="text-sm text-gray-500">
-          {upperFirst(props.row.original.content.description)}
-        </div>
-      </div>
-    ),
+    cell: (props) => <SnippetTitle props={props} />,
   }),
   columnHelper.accessor("content.language", {
     id: "language",
@@ -39,3 +31,28 @@ export const columns = [
     cell: (row) => <div>{formatDate(row.getValue())}</div>,
   }),
 ]
+
+function SnippetTitle({ props }: { props: CellContext<Snippet, string> }) {
+  const [isHovered, setIsHovered] = useState(false)
+
+  return (
+    <Link
+      className="flex flex-col space-y-1 hover:cursor-pointer"
+      href={`/dashboard/snippets/${props.row.original.id}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div
+        className={cn(
+          isHovered && "underline",
+          "text-lg font-medium leading-none tracking-tight "
+        )}
+      >
+        {upperFirst(props.row.original.content.title)}
+      </div>
+      <div className="text-sm text-gray-500">
+        {upperFirst(props.row.original.content.description)}
+      </div>
+    </Link>
+  )
+}
