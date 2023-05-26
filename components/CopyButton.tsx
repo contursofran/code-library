@@ -6,6 +6,7 @@ import { Check, Copy } from "tabler-icons-react"
 import { Button } from "@/components/ui/button"
 
 interface CopyButtonProps {
+  className?: string
   code: string
 }
 
@@ -13,7 +14,7 @@ const copyToClipboard = (code: string) => {
   navigator.clipboard.writeText(code)
 }
 
-export default function CopyButton({ code }: CopyButtonProps) {
+export default function CopyButton({ className, code }: CopyButtonProps) {
   const [hasCopied, setHasCopied] = useState(false)
 
   useEffect(() => {
@@ -23,7 +24,7 @@ export default function CopyButton({ code }: CopyButtonProps) {
   }, [hasCopied])
 
   return (
-    <div className="flex w-full justify-end align-middle">
+    <div className={className}>
       <Button
         size="sm"
         variant="outline"

@@ -33,7 +33,12 @@ export const columns = [
   }),
   columnHelper.accessor("content.code", {
     id: "code",
-    cell: (row) => <CopyButton code={row.getValue()} />,
+    cell: (row) => (
+      <CopyButton
+        className="flex w-full justify-end align-middle"
+        code={row.getValue()}
+      />
+    ),
   }),
 ]
 
