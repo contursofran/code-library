@@ -3,6 +3,7 @@ import { Code } from "bright"
 import tokyoNightTheme from "public/tokyo-night-theme.json"
 
 import { Button } from "@/components/ui/button"
+import { ScrollArea } from "@/components/ui/scroll-area"
 import CopyButton from "@/components/CopyButton"
 
 interface SnippetContentProps {
@@ -32,19 +33,23 @@ export default function SnippetContent({ snippet }: SnippetContentProps) {
         </div>
         <Button size="sm">Edit</Button>
       </div>
-      <div className="flex w-full justify-center">
-        <div className="m-4 flex w-3/5 justify-around rounded-lg border">
+      <div className="flex w-full justify-center overflow-hidden">
+        <ScrollArea className="m-4 w-3/5 rounded-lg border">
           {/* @ts-expect-error */}
           <Code
             className="w-full text-sm"
             codeClassName="-my-2 mx-3"
             lang={snippet.content.language}
-            theme={tokyoNightTheme}
+            theme={{
+              dark: tokyoNightTheme,
+              light: "min-light",
+              lightSelector: "html.light",
+            }}
           >
             {code}
           </Code>
-          <CopyButton className="p-4" code={code} />
-        </div>
+          <CopyButton className="absolute right-2 top-2 p-4" code={code} />
+        </ScrollArea>
       </div>
     </div>
   )
