@@ -4,11 +4,9 @@ import { useState } from "react"
 import Link from "next/link"
 import { Snippet } from "@/types"
 import { CellContext, createColumnHelper } from "@tanstack/react-table"
-import { Copy } from "tabler-icons-react"
 
 import { cn, formatDate, upperFirst } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import CopyButton from "@/components/CopyButton"
 
 const columnHelper = createColumnHelper<Snippet>()

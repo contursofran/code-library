@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { NavItem } from "@/types"
 import { Music } from "tabler-icons-react"
 
 import { siteConfig } from "@/config/site"
@@ -14,10 +15,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-
-import NavLink, { NavItem } from "./NavLink"
-import SearchBar from "./SearchBar"
-import ThemeToggle from "./ThemeToggle"
+import NavLink from "@/components/NavLink"
+import SearchBar from "@/components/SearchBar"
+import ThemeToggle from "@/components/ThemeToggle"
 
 interface MainNavProps {
   isLandingPage?: boolean
