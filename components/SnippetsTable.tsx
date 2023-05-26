@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
 import { columns } from "@/components/TableColumns"
+import { TablePagination } from "@/components/TablePagination"
 import { SnippetsTableToolbar } from "@/components/TableToolbar"
 
 interface DataTableProps<TData> {
@@ -41,7 +42,7 @@ export function DataTable<TData>({ data }: DataTableProps<TData>) {
   return (
     <>
       <SnippetsTableToolbar table={table} />
-      <ScrollArea className="rounded-md border">
+      <ScrollArea className="mb-16 rounded-md border">
         <Table>
           <TableBody>
             {table.getRowModel().rows?.length ? (
@@ -73,24 +74,7 @@ export function DataTable<TData>({ data }: DataTableProps<TData>) {
           </TableBody>
         </Table>
       </ScrollArea>
-      <div className="relative bottom-0 flex items-center justify-end space-x-2 pt-4">
-        <Button
-          disabled={!table.getCanPreviousPage()}
-          size="sm"
-          variant="outline"
-          onClick={() => table.previousPage()}
-        >
-          Previous
-        </Button>
-        <Button
-          disabled={!table.getCanNextPage()}
-          size="sm"
-          variant="outline"
-          onClick={() => table.nextPage()}
-        >
-          Next
-        </Button>
-      </div>
+      <TablePagination table={table} />
     </>
   )
 }
