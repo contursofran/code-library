@@ -14,7 +14,7 @@ export function SnippetsTableToolbar<TData>({
   table,
 }: SnippetsTableToolbarProps<TData>) {
   return (
-    <div className="flex items-center justify-between">
+    <div className="mb-4 flex items-center justify-between">
       <div className="flex flex-1 items-center space-x-2">
         <Input
           placeholder="Search snippets..."

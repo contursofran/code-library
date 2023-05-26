@@ -8,9 +8,12 @@ import {
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
+  getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table"
 
+import { Button } from "@/components/ui/button"
+import { ScrollArea } from "@/components/ui/scroll-area"
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
 import { columns } from "@/components/TableColumns"
 import { SnippetsTableToolbar } from "@/components/TableToolbar"
@@ -32,12 +35,13 @@ export function DataTable<TData>({ data }: DataTableProps<TData>) {
     state: {
       columnFilters,
     },
+    getPaginationRowModel: getPaginationRowModel(),
   })
 
   return (
-    <div className="space-y-4">
+    <>
       <SnippetsTableToolbar table={table} />
-      <div className="rounded-md border">
+      <ScrollArea className="rounded-md border">
         <Table>
           <TableBody>
             {table.getRowModel().rows?.length ? (
@@ -68,7 +72,25 @@ export function DataTable<TData>({ data }: DataTableProps<TData>) {
             )}
           </TableBody>
         </Table>
+      </ScrollArea>
+      <div className="relative bottom-0 flex items-center justify-end space-x-2 pt-4">
+        <Button
+          disabled={!table.getCanPreviousPage()}
+          size="sm"
+          variant="outline"
+          onClick={() => table.previousPage()}
+        >
+          Previous
+        </Button>
+        <Button
+          disabled={!table.getCanNextPage()}
+          size="sm"
+          variant="outline"
+          onClick={() => table.nextPage()}
+        >
+          Next
+        </Button>
       </div>
-    </div>
+    </>
   )
 }

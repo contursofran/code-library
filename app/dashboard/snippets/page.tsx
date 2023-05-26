@@ -1,6 +1,5 @@
 import { snippets } from "data/data"
 
-import { Snippet } from "@/types/index"
 import { DataTable } from "@/components/SnippetsTable"
 import { columns } from "@/components/TableColumns"
 

@@ -1,17 +1,7 @@
 import { NavItem } from "@/types/index"
+import { tabsItems } from "@/config/dashboard"
 import MainNav from "@/components/MainNav"
 import PageHeader from "@/components/PageHeader"
-
-const tabsItems: NavItem[] = [
-  {
-    title: "Snippets",
-    href: "/dashboard/snippets",
-  },
-  {
-    title: "Bugs",
-    href: "/dashboard/bugs",
-  },
-]
 
 interface DashboardLayoutProps {
   children: React.ReactNode
@@ -25,12 +15,10 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           <MainNav items={tabsItems} />
         </div>
       </header>
-      <div className="container">
+      <main className="container flex w-full flex-1 flex-col overflow-hidden py-8">
         <PageHeader />
-        <div className="flex h-full">
-          <main className="flex-1">{children}</main>
-        </div>
-      </div>
+        {children}
+      </main>
     </div>
   )
 }
