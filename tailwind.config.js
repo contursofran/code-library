@@ -20,18 +20,18 @@ module.exports = {
     },
     colors: {
       ...colors,
-      "dark-background": "#181622",
-      "dark-border": "#24222e",
-      "light-background": "#fbfbfb",
-      "light-border": "#f5f5f5",
     },
     extend: {
       fontFamily: {
         sans: ["var(--font-inter)", ...fontFamily.sans],
       },
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
+        "dark-background": "#181622",
+        "dark-border": "#24222e",
+        "light-background": "#fbfbfb",
+        "light-border": "#f5f5f5",
+        border: "var(--border)",
+        input: "var(--input)",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

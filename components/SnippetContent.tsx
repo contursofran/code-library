@@ -35,7 +35,7 @@ export default function SnippetContent({ snippet }: SnippetContentProps) {
           {/* @ts-expect-error */}
           <Code
             className="w-full text-sm"
-            codeClassName="-my-2 mx-3"
+            codeClassName="-my-2 mx-2"
             lang={snippet.content.language}
             theme={{
               dark: tokyoNightTheme,

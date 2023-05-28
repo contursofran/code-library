@@ -3,13 +3,12 @@
 import { text } from "stream/consumers"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { NavItem } from "@/types"
 
 import { cn } from "@/lib/utils"
 
-import { NavItem } from "../types"
-
 export default function NavLink({ href, isTab, title }: NavItem) {
-  const isCurrentPage = usePathname() === href
+  const isCurrentPage = usePathname()?.includes(href)
 
   const baseLinkStyles = "flex items-center text-lg font-medium transition-all"
   const activeLinkStyles = "font-semibold text-slate-700 dark:text-gray-200"
