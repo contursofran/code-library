@@ -12,7 +12,6 @@ interface SnippetContentProps {
 
 function fixCode(code: string) {
   code = code.trim()
-  code = code.replace(/^[ \t]+/gm, "")
 
   return code
 }
@@ -20,12 +19,10 @@ function fixCode(code: string) {
 export default function SnippetContent({ snippet }: SnippetContentProps) {
   const code = fixCode(snippet.content.code)
 
-  console.log(code)
-
   return (
     <div className="flex h-full w-full flex-col gap-2">
       <div className="flex w-full items-center justify-between">
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-1">
           <div className="text-2xl font-medium">{snippet.content.title}</div>
           <div className="text-lg dark:text-gray-500">
             {snippet.content.description}
@@ -34,7 +31,7 @@ export default function SnippetContent({ snippet }: SnippetContentProps) {
         <Button size="sm">Edit</Button>
       </div>
       <div className="flex w-full justify-center overflow-hidden">
-        <ScrollArea className="m-4 w-3/5 rounded-lg border">
+        <ScrollArea className="m-4 w-3/5 rounded-lg border p-1">
           {/* @ts-expect-error */}
           <Code
             className="w-full text-sm"
@@ -48,7 +45,7 @@ export default function SnippetContent({ snippet }: SnippetContentProps) {
           >
             {code}
           </Code>
-          <CopyButton className="absolute right-2 top-2 p-4" code={code} />
+          <CopyButton className="absolute right-2 top-2 p-2" code={code} />
         </ScrollArea>
       </div>
     </div>
