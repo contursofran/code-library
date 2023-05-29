@@ -14,9 +14,10 @@ export function SnippetsTableToolbar<TData>({
   table,
 }: SnippetsTableToolbarProps<TData>) {
   return (
-    <div className="mb-4 flex items-center justify-between">
+    <div className="flex items-center justify-between">
       <div className="flex flex-1 items-center space-x-2">
         <Input
+          className="h-9"
           placeholder="Search snippets..."
           value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>

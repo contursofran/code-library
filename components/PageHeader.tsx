@@ -17,7 +17,7 @@ export default function PageHeader() {
 
 function SnippetsPage() {
   return (
-    <div className="w-full">
+    <div className="flex w-full items-center justify-between py-8">
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-1">
           <h1 className="text-2xl font-medium">Snippets</h1>
@@ -26,9 +26,7 @@ function SnippetsPage() {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-end">
-        <CreateSnippetButton />
-      </div>
+      <CreateSnippetButton />
     </div>
   )
 }

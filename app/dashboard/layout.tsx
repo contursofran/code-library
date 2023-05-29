@@ -10,12 +10,12 @@ interface DashboardLayoutProps {
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <div className="flex h-screen flex-col">
-      <header className="w-full border-b bg-white dark:bg-dark-background">
+      <header className="sticky top-0 w-full border-b bg-white dark:bg-dark-background">
         <div className="container flex flex-col">
           <MainNav items={tabsItems} />
         </div>
       </header>
-      <main className="container flex w-full flex-1 flex-col overflow-hidden py-8">
+      <main className="container flex w-full flex-1 flex-col gap-6">
         <PageHeader />
         {children}
       </main>
