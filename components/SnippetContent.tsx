@@ -20,33 +20,35 @@ export default function SnippetContent({ snippet }: SnippetContentProps) {
   const code = fixCode(snippet.content.code)
 
   return (
-    <div className="flex h-full w-full flex-col gap-2">
+    <div className="container mt-8 flex h-full w-full flex-col gap-6">
       <div className="flex w-full items-center justify-between">
         <div className="flex flex-col gap-1">
-          <div className="text-2xl font-medium">{snippet.content.title}</div>
+          <div className="text-2xl tracking-tight">{snippet.content.title}</div>
           <div className="text-lg dark:text-gray-500">
             {snippet.content.description}
           </div>
         </div>
         <Button size="sm">Edit</Button>
       </div>
-      <div className="flex w-full justify-center overflow-hidden">
-        <ScrollArea className="m-4 w-3/5 rounded-lg border p-1">
-          {/* @ts-expect-error */}
-          <Code
-            className="w-full text-sm"
-            codeClassName="-my-2 mx-2"
-            lang={snippet.content.language}
-            theme={{
-              dark: tokyoNightTheme,
-              light: "min-light",
-              lightSelector: "html.light",
-            }}
-          >
-            {code}
-          </Code>
-          <CopyButton className="absolute right-2 top-2 p-2" code={code} />
-        </ScrollArea>
+      <div className="flex w-full justify-center">
+        <div className="w-3/5 rounded-lg border p-1">
+          <div className="flex justify-between">
+            {/* @ts-expect-error */}
+            <Code
+              className="w-full text-sm"
+              codeClassName="-my-2 mx-2"
+              lang={snippet.content.language}
+              theme={{
+                dark: tokyoNightTheme,
+                light: "min-light",
+                lightSelector: "html.light",
+              }}
+            >
+              {code}
+            </Code>
+            <CopyButton className="p-2" code={code} />
+          </div>
+        </div>
       </div>
     </div>
   )

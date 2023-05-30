@@ -16,17 +16,14 @@ interface SnippetsTableToolbarProps<TData> {
 export function SnippetsTableToolbar<TData>({
   table,
 }: SnippetsTableToolbarProps<TData>) {
-  const { isSticky, stickyRef } = useStickyDetection(64)
+  const { isSticky, stickyRef } = useStickyDetection(65)
 
   return (
     <div
-      className={cn(
-        isSticky && "border-y bg-white dark:bg-dark-background",
-        "sticky top-16"
-      )}
+      className={cn(isSticky && "border-b bg-background", "sticky top-0")}
       ref={stickyRef}
     >
-      <div className="container flex h-20 items-center justify-between ">
+      <div className="container flex h-20 items-center justify-between">
         <div className="flex items-center justify-between">
           <div className="flex flex-1 items-center space-x-2">
             <Input

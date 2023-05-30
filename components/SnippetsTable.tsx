@@ -14,7 +14,6 @@ import {
 
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
 import { columns } from "@/components/TableColumns"
-import { TablePagination } from "@/components/TablePagination"
 import { SnippetsTableToolbar } from "@/components/TableToolbar"
 
 interface DataTableProps<TData> {

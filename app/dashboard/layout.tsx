@@ -1,5 +1,6 @@
 import { NavItem } from "@/types/index"
 import { tabsItems } from "@/config/dashboard"
+import DashBoardFooter from "@/components/DashboardFooter"
 import MainNav from "@/components/MainNav"
 import PageHeader from "@/components/PageHeader"
 
@@ -10,14 +11,15 @@ interface DashboardLayoutProps {
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <div className="flex h-screen flex-col">
-      <header className="sticky top-0 w-full border-b bg-white dark:bg-dark-background">
+      <header className="sticky top-0 w-full border-b bg-background">
         <div className="container flex flex-col">
           <MainNav items={tabsItems} />
         </div>
       </header>
-      <main className="flex w-full flex-1 flex-col gap-6">
+      <main className="flex w-full flex-1 flex-col">
         <PageHeader />
         {children}
+        <DashBoardFooter />
       </main>
     </div>
   )

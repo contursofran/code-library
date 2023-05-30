@@ -10,12 +10,13 @@ function useStickyDetection(top: number) {
 
       if (element) {
         const rect = element.getBoundingClientRect()
-        const isSticky = rect.top === top
+        const isSticky = rect.top <= top
+
         setIsSticky(isSticky)
       }
     }
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, true)
 
     return () => {
       window.removeEventListener("scroll", handleScroll)
