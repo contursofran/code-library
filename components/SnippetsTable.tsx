@@ -12,7 +12,6 @@ import {
   useReactTable,
 } from "@tanstack/react-table"
 
-import { Sticky } from "@/components/ui/sticky"
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
 import { columns } from "@/components/TableColumns"
 import { TablePagination } from "@/components/TablePagination"
@@ -40,17 +39,8 @@ export function DataTable<TData>({ data }: DataTableProps<TData>) {
 
   return (
     <>
-      <Sticky
-        className="-mx-12"
-        stickyClassName="-ml-12 w-screen border-y"
-        top={64}
-      >
-        <div className="mx-12 flex h-20 items-center justify-between ">
-          <SnippetsTableToolbar table={table} />
-          <TablePagination table={table} />
-        </div>
-      </Sticky>
-      <div className="h-[750px]">
+      <SnippetsTableToolbar table={table} />
+      <div className="container h-[750px]">
         <div className="mb-16 rounded-md border">
           <Table>
             <TableBody>
