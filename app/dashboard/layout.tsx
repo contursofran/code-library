@@ -15,7 +15,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           <MainNav items={tabsItems} />
         </div>
       </header>
-      <main className="container flex w-full flex-1 flex-col gap-6">
+      <main className="flex w-full flex-1 flex-col gap-6">
         <PageHeader />
         {children}
       </main>
