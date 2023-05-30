@@ -16,7 +16,7 @@ export function TablePagination<TData>({
   table,
 }: DataTablePaginationProps<TData>) {
   return (
-    <div className="flex h-9 items-center dark:bg-dark-background">
+    <div className="flex h-9 items-center bg-background">
       <div className="flex items-center space-x-4 lg:space-x-4">
         <div className="flex w-[100px] items-center justify-center text-xs font-medium">
           Page {table.getState().pagination.pageIndex + 1} of{" "}

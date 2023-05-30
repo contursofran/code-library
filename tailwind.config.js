@@ -26,12 +26,10 @@ module.exports = {
         sans: ["var(--font-inter)", ...fontFamily.sans],
       },
       colors: {
-        "dark-background": "#181622",
-        "light-background": "#fbfbfb",
         border: "var(--border)",
         input: "var(--input)",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
+        background: "var(--background)",
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
