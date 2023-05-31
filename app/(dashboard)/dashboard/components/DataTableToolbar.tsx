@@ -6,14 +6,14 @@ import { languages } from "data/data"
 import { cn } from "@/lib/utils"
 import { useStickyDetection } from "@/hooks/useStickyDetection"
 import { Input } from "@/components/ui/input"
-import LanguageFilter from "@/components/LanguageFilter"
-import { TablePagination } from "@/components/TablePagination"
+import DataTablePagination from "@/app/(dashboard)/dashboard/components/DataTablePagination"
+import LanguageFilter from "@/app/(dashboard)/dashboard/components/LanguageFilter"
 
 interface SnippetsTableToolbarProps<TData> {
   table: Table<TData>
 }
 
-export function SnippetsTableToolbar<TData>({
+export function DataTableToolbar<TData>({
   table,
 }: SnippetsTableToolbarProps<TData>) {
   const { isSticky, stickyRef } = useStickyDetection(65)
@@ -44,7 +44,7 @@ export function SnippetsTableToolbar<TData>({
             )}
           </div>
         </div>
-        <TablePagination table={table} />
+        <DataTablePagination table={table} />
       </div>
     </div>
   )

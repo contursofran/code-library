@@ -3,9 +3,8 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import { useTheme } from "next-themes"
-
-import darkHero from "../public/dark-hero.svg"
-import lightHero from "../public/light-hero.svg"
+import darkHero from "public/dark-hero.svg"
+import lightHero from "public/light-hero.svg"
 
 export default function Hero() {
   const { resolvedTheme } = useTheme()

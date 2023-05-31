@@ -1,6 +1,6 @@
 import { snippets } from "@/data/data"
 
-import SnippetContent from "@/components/SnippetContent"
+import Content from "@/app/(dashboard)/dashboard/components/Content"
 
 interface SnippetsPageProps {
   params: {
@@ -18,6 +18,6 @@ export default async function SnippetsPage({ params }: SnippetsPageProps) {
   const snippet = await getUserSnippet(params.id)
 
   if (snippet) {
-    return <SnippetContent snippet={snippet} />
+    return <Content snippet={snippet} />
   }
 }

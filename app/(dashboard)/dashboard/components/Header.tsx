@@ -2,20 +2,20 @@
 
 import { usePathname } from "next/navigation"
 
-import CreateSnippetButton from "@/components/CreateSnippetButton"
+import Editor from "@/app/(dashboard)/dashboard/components/Editor"
 
 export default function PageHeader() {
   const pageName = usePathname()
 
   return (
     <>
-      {pageName === "/dashboard/snippets" && <SnippetsPage />}
-      {pageName === "/dashboard/bugs" && <BugsPage />}
+      {pageName === "/dashboard/snippets" && <SnippetsPageHeader />}
+      {pageName === "/dashboard/bugs" && <BugsPageHeader />}
     </>
   )
 }
 
-function SnippetsPage() {
+function SnippetsPageHeader() {
   return (
     <div className="container flex w-full items-center justify-between pt-8 pb-4">
       <div className="flex items-center justify-between">
@@ -26,12 +26,12 @@ function SnippetsPage() {
           </div>
         </div>
       </div>
-      <CreateSnippetButton />
+      <Editor action="create" />
     </div>
   )
 }
 
-function BugsPage() {
+function BugsPageHeader() {
   return (
     <div className="w-full">
       <div className="flex items-center justify-between">
@@ -41,9 +41,6 @@ function BugsPage() {
             A place where you can store bugs and errors.
           </div>
         </div>
-      </div>
-      <div className="flex items-center justify-end">
-        <CreateSnippetButton />
       </div>
     </div>
   )

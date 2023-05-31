@@ -1,8 +1,7 @@
-import { NavItem } from "@/types/index"
 import { tabsItems } from "@/config/dashboard"
-import DashBoardFooter from "@/components/DashboardFooter"
 import MainNav from "@/components/MainNav"
-import PageHeader from "@/components/PageHeader"
+import Footer from "@/app/(dashboard)/dashboard/components/Footer"
+import Header from "@/app/(dashboard)/dashboard/components/Header"
 
 interface DashboardLayoutProps {
   children: React.ReactNode
@@ -17,9 +16,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         </div>
       </header>
       <main className="flex w-full flex-1 flex-col">
-        <PageHeader />
+        <Header />
         {children}
-        <DashBoardFooter />
+        <Footer />
       </main>
     </div>
   )

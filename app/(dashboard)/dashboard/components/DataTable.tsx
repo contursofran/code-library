@@ -13,8 +13,8 @@ import {
 } from "@tanstack/react-table"
 
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
-import { columns } from "@/components/TableColumns"
-import { SnippetsTableToolbar } from "@/components/TableToolbar"
+import { columns } from "@/app/(dashboard)/dashboard/components/DataTableColumns"
+import { DataTableToolbar } from "@/app/(dashboard)/dashboard/components/DataTableToolbar"
 
 interface DataTableProps<TData> {
   columns: ColumnDef<TData, any>[]
@@ -38,7 +38,7 @@ export function DataTable<TData>({ data }: DataTableProps<TData>) {
 
   return (
     <>
-      <SnippetsTableToolbar table={table} />
+      <DataTableToolbar table={table} />
       <div className="container h-[750px]">
         <div className="mb-16 rounded-md border">
           <Table>

@@ -2,9 +2,8 @@ import { Snippet } from "@/types"
 import { Code } from "bright"
 import tokyoNightTheme from "public/tokyo-night-theme.json"
 
-import { Button } from "@/components/ui/button"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import CopyButton from "@/components/CopyButton"
+import CopyButton from "@/app/(dashboard)/dashboard/components/CopyButton"
+import Editor from "@/app/(dashboard)/dashboard/components/Editor"
 
 interface SnippetContentProps {
   snippet: Snippet
@@ -16,7 +15,7 @@ function fixCode(code: string) {
   return code
 }
 
-export default function SnippetContent({ snippet }: SnippetContentProps) {
+export default function Content({ snippet }: SnippetContentProps) {
   const code = fixCode(snippet.content.code)
 
   return (
@@ -28,7 +27,7 @@ export default function SnippetContent({ snippet }: SnippetContentProps) {
             {snippet.content.description}
           </div>
         </div>
-        <Button size="sm">Edit</Button>
+        <Editor action={"edit"} />
       </div>
       <div className="flex w-full justify-center">
         <div className="w-3/5 rounded-lg border p-1">
