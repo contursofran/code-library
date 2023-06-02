@@ -16,7 +16,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import NavLink from "@/components/NavLink"
-import SearchBar from "@/components/SearchBar"
 import ThemeToggle from "@/components/ThemeToggle"
 
 interface MainNavProps {
@@ -86,10 +85,7 @@ export default function MainNav({ isLandingPage, items }: MainNavProps) {
           {isLandingPage ? (
             <ThemeToggle variant="transparent" />
           ) : (
-            <div className="flex gap-6">
-              <SearchBar />
-              <ThemeToggle variant="outline" />
-            </div>
+            <ThemeToggle variant="outline" />
           )}
         </div>
       </div>
