@@ -1,4 +1,4 @@
-import { env } from "process"
+import { env } from "@/env.mjs"
 import { NextAuthOptions } from "next-auth"
 import GitHubProvider from "next-auth/providers/github"
 
@@ -11,8 +11,8 @@ export const authOptions: NextAuthOptions = {
   },
   providers: [
     GitHubProvider({
-      clientId: env.GITHUB_CLIENT_ID as string,
-      clientSecret: env.GITHUB_CLIENT_SECRET as string,
+      clientId: env.GITHUB_CLIENT_ID,
+      clientSecret: env.GITHUB_CLIENT_SECRET,
     }),
   ],
 }
