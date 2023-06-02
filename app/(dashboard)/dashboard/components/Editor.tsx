@@ -1,5 +1,7 @@
 "use client"
 
+import { languages } from "@/data/data"
+import { Snippet } from "@/types"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
@@ -34,6 +36,7 @@ import { Textarea } from "@/components/ui/textarea"
 
 interface SnippetEditorButtonProps {
   action: "create" | "edit"
+  snippet?: Snippet
 }
 
 const formSchema = z.object({
@@ -48,12 +51,15 @@ const formSchema = z.object({
   }),
 })
 
-export default function Editor({ action }: SnippetEditorButtonProps) {
+export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    // defaultValues: {
-    //   title: "",
-    // },
+    defaultValues: {
+      title: snippet?.content.title ?? "",
+      description: snippet?.content.description ?? "",
+      code: snippet?.content.code ?? "",
+      language: "",
+    },
   })
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
@@ -138,75 +144,41 @@ export default function Editor({ action }: SnippetEditorButtonProps) {
                 </FormItem>
               )}
             />
-            <div className="flex grow justify-between gap-12">
-              <FormField
-                control={form.control}
-                name="language"
-                render={({ field }) => (
-                  <FormItem className="grow">
-                    <FormLabel>Language</FormLabel>
-                    <Select
-                      defaultValue={field.value}
-                      onValueChange={field.onChange}
-                    >
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Choose a language" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        <SelectItem value="m@example.com">
-                          m@example.com
+
+            <FormField
+              control={form.control}
+              name="language"
+              render={({ field }) => (
+                <FormItem className="w-60 grow">
+                  <FormLabel>Language</FormLabel>
+                  <Select
+                    defaultValue={field.value}
+                    onValueChange={field.onChange}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a language" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {languages.map((language) => (
+                        <SelectItem key={language.label} value={language.value}>
+                          {language.label}
                         </SelectItem>
-                        <SelectItem value="m@google.com">
-                          m@google.com
-                        </SelectItem>
-                        <SelectItem value="m@support.com">
-                          m@support.com
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <FormDescription>
-                      The language of the code snippet.
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="language"
-                render={({ field }) => (
-                  <FormItem className="grow">
-                    <FormLabel>Tag</FormLabel>
-                    <Select
-                      defaultValue={field.value}
-                      onValueChange={field.onChange}
-                    >
-                      <FormControl>
-                        <SelectTrigger disabled>
-                          <SelectValue placeholder="Choose a tag (soon)" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        <SelectItem value="m@example.com">
-                          m@example.com
-                        </SelectItem>
-                        <SelectItem value="m@google.com">
-                          m@google.com
-                        </SelectItem>
-                        <SelectItem value="m@support.com">
-                          m@support.com
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-            <div className="flex justify-end pt-4">
-              <Button type="submit">Save</Button>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormDescription>
+                    The language of the code snippet.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <div className="flex justify-end">
+              <Button type="submit">
+                {action === "edit" ? "Save" : "Create"}
+              </Button>
             </div>
           </form>
         </Form>

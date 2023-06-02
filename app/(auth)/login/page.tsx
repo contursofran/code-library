@@ -37,11 +37,6 @@ export default function LoginPage() {
           </p>
         </div>
         <UserAuthForm />
-        <p className="px-8 text-center text-sm text-muted-foreground">
-          <Link className="underline underline-offset-4" href="/register">
-            Don&apos;t have an account? Sign Up
-          </Link>
-        </p>
       </div>
     </div>
   )

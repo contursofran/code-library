@@ -45,10 +45,10 @@ export default function UserAuthForm({
               Email
             </Label>
             <Input
+              disabled
               autoCapitalize="none"
               autoComplete="email"
               autoCorrect="off"
-              disabled={isLoading || isGitHubLoading}
               id="email"
               placeholder="name@example.com"
               type="email"
@@ -60,7 +60,7 @@ export default function UserAuthForm({
               </p>
             )}
           </div>
-          <button className={cn(buttonVariants())} disabled={isLoading}>
+          <button disabled className={cn(buttonVariants())}>
             {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             Sign In with Email
           </button>

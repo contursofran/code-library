@@ -27,7 +27,7 @@ export default function Content({ snippet }: SnippetContentProps) {
             {snippet.content.description}
           </div>
         </div>
-        <Editor action="edit" />
+        <Editor action="edit" snippet={snippet} />
       </div>
       <div className="flex w-full justify-center">
         <div className="w-3/5 rounded-lg border p-1">
