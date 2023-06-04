@@ -44,6 +44,8 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  snippets      Snippet[]
+
 }
 
 model VerificationToken {
@@ -52,4 +54,16 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Snippet {
+  id          String    @id @default(uuid())
+  code        String
+  description String
+  language    String
+  title       String
+  date        String
+  authorId    String
+
+  author      User      @relation(fields: [authorId], references: [id])
 }
