@@ -21,7 +21,7 @@ export default function UserAccount({ user }: UserAccountNavProps) {
     <DropdownMenu>
       <DropdownMenuTrigger>
         <UserAvatar
-          className="h-9 w-9"
+          className="h-9 w-9 border"
           user={{ name: user.name || null, image: user.image || null }}
         />
       </DropdownMenuTrigger>

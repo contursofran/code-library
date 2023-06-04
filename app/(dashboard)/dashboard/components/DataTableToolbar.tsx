@@ -20,7 +20,7 @@ export function DataTableToolbar<TData>({
 
   return (
     <div
-      className={cn(isSticky && "border-b bg-background", "sticky top-0")}
+      className={cn(isSticky && "border-y bg-background", "sticky top-16")}
       ref={stickyRef}
     >
       <div className="container flex h-20 items-center justify-between">
