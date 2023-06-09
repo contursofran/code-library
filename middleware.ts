@@ -1,34 +1,33 @@
 import { NextResponse } from "next/server"
+import type { NextRequest } from "next/server"
 import { getToken } from "next-auth/jwt"
 import { withAuth } from "next-auth/middleware"
 
-export default withAuth(
-  async function middleware(req) {
-    const token = await getToken({ req })
-    const isAuthorized = !!token
-    const isLoginPage = req.nextUrl.pathname === "/login"
+export async function middleware(request: NextRequest) {
+  const token = await getToken({ req: request })
+  const isAuthorized = !!token
+  const isLoginPage = request.nextUrl.pathname.startsWith("/login")
 
-    if (isLoginPage) {
-      if (isAuthorized) {
-        return NextResponse.redirect(new URL("/dashboard", req.url))
-      }
-      return null
+  if (isLoginPage) {
+    if (isAuthorized) {
+      return NextResponse.redirect(new URL("/dashboard/snippets", request.url))
     }
-
-    if (!isAuthorized) {
-      return NextResponse.redirect(new URL("/login", req.url))
-    }
-  },
-  {
-    callbacks: {
-      // work-around for handling redirect on login page.
-      async authorized() {
-        return true
-      },
-    },
+    return null
   }
-)
+}
 
 export const config = {
   matcher: ["/dashboard/:path*", "/login"],
 }
+// import { NextResponse } from "next/server"
+// import type { NextRequest } from "next/server"
+
+// // This function can be marked `async` if using `await` inside
+// export function middleware(request: NextRequest) {
+//   return NextResponse.redirect(new URL("/dashboard/snippets", request.url))
+// }
+
+// // See "Matching Paths" below to learn more
+// export const config = {
+//   matcher: ["/dashboard/:path*", "/login"],
+// }
