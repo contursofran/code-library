@@ -1,8 +1,8 @@
 "use client"
 
 import { Table } from "@tanstack/react-table"
-import { languages } from "data/data"
 
+import { languages } from "@/lib/languages"
 import { cn } from "@/lib/utils"
 import { useStickyDetection } from "@/hooks/useStickyDetection"
 import { Input } from "@/components/ui/input"

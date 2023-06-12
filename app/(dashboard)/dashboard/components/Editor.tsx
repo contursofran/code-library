@@ -1,11 +1,12 @@
 "use client"
 
-import { languages } from "@/data/data"
 import { Snippet } from "@/types"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
+import { Languages, languages } from "@/lib/languages"
+import { snippetSchema } from "@/lib/validations/snippet"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -25,6 +26,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { ScrollArea } from "@/components/ui/scroll-area"
 import {
   Select,
   SelectContent,
@@ -39,34 +41,28 @@ interface SnippetEditorButtonProps {
   snippet?: Snippet
 }
 
-const formSchema = z.object({
-  title: z
-    .string()
-    .min(2, { message: "Title must be at least 2 characters." })
-    .max(50),
-  description: z.string().max(100),
-  code: z.string().max(10000),
-  language: z.string({
-    required_error: "Please choose a code language.",
-  }),
-})
-
 export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  console.log("editor")
+  const form = useForm<z.infer<typeof snippetSchema>>({
+    resolver: zodResolver(snippetSchema),
     defaultValues: {
       title: snippet?.content.title ?? "",
       description: snippet?.content.description ?? "",
       code: snippet?.content.code ?? "",
-      language: "",
+      // language: ,
     },
   })
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = (values: z.infer<typeof snippetSchema>) => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values)
   }
+
+  const languageOptions = languages.map((language) => ({
+    value: language.value,
+    label: language.displayName,
+  }))
 
   return (
     <Dialog>
@@ -134,8 +130,8 @@ export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
                   <FormLabel>Code</FormLabel>
                   <FormControl>
                     <Textarea
-                      className="h-36 resize-none"
-                      placeholder="Code"
+                      className="h-32 resize-none"
+                      placeholder="Your code snippet"
                       {...field}
                     />
                   </FormControl>
@@ -144,37 +140,63 @@ export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
                 </FormItem>
               )}
             />
-
-            <FormField
-              control={form.control}
-              name="language"
-              render={({ field }) => (
-                <FormItem className="w-60 grow">
-                  <FormLabel>Language</FormLabel>
-                  <Select
-                    defaultValue={field.value}
-                    onValueChange={field.onChange}
-                  >
+            <div className="flex gap-8">
+              <FormField
+                control={form.control}
+                name="language"
+                render={({ field }) => (
+                  <FormItem className="grow">
+                    <FormLabel>Language</FormLabel>
+                    <Select onValueChange={field.onChange}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a language" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <ScrollArea className="h-[300px]">
+                          {languages.map((language) => (
+                            <SelectItem
+                              key={language.value}
+                              value={language.value}
+                            >
+                              {language.displayName}
+                            </SelectItem>
+                          ))}
+                        </ScrollArea>
+                      </SelectContent>
+                    </Select>
+                    <FormDescription>
+                      The language of the code snippet.
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="createdAt"
+                render={({ field }) => (
+                  <FormItem className="w-60 grow">
+                    <FormLabel>Created at</FormLabel>
                     <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a language" />
-                      </SelectTrigger>
+                      <Input
+                        defaultValue={new Date().toISOString().slice(0, 10)}
+                        placeholder={"test"}
+                        type="date"
+                        {...field}
+                        disabled
+                        className="pointer-events-none"
+                      />
                     </FormControl>
-                    <SelectContent>
-                      {languages.map((language) => (
-                        <SelectItem key={language.label} value={language.value}>
-                          {language.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormDescription>
-                    The language of the code snippet.
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+                    <FormDescription>
+                      The date when the snippet was created.
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
             <div className="flex justify-end">
               <Button type="submit">
                 {action === "edit" ? "Save" : "Create"}

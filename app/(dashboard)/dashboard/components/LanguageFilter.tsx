@@ -2,6 +2,7 @@ import * as React from "react"
 import { Column } from "@tanstack/react-table"
 import { Check, Plus } from "tabler-icons-react"
 
+import { Languages } from "@/lib/languages"
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -20,11 +21,10 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { Separator } from "@/components/ui/separator"
-import { LanguageFilter } from "@/types"
 
 interface DataTableFacetedFilter<TData, TValue> {
   column?: Column<TData, TValue>
-  languages: LanguageFilter[]
+  languages: Languages
 }
 
 export default function LanguageFilter<TData, TValue>({
@@ -66,7 +66,7 @@ export default function LanguageFilter<TData, TValue>({
                         key={option.value}
                         variant="secondary"
                       >
-                        {option.label}
+                        {option.displayName}
                       </Badge>
                     ))
                 )}
@@ -108,7 +108,7 @@ export default function LanguageFilter<TData, TValue>({
                     >
                       <Check className={cn("h-4 w-4")} />
                     </div>
-                    <span>{option.label}</span>
+                    <span>{option.displayName}</span>
                     {facets?.get(option.value) && (
                       <span className="ml-auto flex h-4 w-4 items-center justify-center font-mono text-xs">
                         {facets.get(option.value)}
