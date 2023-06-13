@@ -51,7 +51,9 @@ export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
     },
   })
 
-  const onSubmit = (values: z.infer<typeof snippetSchema>) => {
+  const handleSnippetCreation = async (
+    values: z.infer<typeof snippetSchema>
+  ) => {
     const createdAt = new Date().toISOString()
 
     const data = {
@@ -59,7 +61,17 @@ export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
       createdAt,
     }
 
-    console.log(data)
+    const response = await fetch("/api/snippets", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+
+    if (!response?.ok) {
+      throw new Error("Something went wrong!")
+    }
   }
 
   return (
@@ -83,7 +95,14 @@ export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
-          <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
+          <form
+            className="space-y-4"
+            onSubmit={form.handleSubmit(
+              action === "create"
+                ? handleSnippetCreation
+                : handleSnippetCreation
+            )}
+          >
             <FormField
               control={form.control}
               name="title"
