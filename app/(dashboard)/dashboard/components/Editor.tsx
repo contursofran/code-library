@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
-import { Languages, languages } from "@/lib/languages"
+import { languages } from "@/lib/languages"
 import { snippetSchema } from "@/lib/validations/snippet"
 import { Button } from "@/components/ui/button"
 import {
@@ -42,27 +42,25 @@ interface SnippetEditorButtonProps {
 }
 
 export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
-  console.log("editor")
   const form = useForm<z.infer<typeof snippetSchema>>({
     resolver: zodResolver(snippetSchema),
     defaultValues: {
       title: snippet?.content.title ?? "",
       description: snippet?.content.description ?? "",
       code: snippet?.content.code ?? "",
-      // language: ,
     },
   })
 
   const onSubmit = (values: z.infer<typeof snippetSchema>) => {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
-  }
+    const createdAt = new Date().toISOString()
 
-  const languageOptions = languages.map((language) => ({
-    value: language.value,
-    label: language.displayName,
-  }))
+    const data = {
+      ...values,
+      createdAt,
+    }
+
+    console.log(data)
+  }
 
   return (
     <Dialog>
@@ -176,17 +174,16 @@ export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
               <FormField
                 control={form.control}
                 name="createdAt"
-                render={({ field }) => (
+                render={({}) => (
                   <FormItem className="w-60 grow">
                     <FormLabel>Created at</FormLabel>
                     <FormControl>
                       <Input
-                        defaultValue={new Date().toISOString().slice(0, 10)}
-                        placeholder={"test"}
-                        type="date"
-                        {...field}
                         disabled
                         className="pointer-events-none"
+                        placeholder={"test"}
+                        type="date"
+                        value={new Date().toISOString().slice(0, 10)}
                       />
                     </FormControl>
                     <FormDescription>

@@ -1,16 +1,9 @@
-import { Icon } from "tabler-icons-react"
+import { Language } from "@/lib/languages"
 
 export interface Snippet {
   content: SnippetContent
   date: string
   id: string
-}
-
-export type Language = "javascript" | "typescript" | "css" | "html"
-
-export interface LanguageFilter {
-  label: string
-  value: Language
 }
 
 export interface SnippetContent {
