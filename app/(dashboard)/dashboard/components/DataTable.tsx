@@ -18,14 +18,14 @@ import { DataTableToolbar } from "@/app/(dashboard)/dashboard/components/DataTab
 
 interface DataTableProps<TData> {
   columns: ColumnDef<TData, any>[]
-  data: TData[]
+  data: Snippet[]
 }
 
 export function DataTable<TData>({ data }: DataTableProps<TData>) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
 
   const table = useReactTable({
-    data: data as Snippet[],
+    data: data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     onColumnFiltersChange: setColumnFilters,

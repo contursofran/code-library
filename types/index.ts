@@ -1,10 +1,11 @@
+import { Snippet as SnippetPrisma } from "@prisma/client"
+
 import { Language } from "@/lib/languages"
 
-export interface Snippet {
-  content: SnippetContent
-  date: string
-  id: string
-}
+export type Snippet = Pick<
+  SnippetPrisma,
+  "id" | "title" | "code" | "description" | "date" | "language"
+>
 
 export interface SnippetContent {
   code: string

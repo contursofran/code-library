@@ -12,11 +12,11 @@ import CopyButton from "@/app/(dashboard)/dashboard/components/CopyButton"
 const columnHelper = createColumnHelper<Snippet>()
 
 export const columns = [
-  columnHelper.accessor("content.title", {
+  columnHelper.accessor("title", {
     id: "title",
     cell: (props) => <SnippetTitle props={props} />,
   }),
-  columnHelper.accessor("content.language", {
+  columnHelper.accessor("language", {
     id: "language",
     cell: (row) => (
       <Badge className="text-xs" variant="outline">
@@ -31,7 +31,7 @@ export const columns = [
     header: "Date",
     cell: (row) => <div>{formatDate(row.getValue())}</div>,
   }),
-  columnHelper.accessor("content.code", {
+  columnHelper.accessor("code", {
     id: "code",
     cell: (row) => (
       <CopyButton
@@ -58,10 +58,10 @@ function SnippetTitle({ props }: { props: CellContext<Snippet, string> }) {
           "text-lg font-medium leading-none tracking-tight "
         )}
       >
-        {upperFirst(props.row.original.content.title)}
+        {upperFirst(props.row.original.title)}
       </div>
       <div className="text-sm text-gray-500">
-        {upperFirst(props.row.original.content.description)}
+        {upperFirst(props.row.original.description)}
       </div>
     </Link>
   )
