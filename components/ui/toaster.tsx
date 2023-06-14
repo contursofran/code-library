@@ -45,8 +45,8 @@ export function Toaster() {
                   <ToastDescription>
                     {
                       <div className="flex items-center gap-1">
-                        <X className="mr-2 h-5 w-5 rounded-full p-1 dark:bg-white dark:text-background " />{" "}
-                        {description}
+                        <X className="mr-2 h-5 w-5 rounded-full p-1 dark:bg-white dark:text-background " />
+                        <div className="h-full">{description}</div>
                       </div>
                     }
                   </ToastDescription>

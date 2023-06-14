@@ -1,12 +1,16 @@
 "use client"
 
+import { title } from "process"
+import { useState } from "react"
 import { Snippet } from "@/types"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
+import { Loader2 } from "tabler-icons-react"
 import * as z from "zod"
 
 import { languages } from "@/lib/languages"
 import { snippetSchema } from "@/lib/validations/snippet"
+import { toast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -42,6 +46,9 @@ interface SnippetEditorButtonProps {
 }
 
 export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
   const form = useForm<z.infer<typeof snippetSchema>>({
     resolver: zodResolver(snippetSchema),
     defaultValues: {
@@ -54,11 +61,10 @@ export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
   const handleSnippetCreation = async (
     values: z.infer<typeof snippetSchema>
   ) => {
-    const createdAt = new Date().toISOString()
+    setIsSubmitting(true)
 
     const data = {
       ...values,
-      createdAt,
     }
 
     const response = await fetch("/api/snippets", {
@@ -69,13 +75,30 @@ export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
       body: JSON.stringify(data),
     })
 
+    setIsSubmitting(false)
+    setIsDialogOpen(false)
+
     if (!response?.ok) {
-      throw new Error("Something went wrong!")
+      return toast({
+        toastType: "failure",
+        description: <>An error occurred while creating the snippet</>,
+      })
+    } else {
+      form.reset()
+      return toast({
+        toastType: "success",
+        description: (
+          <>
+            Snippet <strong>{values.title}</strong> has been created
+            successfully!
+          </>
+        ),
+      })
     }
   }
 
   return (
-    <Dialog>
+    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogTrigger asChild>
         <Button size="sm">
           {action === "edit" ? (
@@ -214,7 +237,10 @@ export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
               />
             </div>
             <div className="flex justify-end">
-              <Button type="submit">
+              <Button disabled={isSubmitting} type="submit">
+                {isSubmitting && (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                )}
                 {action === "edit" ? "Save" : "Create"}
               </Button>
             </div>
