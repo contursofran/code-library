@@ -30,7 +30,7 @@ export default async function DashboardLayout({
         </div>
       </header>
       <main className="flex w-full flex-1 flex-col justify-between">
-        <div>
+        <div className="flex flex-col gap-4">
           <Header />
           {children}
         </div>

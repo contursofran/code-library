@@ -39,7 +39,7 @@ export function DataTable<TData>({ data }: DataTableProps<TData>) {
   return (
     <>
       <DataTableToolbar table={table} />
-      <div className="container h-[750px]">
+      <div className="container">
         <div className="mb-16 rounded-md border">
           <Table>
             <TableBody>

@@ -17,7 +17,7 @@ export default function PageHeader() {
 
 function SnippetsPageHeader() {
   return (
-    <div className="container flex w-full items-center justify-between pb-4 pt-8">
+    <div className="container flex w-full items-center justify-between pt-8">
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-1">
           <h1 className="text-2xl font-medium">Snippets</h1>
