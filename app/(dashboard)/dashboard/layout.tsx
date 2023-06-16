@@ -29,9 +29,11 @@ export default async function DashboardLayout({
           <UserAccount user={user} />
         </div>
       </header>
-      <main className="flex w-full flex-1 flex-col">
-        <Header />
-        {children}
+      <main className="flex w-full flex-1 flex-col justify-between">
+        <div>
+          <Header />
+          {children}
+        </div>
         <Footer />
       </main>
     </div>
