@@ -1,7 +1,7 @@
 "use client"
 
-import { title } from "process"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Snippet } from "@/types"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -48,13 +48,14 @@ interface SnippetEditorButtonProps {
 export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const router = useRouter()
 
   const form = useForm<z.infer<typeof snippetSchema>>({
     resolver: zodResolver(snippetSchema),
     defaultValues: {
-      title: snippet?.content.title ?? "",
-      description: snippet?.content.description ?? "",
-      code: snippet?.content.code ?? "",
+      title: snippet?.title ?? "",
+      description: snippet?.description ?? "",
+      code: snippet?.code ?? "",
     },
   })
 
@@ -85,6 +86,7 @@ export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
       })
     } else {
       form.reset()
+      router.refresh()
       return toast({
         toastType: "success",
         description: (
