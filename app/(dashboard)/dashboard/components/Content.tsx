@@ -3,6 +3,7 @@ import { Code } from "bright"
 import tokyoNightTheme from "public/tokyo-night-theme.json"
 
 import CopyButton from "@/app/(dashboard)/dashboard/components/CopyButton"
+import { DeleteSnippetButton } from "@/app/(dashboard)/dashboard/components/DeleteSnippet"
 import Editor from "@/app/(dashboard)/dashboard/components/Editor"
 
 interface SnippetContentProps {
@@ -27,7 +28,10 @@ export default function Content({ snippet }: SnippetContentProps) {
             {snippet.description}
           </div>
         </div>
-        <Editor action="edit" snippet={snippet} />
+        <div className="flex gap-3">
+          <Editor action="edit" snippet={snippet} />
+          <DeleteSnippetButton snippet={snippet} />
+        </div>
       </div>
       <div className="flex w-full justify-center">
         <div className="w-3/5 rounded-lg border p-1">
