@@ -11,10 +11,10 @@ interface SnippetsPageProps {
   }
 }
 
-async function getUserSnippet(postId: string, userId: string) {
+async function getUserSnippet(snippetId: string, userId: string) {
   const snippet = await prisma.snippet.findFirst({
     where: {
-      id: postId,
+      id: snippetId,
       authorId: userId,
     },
   })

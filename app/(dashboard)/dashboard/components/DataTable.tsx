@@ -65,7 +65,7 @@ export function DataTable<TData>({ data }: DataTableProps<TData>) {
                     className="h-24 text-center"
                     colSpan={columns.length}
                   >
-                    No results.
+                    No snippets found
                   </TableCell>
                 </TableRow>
               )}
