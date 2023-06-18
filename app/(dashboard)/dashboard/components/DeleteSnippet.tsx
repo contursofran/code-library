@@ -1,10 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { Dispatch, SetStateAction, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Snippet } from "@prisma/client"
 import { Loader2, Trash } from "tabler-icons-react"
-import { set } from "zod"
 
 import { toast } from "@/hooks/use-toast"
 import {
@@ -21,6 +20,7 @@ import {
 import { Button } from "@/components/ui/button"
 
 interface DeleteSnippetButtonProps {
+  setIsDialogOpen: Dispatch<SetStateAction<boolean>>
   snippet: Pick<Snippet, "id">
 }
 
@@ -39,7 +39,10 @@ async function deleteSnippet(snippetId: string) {
   return res.ok
 }
 
-export function DeleteSnippetButton({ snippet }: DeleteSnippetButtonProps) {
+export function DeleteSnippetButton({
+  setIsDialogOpen,
+  snippet,
+}: DeleteSnippetButtonProps) {
   const [isDeleting, setIsDeleting] = useState<boolean>(false)
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
@@ -60,13 +63,14 @@ export function DeleteSnippetButton({ snippet }: DeleteSnippetButtonProps) {
 
     setIsDeleting(false)
     setIsOpen(false)
+    setIsDialogOpen(false)
   }
 
   return (
     <AlertDialog defaultOpen={false} open={isOpen} onOpenChange={setIsOpen}>
       <AlertDialogTrigger asChild>
         <Button size="sm" variant="destructive">
-          Delete
+          <Trash className="flex h-4 w-4 items-center" />
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>

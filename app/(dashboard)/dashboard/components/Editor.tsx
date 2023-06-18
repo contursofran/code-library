@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Snippet } from "@/types"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { DialogClose } from "@radix-ui/react-dialog"
 import { useForm } from "react-hook-form"
 import { Loader2 } from "tabler-icons-react"
 import * as z from "zod"
@@ -39,6 +40,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
+import { DeleteSnippetButton } from "@/app/(dashboard)/dashboard/components/DeleteSnippet"
 
 interface SnippetEditorButtonProps {
   action: "create" | "edit"
@@ -102,9 +104,11 @@ export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogTrigger asChild>
-        <Button size="sm">
+        <Button className="whitespace-nowrap" size="sm">
           {action === "edit" ? (
-            <div className="flex items-center justify-between">Edit</div>
+            <div className="flex items-center justify-between font-medium">
+              Edit snippet
+            </div>
           ) : (
             <div className="flex items-center justify-between gap-1">
               New snippet
@@ -112,12 +116,22 @@ export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
           )}
         </Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent hideCloseButton>
         <DialogHeader>
-          <DialogTitle>Snippet Editor</DialogTitle>
-          <DialogDescription>
-            Here you can create or edit your code snippets.
-          </DialogDescription>
+          <div className="flex justify-between">
+            <div>
+              <DialogTitle>Snippet Editor</DialogTitle>
+              <DialogDescription>
+                Here you can create or edit your code snippets.
+              </DialogDescription>
+            </div>
+            {action === "edit" && snippet && (
+              <DeleteSnippetButton
+                setIsDialogOpen={setIsDialogOpen}
+                snippet={snippet}
+              />
+            )}
+          </div>
         </DialogHeader>
         <Form {...form}>
           <form
@@ -238,13 +252,18 @@ export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
                 )}
               />
             </div>
-            <div className="flex justify-end">
-              <Button disabled={isSubmitting} type="submit">
-                {isSubmitting && (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                )}
-                {action === "edit" ? "Save" : "Create"}
-              </Button>
+            <div className="flex justify-end pt-5">
+              <div className="flex gap-5">
+                <DialogClose asChild>
+                  <Button variant="outline">Cancel</Button>
+                </DialogClose>
+                <Button disabled={isSubmitting} type="submit">
+                  {isSubmitting && (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  )}
+                  {action === "edit" ? "Save" : "Create"}
+                </Button>
+              </div>
             </div>
           </form>
         </Form>
