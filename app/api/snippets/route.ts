@@ -16,7 +16,7 @@ export async function POST(req: Request) {
     })
 
     if (snippetCount >= 5) {
-      return new Response("Snippets limit reached", { status: 403 })
+      return new Response("Snippets limit reached", { status: 402 })
     }
 
     const res = await req.json()
