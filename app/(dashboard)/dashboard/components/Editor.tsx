@@ -10,7 +10,7 @@ import { Loader2 } from "tabler-icons-react"
 import * as z from "zod"
 
 import { languages } from "@/lib/languages"
-import { snippetSchema } from "@/lib/validations/snippet"
+import { snippetSchemaForm } from "@/lib/validations/snippet"
 import { toast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/button"
 import {
@@ -52,8 +52,8 @@ export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const router = useRouter()
 
-  const form = useForm<z.infer<typeof snippetSchema>>({
-    resolver: zodResolver(snippetSchema),
+  const form = useForm<z.infer<typeof snippetSchemaForm>>({
+    resolver: zodResolver(snippetSchemaForm),
     defaultValues: {
       title: snippet?.title ?? "",
       description: snippet?.description ?? "",
@@ -62,7 +62,7 @@ export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
   })
 
   const handleSnippetCreation = async (
-    values: z.infer<typeof snippetSchema>
+    values: z.infer<typeof snippetSchemaForm>
   ) => {
     setIsSubmitting(true)
 
@@ -82,6 +82,12 @@ export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
     setIsDialogOpen(false)
 
     if (!response?.ok) {
+      if (response.status === 402) {
+        return toast({
+          toastType: "failure",
+          description: <>You have reached the maximum number of snippets</>,
+        })
+      }
       return toast({
         toastType: "failure",
         description: <>An error occurred while creating the snippet</>,
@@ -231,7 +237,7 @@ export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
               />
               <FormField
                 control={form.control}
-                name="createdAt"
+                name="date"
                 render={({}) => (
                   <FormItem className="w-60 grow">
                     <FormLabel>Created at</FormLabel>
