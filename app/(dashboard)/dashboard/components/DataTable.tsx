@@ -40,7 +40,7 @@ export function DataTable<TData>({ data }: DataTableProps<TData>) {
     <>
       <DataTableToolbar table={table} />
       <div className="container">
-        <div className="mb-16 rounded-md border">
+        <div className="rounded-md border">
           <Table>
             <TableBody>
               {table.getRowModel().rows?.length ? (
