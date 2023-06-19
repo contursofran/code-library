@@ -2,6 +2,7 @@ import { z } from "zod"
 
 import prisma from "@/lib/prisma"
 import { getCurrentUser } from "@/lib/session"
+import { snippetSchema, snippetSchemaForm } from "@/lib/validations/snippet"
 
 const routeContextSchema = z.object({
   params: z.object({
@@ -16,16 +17,9 @@ export async function DELETE(
   try {
     const { params } = routeContextSchema.parse(context)
 
-    const user = await getCurrentUser()
+    const userHasSnippet = await verifyUserHasSnippet(params.id)
 
-    const count = await prisma.snippet.count({
-      where: {
-        id: params.id,
-        authorId: user?.id,
-      },
-    })
-
-    if (count > 0) {
+    if (userHasSnippet) {
       await prisma.snippet.delete({
         where: {
           id: params.id,
@@ -41,4 +35,54 @@ export async function DELETE(
 
     return new Response(null, { status: 500 })
   }
+}
+
+export async function PATCH(
+  req: Request,
+  context: z.infer<typeof routeContextSchema>
+) {
+  try {
+    const { params } = routeContextSchema.parse(context)
+
+    if (!(await verifyUserHasSnippet(params.id))) {
+      return new Response(null, { status: 403 })
+    }
+
+    const json = await req.json()
+
+    const body = snippetSchemaForm.parse(json)
+
+    await prisma.snippet.update({
+      where: {
+        id: params.id,
+      },
+      data: {
+        code: body.code,
+        language: body.language,
+        title: body.title,
+        description: body.description,
+      },
+    })
+
+    return new Response(null, { status: 200 })
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return new Response(JSON.stringify(error.issues), { status: 422 })
+    }
+
+    return new Response(null, { status: 500 })
+  }
+}
+
+const verifyUserHasSnippet = async (snippetId: string) => {
+  const user = await getCurrentUser()
+
+  const count = await prisma.snippet.count({
+    where: {
+      id: snippetId,
+      authorId: user?.id,
+    },
+  })
+
+  return count > 0
 }

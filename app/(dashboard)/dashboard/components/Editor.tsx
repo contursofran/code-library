@@ -78,7 +78,7 @@ export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
       body: JSON.stringify(data),
     })
 
-    const snippet = await response.json()
+    const createdSnippet = await response.json()
 
     setIsSubmitting(false)
     setIsDialogOpen(false)
@@ -96,12 +96,53 @@ export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
       })
     } else {
       form.reset()
-      router.push(`/dashboard/snippets/${snippet.id}`)
+      router.push(`/dashboard/snippets/${createdSnippet.id}`)
       return toast({
         toastType: "success",
         description: (
           <>
             Snippet <strong>{values.title}</strong> has been created
+            successfully!
+          </>
+        ),
+      })
+    }
+  }
+
+  const handleSnippetEdition = async (
+    snippetId: string,
+    values: z.infer<typeof snippetSchemaForm>
+  ) => {
+    setIsSubmitting(true)
+
+    const data = {
+      ...values,
+    }
+
+    const response = await fetch(`/api/snippets/${snippetId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+
+    setIsSubmitting(false)
+    setIsDialogOpen(false)
+
+    if (!response?.ok) {
+      return toast({
+        toastType: "failure",
+        description: <>An error occurred while editing the snippet</>,
+      })
+    } else {
+      form.reset()
+      router.refresh()
+      return toast({
+        toastType: "success",
+        description: (
+          <>
+            Snippet <strong>{values.title}</strong> has been edited
             successfully!
           </>
         ),
@@ -145,8 +186,9 @@ export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
           <form
             className="space-y-4"
             onSubmit={form.handleSubmit(
-              action === "create"
-                ? handleSnippetCreation
+              action === "edit" && snippet
+                ? () =>
+                    handleSnippetEdition(snippet.id, { ...form.getValues() })
                 : handleSnippetCreation
             )}
           >
