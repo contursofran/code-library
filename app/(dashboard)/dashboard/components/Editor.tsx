@@ -78,6 +78,8 @@ export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
       body: JSON.stringify(data),
     })
 
+    const snippet = await response.json()
+
     setIsSubmitting(false)
     setIsDialogOpen(false)
 
@@ -94,7 +96,7 @@ export default function Editor({ action, snippet }: SnippetEditorButtonProps) {
       })
     } else {
       form.reset()
-      router.refresh()
+      router.push(`/dashboard/snippets/${snippet.id}`)
       return toast({
         toastType: "success",
         description: (

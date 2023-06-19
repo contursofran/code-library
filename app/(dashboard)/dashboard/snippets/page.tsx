@@ -6,6 +6,9 @@ import { getCurrentUser } from "@/lib/session"
 import { DataTable } from "@/app/(dashboard)/dashboard/components/DataTable"
 import { columns } from "@/app/(dashboard)/dashboard/components/DataTableColumns"
 
+export const dynamic = "force-dynamic"
+export const fetchCache = "force-no-store"
+
 async function getSnippets() {
   const user = await getCurrentUser()
 
