@@ -28,7 +28,7 @@ async function deleteSnippet(snippetId: string) {
   const res = await fetch(`/api/snippets/${snippetId}`, {
     method: "DELETE",
   })
-  console.log(res)
+
   if (!res.ok) {
     toast({
       description: "Something went wrong. Please try again.",

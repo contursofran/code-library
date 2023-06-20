@@ -15,7 +15,7 @@ export async function POST(req: Request) {
       },
     })
 
-    if (snippetCount >= 5) {
+    if (snippetCount >= 6) {
       return new Response("Snippets limit reached", { status: 402 })
     }
 
