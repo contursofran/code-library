@@ -78,7 +78,7 @@ export default function CreateSnippet() {
               <FormItem className="h-full w-full">
                 <FormControl>
                   <Textarea
-                    className="h-full w-full resize-none border-none text-gray-300"
+                    className="no-scrollbar h-full w-full resize-none border-none text-gray-300"
                     placeholder="Your code snippet"
                     {...field}
                   />
