@@ -1,8 +1,8 @@
 import { Code } from "tabler-icons-react"
 
 import { Skeleton } from "@/components/ui/skeleton"
-import CopyButton from "@/app/(dashboard)/dashboard/components/CopyButton"
-import Editor from "@/app/(dashboard)/dashboard/components/Editor"
+import CopyButton from "@/app/(dashboard)/dashboard/snippets/components/CopyButton"
+import Editor from "@/app/(dashboard)/dashboard/snippets/components/Editor"
 
 export default function Loading() {
   return (

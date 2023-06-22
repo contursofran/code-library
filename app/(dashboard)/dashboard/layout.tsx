@@ -5,8 +5,8 @@ import { authOptions } from "@/lib/auth"
 import { getCurrentUser } from "@/lib/session"
 import MainNav from "@/components/MainNav"
 import UserAccount from "@/components/UserAccount"
-import Footer from "@/app/(dashboard)/dashboard/components/Footer"
-import Header from "@/app/(dashboard)/dashboard/components/Header"
+import Footer from "@/app/(dashboard)/dashboard/snippets/components/Footer"
+import Header from "@/app/(dashboard)/dashboard/snippets/components/Header"
 
 interface DashboardLayoutProps {
   children: React.ReactNode
@@ -34,7 +34,7 @@ export default async function DashboardLayout({
           <Header />
           {children}
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </main>
     </div>
   )

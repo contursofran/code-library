@@ -13,8 +13,8 @@ import {
 } from "@tanstack/react-table"
 
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
-import { columns } from "@/app/(dashboard)/dashboard/components/DataTableColumns"
-import { DataTableToolbar } from "@/app/(dashboard)/dashboard/components/DataTableToolbar"
+import { columns } from "@/app/(dashboard)/dashboard/snippets/components/DataTableColumns"
+import { DataTableToolbar } from "@/app/(dashboard)/dashboard/snippets/components/DataTableToolbar"
 
 interface DataTableProps<TData> {
   columns: ColumnDef<TData, any>[]

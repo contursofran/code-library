@@ -40,7 +40,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { DeleteSnippetButton } from "@/app/(dashboard)/dashboard/components/DeleteSnippet"
+import { DeleteSnippetButton } from "@/app/(dashboard)/dashboard/snippets/(actions)/components/DeleteSnippet"
 
 interface SnippetEditorButtonProps {
   action: "create" | "edit"

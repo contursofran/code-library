@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation"
 
-import Editor from "@/app/(dashboard)/dashboard/components/Editor"
+import Editor from "@/app/(dashboard)/dashboard/snippets/components/Editor"
 
 export default function PageHeader() {
   const pageName = usePathname()

@@ -36,7 +36,7 @@ export default function CreateSnippet() {
 
   return (
     <Form {...form}>
-      <form className="h-[calc(100%-88px-48px)] space-y-2">
+      <form className="h-96 space-y-2">
         <FormField
           control={form.control}
           name="title"
