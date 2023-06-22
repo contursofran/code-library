@@ -138,7 +138,7 @@ export default function SnippetForm({ snippet }: SnippetFormProps) {
               />
             </div>
           </div>
-          <div className="flex w-24 shrink-0 justify-end">
+          <div className="-mt-8 flex h-16 w-24 shrink-0 items-center justify-end">
             <Button
               className="w-full"
               disabled={isSubmitting}
