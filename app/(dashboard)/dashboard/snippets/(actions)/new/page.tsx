@@ -1,10 +1,10 @@
-import CreateSnippet from "@/app/(dashboard)/dashboard/snippets/components/CreateSnippet"
+import SnippetForm from "@/app/(dashboard)/dashboard/snippets/components/SnippetForm"
 
 export default async function NewSnippetPage() {
   return (
-    <div className="container flex-col items-center justify-center">
+    <div className="flex-col items-center justify-center">
       <div className="w-full flex-col justify-center">
-        <CreateSnippet />
+        <SnippetForm />
       </div>
     </div>
   )

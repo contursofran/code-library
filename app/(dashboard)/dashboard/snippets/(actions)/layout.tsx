@@ -2,8 +2,7 @@ import { redirect } from "next/navigation"
 
 import { authOptions } from "@/lib/auth"
 import { getCurrentUser } from "@/lib/session"
-import BackButton from "@/app/(dashboard)/dashboard/snippets/(actions)/components/BackButton"
-import { DeleteSnippetButton } from "@/app/(dashboard)/dashboard/snippets/(actions)/components/DeleteSnippet"
+import BackButton from "@/app/(dashboard)/dashboard/snippets/components/BackButton"
 
 interface SnippetLayoutProps {
   children: React.ReactNode
@@ -18,9 +17,9 @@ export default async function SnippetLayout({ children }: SnippetLayoutProps) {
 
   return (
     <div className="container mt-8 flex w-full justify-between">
-      <div className="flex w-full items-start">
+      <div className="flex w-full grow">
         <BackButton />
-        <div className="mx-auto w-full justify-center px-48">{children}</div>
+        <div className="mt-8 w-full">{children}</div>
       </div>
     </div>
   )
