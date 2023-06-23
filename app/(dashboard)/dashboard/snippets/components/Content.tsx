@@ -2,11 +2,9 @@ import Link from "next/link"
 import { Snippet } from "@/types"
 import { Code } from "bright"
 import tokyoNightTheme from "public/tokyo-night-theme.json"
-import { ArrowLeft, ChevronDownLeft, ChevronLeft } from "tabler-icons-react"
 
-import { DeleteSnippetButton } from "@/app/(dashboard)/dashboard/snippets/(actions)/components/DeleteSnippet"
+import { Button } from "@/components/ui/button"
 import CopyButton from "@/app/(dashboard)/dashboard/snippets/components/CopyButton"
-import Editor from "@/app/(dashboard)/dashboard/snippets/components/Editor"
 
 interface SnippetContentProps {
   snippet: Snippet
@@ -47,8 +45,9 @@ export default function Content({ snippet }: SnippetContentProps) {
           </div>
         </div>
       </div>
-      {/* </div> */}
-      <Editor action="edit" snippet={snippet} />
+      <Link href={`/dashboard/snippets/editor/${snippet.id}`}>
+        <Button size="sm">Edit</Button>
+      </Link>
     </div>
   )
 }

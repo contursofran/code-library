@@ -4,7 +4,7 @@ export default async function NewSnippetPage() {
   return (
     <div className="flex-col items-center justify-center">
       <div className="w-full flex-col justify-center">
-        <SnippetForm />
+        <SnippetForm action="create" />
       </div>
     </div>
   )

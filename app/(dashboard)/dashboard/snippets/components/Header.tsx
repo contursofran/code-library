@@ -4,7 +4,6 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import { Button } from "@/components/ui/button"
-import Editor from "@/app/(dashboard)/dashboard/snippets/components/Editor"
 
 export default function PageHeader() {
   const pageName = usePathname()
@@ -28,7 +27,7 @@ function SnippetsPageHeader() {
           </div>
         </div>
       </div>
-      <Link href={"/dashboard/snippets/new"}>
+      <Link href={"/dashboard/snippets/editor"}>
         <Button size="sm">New Snippet</Button>
       </Link>
     </div>

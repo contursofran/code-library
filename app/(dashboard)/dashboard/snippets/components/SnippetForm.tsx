@@ -1,23 +1,19 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Snippet } from "@prisma/client"
+import { Snippet } from "@/types"
 import { Loader2 } from "tabler-icons-react"
-import { z } from "zod"
 
 import { languages } from "@/lib/languages"
-import { snippetSchemaForm } from "@/lib/validations/snippet"
 import { toast } from "@/hooks/use-toast"
 import {
   AlertDialog,
   AlertDialogAction,
-  AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form"
@@ -35,24 +31,39 @@ import { useSnippetForm } from "@/app/(dashboard)/dashboard/snippets/hooks/useSn
 
 interface SnippetFormProps {
   snippet?: Snippet
+  action: "create" | "edit"
 }
 
-export default function SnippetForm({ snippet }: SnippetFormProps) {
-  const { form, handleSnippetCreation, isSubmitting } = useSnippetForm(snippet)
+export default function SnippetForm({ snippet, action }: SnippetFormProps) {
+  const { form, handleSnippetCreation, handleSnippetEdition, isSubmitting } =
+    useSnippetForm(snippet)
   const [showDialog, setShowDialog] = useState<boolean>(false)
 
-  const handleSubmit = async (data: z.infer<typeof snippetSchemaForm>) => {
-    const res = await handleSnippetCreation()
+  const handleFunction =
+    action === "create" ? handleSnippetCreation : handleSnippetEdition
+
+  const handleSubmit = async () => {
+    const res = await handleFunction()
 
     if (!res) {
       return toast({
         toastType: "failure",
-        description: <>An error occurred while editing the snippet</>,
+        description: (
+          <>
+            An error occurred while {action === "edit" ? "editing" : "creating"}{" "}
+            the snippet
+          </>
+        ),
       })
     } else {
       return toast({
         toastType: "success",
-        description: <>Your snippet has been created successfully!</>,
+        description: (
+          <>
+            Your snippet has been {action === "edit" ? "edited" : "created"}{" "}
+            successfully!
+          </>
+        ),
       })
     }
   }
@@ -64,7 +75,6 @@ export default function SnippetForm({ snippet }: SnippetFormProps) {
       form.formState.errors.description ||
       form.formState.errors.title
     ) {
-      console.log(form.formState.errors)
       setShowDialog(true)
     }
   }, [form.formState.errors, form])
@@ -201,7 +211,7 @@ export default function SnippetForm({ snippet }: SnippetFormProps) {
                 {isSubmitting && (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 )}
-                Create
+                {action === "create" ? "Create" : "Save"}
               </Button>
             </div>
           </div>

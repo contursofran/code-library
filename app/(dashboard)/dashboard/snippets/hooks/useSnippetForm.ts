@@ -14,9 +14,10 @@ export function useSnippetForm(snippet?: Snippet) {
   const form = useForm<z.infer<typeof snippetSchemaForm>>({
     resolver: zodResolver(snippetSchemaForm),
     defaultValues: {
-      title: "Undefined",
+      title: snippet?.title ?? "Untitled",
       description: snippet?.description ?? "",
       code: snippet?.code ?? "",
+      language: snippet?.language ?? "",
     },
   })
 
@@ -45,10 +46,33 @@ export function useSnippetForm(snippet?: Snippet) {
     return response.ok
   }
 
+  const handleSnippetEdition = async () => {
+    setIsSubmitting(true)
+
+    const data = form.getValues()
+
+    const response = await fetch(`/api/snippets/${snippet?.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+
+    setIsSubmitting(false)
+
+    if (response?.ok) {
+      snippet?.id && router.push(`/dashboard/snippets/${snippet.id}`)
+      form.reset()
+    }
+
+    return response.ok
+  }
+
   return {
     form,
     handleSnippetCreation,
     isSubmitting,
+    handleSnippetEdition,
   }
-  // can't use handleSnippetCreation with toast because return tsx
 }
