@@ -143,7 +143,7 @@ export default function SnippetForm({ snippet, action }: SnippetFormProps) {
                 control={form.control}
                 name="description"
                 render={({ field }) => (
-                  <FormItem className="h-[75px] space-y-0">
+                  <FormItem className="space-y-0">
                     <FormControl>
                       <Textarea
                         aria-invalid="true"
