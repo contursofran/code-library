@@ -6,6 +6,7 @@ import { Loader2 } from "tabler-icons-react"
 
 import { languages } from "@/lib/languages"
 import { toast } from "@/hooks/use-toast"
+import { useSnippetForm } from "@/hooks/useSnippetForm"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -27,7 +28,6 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { useSnippetForm } from "@/app/(dashboard)/dashboard/snippets/hooks/useSnippetForm"
 
 interface SnippetFormProps {
   snippet?: Snippet

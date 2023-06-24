@@ -1,4 +1,4 @@
-import SnippetForm from "@/app/(dashboard)/dashboard/snippets/components/SnippetForm"
+import SnippetForm from "@/components/forms/SnippetForm"
 
 export default async function NewSnippetPage() {
   return <SnippetForm action="create" />

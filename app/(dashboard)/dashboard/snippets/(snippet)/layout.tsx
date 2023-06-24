@@ -2,7 +2,7 @@ import { redirect } from "next/navigation"
 
 import { authOptions } from "@/lib/auth"
 import { getCurrentUser } from "@/lib/session"
-import BackButton from "@/app/(dashboard)/dashboard/snippets/components/BackButton"
+import BackButton from "@/components/BackButton"
 
 interface SnippetLayoutProps {
   children: React.ReactNode

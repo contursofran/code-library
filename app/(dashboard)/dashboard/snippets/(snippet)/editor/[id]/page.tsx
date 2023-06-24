@@ -3,7 +3,7 @@ import { redirect } from "next/navigation"
 import { authOptions } from "@/lib/auth"
 import prisma from "@/lib/prisma"
 import { getCurrentUser } from "@/lib/session"
-import SnippetForm from "@/app/(dashboard)/dashboard/snippets/components/SnippetForm"
+import SnippetForm from "@/components/forms/SnippetForm"
 
 interface SnippetEditorPageProps {
   params: {

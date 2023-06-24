@@ -4,7 +4,7 @@ import { Code } from "bright"
 import tokyoNightTheme from "public/tokyo-night-theme.json"
 
 import { Button } from "@/components/ui/button"
-import CopyButton from "@/app/(dashboard)/dashboard/snippets/components/CopyButton"
+import CopyButton from "@/components/CopyButton"
 
 interface SnippetContentProps {
   snippet: Snippet
