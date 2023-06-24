@@ -1,7 +1,3 @@
-import { redirect } from "next/navigation"
-
-import { authOptions } from "@/lib/auth"
-import { getCurrentUser } from "@/lib/session"
 import BackButton from "@/components/BackButton"
 
 interface SnippetLayoutProps {
@@ -9,12 +5,6 @@ interface SnippetLayoutProps {
 }
 
 export default async function SnippetLayout({ children }: SnippetLayoutProps) {
-  const user = await getCurrentUser()
-
-  if (!user) {
-    redirect(authOptions.pages?.signIn || "login")
-  }
-
   return (
     <div className="container mt-8 flex w-full justify-between">
       <div className="flex w-full grow">

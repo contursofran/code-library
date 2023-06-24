@@ -2,14 +2,21 @@ import { Skeleton } from "@/components/ui/skeleton"
 
 export default function Loading() {
   return (
-    <div className="container mt-8 flex h-[calc(100vh-64px-64px-69px-16px-32px-64px)] w-full justify-between">
-      <div className="flex w-full items-start">
-        <Skeleton className="h-6 w-[85px]" />
-        <div className="mx-48 mt-12 flex h-full w-full flex-col gap-1">
-          <Skeleton className="h-full w-full" />
+    <div className="flex">
+      <div className="mx-auto max-w-[750px] grow justify-center">
+        <div className="flex flex-col">
+          <div className="flex h-10 items-center">
+            <Skeleton className="my-2 h-9 w-72" />
+          </div>
+          <Skeleton className="my-2 h-16 w-full" />
+          <div className="flex w-full justify-center ">
+            <Skeleton className="h-[234px] w-full" />
+          </div>
         </div>
       </div>
-      <Skeleton className="h-9 w-[114px]" />
+      <div className="-mt-8 flex h-16 w-24 shrink-0 items-center justify-end">
+        <Skeleton className="h-9 w-24" />
+      </div>
     </div>
   )
 }
