@@ -3,10 +3,9 @@ import { redirect } from "next/navigation"
 import { tabsItems } from "@/config/dashboard"
 import { authOptions } from "@/lib/auth"
 import { getCurrentUser } from "@/lib/session"
+import Header from "@/components/Header"
 import MainNav from "@/components/MainNav"
 import UserAccount from "@/components/UserAccount"
-import Footer from "@/app/(dashboard)/dashboard/components/Footer"
-import Header from "@/app/(dashboard)/dashboard/components/Header"
 
 interface DashboardLayoutProps {
   children: React.ReactNode
@@ -18,7 +17,7 @@ export default async function DashboardLayout({
   const user = await getCurrentUser()
 
   if (!user) {
-    redirect(authOptions.pages?.signIn || "login")
+    redirect(authOptions.pages?.signIn || "/login")
   }
 
   return (
@@ -34,7 +33,7 @@ export default async function DashboardLayout({
           <Header />
           {children}
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </main>
     </div>
   )

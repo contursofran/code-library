@@ -20,7 +20,6 @@ import {
 import { Button } from "@/components/ui/button"
 
 interface DeleteSnippetButtonProps {
-  setIsDialogOpen: Dispatch<SetStateAction<boolean>>
   snippet: Pick<Snippet, "id">
 }
 
@@ -39,10 +38,7 @@ async function deleteSnippet(snippetId: string) {
   return res.ok
 }
 
-export function DeleteSnippetButton({
-  setIsDialogOpen,
-  snippet,
-}: DeleteSnippetButtonProps) {
+export function DeleteSnippetButton({ snippet }: DeleteSnippetButtonProps) {
   const [isDeleting, setIsDeleting] = useState<boolean>(false)
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
@@ -63,7 +59,6 @@ export function DeleteSnippetButton({
 
     setIsDeleting(false)
     setIsOpen(false)
-    setIsDialogOpen(false)
   }
 
   return (

@@ -1,8 +1,9 @@
 "use client"
 
+import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import Editor from "@/app/(dashboard)/dashboard/components/Editor"
+import { Button } from "@/components/ui/button"
 
 export default function PageHeader() {
   const pageName = usePathname()
@@ -26,7 +27,9 @@ function SnippetsPageHeader() {
           </div>
         </div>
       </div>
-      <Editor action="create" />
+      <Link href={"/dashboard/snippets/editor"}>
+        <Button size="sm">New Snippet</Button>
+      </Link>
     </div>
   )
 }

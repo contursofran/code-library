@@ -1,25 +1,17 @@
 {
   "extends": [
     "next/core-web-vitals",
-    "plugin:tailwindcss/recommended",
-    "prettier"
+    "turbo",
+    "prettier",
+    "plugin:tailwindcss/recommended"
   ],
-  "plugins": [
-    "tailwindcss",
-    "@typescript-eslint",
-    "typescript-sort-keys",
-    "sort-destructure-keys",
-    "no-relative-import-paths"
-  ],
+  "plugins": ["tailwindcss", "@typescript-eslint", "no-relative-import-paths"],
   "settings": {
     "tailwindcss": {
       "callees": ["cn"]
     }
   },
   "rules": {
-    "typescript-sort-keys/interface": 1,
-    "typescript-sort-keys/string-enum": 1,
-    "sort-destructure-keys/sort-destructure-keys": 1,
     "react/jsx-sort-props": [
       1,
       {

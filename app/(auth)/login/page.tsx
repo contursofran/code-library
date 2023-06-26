@@ -4,7 +4,7 @@ import { ChevronLeft } from "tabler-icons-react"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
-import UserAuthForm from "@/app/(auth)/components/UserAuthForm"
+import UserAuthForm from "@/components/forms/UserAuthForm"
 
 export const metadata: Metadata = {
   title: "Login",

@@ -6,8 +6,8 @@ import { languages } from "@/lib/languages"
 import { cn } from "@/lib/utils"
 import { useStickyDetection } from "@/hooks/useStickyDetection"
 import { Input } from "@/components/ui/input"
-import DataTablePagination from "@/app/(dashboard)/dashboard/components/DataTablePagination"
-import LanguageFilter from "@/app/(dashboard)/dashboard/components/LanguageFilter"
+import DataTablePagination from "@/components/dashboard/DataTablePagination"
+import LanguageFilter from "@/components/dashboard/LanguageFilter"
 
 interface SnippetsTableToolbarProps<TData> {
   table: Table<TData>
