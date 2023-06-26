@@ -23,12 +23,10 @@ export default async function DashboardLayout({
   return (
     <div className="flex h-screen flex-col">
       <header className="sticky top-0 w-full border-b bg-background">
-        return (
         <div className="container flex gap-3">
           <MainNav items={tabsItems} />
           <UserAccount user={user} />
         </div>
-        )
       </header>
       <main className="flex w-full flex-1 flex-col justify-between">
         <div className="flex flex-col gap-4">

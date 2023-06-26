@@ -28,6 +28,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
+import { DeleteSnippetButton } from "@/components/dashboard/DeleteSnippet"
 
 interface SnippetFormProps {
   snippet?: Snippet
@@ -201,7 +202,7 @@ export default function SnippetForm({ snippet, action }: SnippetFormProps) {
                 />
               </div>
             </div>
-            <div className="-mt-8 flex h-16 w-24 shrink-0 items-center justify-end">
+            <div className="-mt-8 flex h-16 w-24 shrink-0 items-center justify-end gap-2">
               <Button
                 className="w-full"
                 disabled={isSubmitting}
@@ -213,6 +214,9 @@ export default function SnippetForm({ snippet, action }: SnippetFormProps) {
                 )}
                 {action === "create" ? "Create" : "Save"}
               </Button>
+              {snippet && action === "edit" && (
+                <DeleteSnippetButton snippet={snippet} />
+              )}
             </div>
           </div>
         </form>
