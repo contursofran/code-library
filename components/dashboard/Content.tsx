@@ -26,7 +26,7 @@ export default function Content({ snippet }: SnippetContentProps) {
           <div className="flex h-10 items-center">
             <h2 className="flex py-2 text-3xl font-medium">{snippet.title}</h2>
           </div>
-          <p className="h-20 py-2 text-lg dark:text-gray-400">
+          <p className="h-20 py-2 text-lg text-muted-foreground">
             {snippet.description}
           </p>
           <div className="-mt-5 flex w-full justify-center">

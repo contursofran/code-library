@@ -22,7 +22,7 @@ function SnippetsPageHeader() {
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-1">
           <h1 className="text-2xl font-medium">Snippets</h1>
-          <div className="pt-1 text-gray-600 dark:text-gray-400">
+          <div className="pt-1 text-muted-foreground">
             A place where you can store your code snippets
           </div>
         </div>
@@ -40,7 +40,7 @@ function BugsPageHeader() {
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-1 py-8">
           <h1 className="text-2xl font-medium">Bugs</h1>
-          <div className="pt-1 text-gray-600 dark:text-gray-400">
+          <div className="pt-1 text-muted-foreground">
             A place where you can store bugs and errors.
           </div>
         </div>
