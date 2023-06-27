@@ -16,6 +16,5 @@ export interface SnippetContent {
 
 export interface NavItem {
   href: string
-  isTab?: boolean
   title: string
 }

@@ -83,7 +83,7 @@ export default function MainNav({ isLandingPage, items }: MainNavProps) {
       <div className="flex-1 gap-2 text-right">
         <div className="flex items-center justify-end">
           {isLandingPage ? (
-            <ThemeToggle variant="transparent" />
+            <ThemeToggle variant="outline" />
           ) : (
             <ThemeToggle variant="outline" />
           )}

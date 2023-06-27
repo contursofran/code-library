@@ -4,7 +4,7 @@ import * as React from "react"
 import { useTheme } from "next-themes"
 import { DeviceLaptop, Moon, Sun } from "tabler-icons-react"
 
-import { Button, ButtonVariantProps } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,17 +12,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-interface ThemeToggleProps {
-  variant: ButtonVariantProps
-}
-
-export default function ThemeToggle({ variant }: ThemeToggleProps) {
+export default function ThemeToggle() {
   const { setTheme } = useTheme()
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button rounded="full" size="sm" variant={"outline"}>
+        <Button
+          className="h-9 w-9 rounded-full px-0"
+          size="sm"
+          variant={"outline"}
+        >
           <Sun className="h-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <Moon className="absolute h-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 " />
           <span className="sr-only">Toggle theme</span>

@@ -64,7 +64,7 @@ export function DeleteSnippetButton({ snippet }: DeleteSnippetButtonProps) {
   return (
     <AlertDialog defaultOpen={false} open={isOpen} onOpenChange={setIsOpen}>
       <AlertDialogTrigger asChild>
-        <Button size="sm" variant="destructive">
+        <Button size="sm" variant="outline">
           <Trash className="flex h-4 w-4 items-center" />
         </Button>
       </AlertDialogTrigger>
@@ -80,7 +80,7 @@ export function DeleteSnippetButton({ snippet }: DeleteSnippetButtonProps) {
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
-            className="bg-red-500 text-white hover:bg-red-600 dark:bg-red-500 dark:text-white dark:hover:bg-red-600 dark:hover:text-white"
+            className="bg-destructive"
             onClick={(event) => {
               event.preventDefault()
               handleDeletion()

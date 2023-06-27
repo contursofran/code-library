@@ -33,10 +33,10 @@ module.exports = {
         sans: ["var(--font-inter)", ...fontFamily.sans],
       },
       colors: {
-        border: "var(--border)",
-        input: "var(--input)",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "var(--background)",
+        background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
@@ -51,7 +51,7 @@ module.exports = {
           foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "var(--muted)",
+          DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
