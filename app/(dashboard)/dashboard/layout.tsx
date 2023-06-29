@@ -3,6 +3,7 @@ import { redirect } from "next/navigation"
 import { tabsItems } from "@/config/dashboard"
 import { authOptions } from "@/lib/auth"
 import { getCurrentUser } from "@/lib/session"
+import Footer from "@/components/Footer"
 import Header from "@/components/Header"
 import MainNav from "@/components/MainNav"
 import UserAccount from "@/components/UserAccount"
@@ -22,7 +23,7 @@ export default async function DashboardLayout({
 
   return (
     <div className="flex h-screen flex-col">
-      <header className="sticky top-0 w-full border-b bg-background">
+      <header className="sticky top-0 z-30 w-full border-b bg-background">
         <div className="container flex gap-3">
           <MainNav items={tabsItems} />
           <UserAccount user={user} />
