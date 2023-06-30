@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Link from "next/link"
 import { Snippet } from "@/types"
 import { Loader2 } from "tabler-icons-react"
 
@@ -121,11 +122,11 @@ export default function SnippetForm({ snippet, action }: SnippetFormProps) {
       </AlertDialog>
       <Form {...form}>
         <form
-          className="h-96 space-y-2"
+          className="mt-8 h-full space-y-2"
           onSubmit={form.handleSubmit(handleSubmit)}
         >
-          <div className="flex">
-            <div className="mx-auto max-w-[750px] grow justify-center">
+          <div className="flex h-full">
+            <div className="mx-auto h-[calc(100vh-64px-64px-64px-80px-30px)] max-w-[750px] grow justify-center">
               <FormField
                 control={form.control}
                 name="title"
@@ -133,7 +134,8 @@ export default function SnippetForm({ snippet, action }: SnippetFormProps) {
                   <FormItem className="space-y-0">
                     <FormControl>
                       <Input
-                        className=" border-none px-0 text-3xl font-medium"
+                        autoFocus
+                        className="h-[30px] border-none p-0 text-3xl font-medium leading-none tracking-tighter"
                         {...field}
                       />
                     </FormControl>
@@ -157,7 +159,7 @@ export default function SnippetForm({ snippet, action }: SnippetFormProps) {
                   </FormItem>
                 )}
               />
-              <div className="flex h-full items-start justify-between rounded-md border p-4">
+              <div className="flex h-full min-h-0 items-start justify-between rounded-md border p-4">
                 <FormField
                   control={form.control}
                   name="code"
@@ -165,7 +167,7 @@ export default function SnippetForm({ snippet, action }: SnippetFormProps) {
                     <FormItem className="h-full w-full">
                       <FormControl>
                         <Textarea
-                          className="no-scrollbar h-full w-full resize-none border-none p-0 text-gray-300"
+                          className="no-scrollbar h-full max-h-fit w-full resize-none border-none p-0 text-gray-300"
                           placeholder="Your code snippet"
                           {...field}
                         />
@@ -188,6 +190,7 @@ export default function SnippetForm({ snippet, action }: SnippetFormProps) {
                           <ScrollArea className="h-[300px]">
                             {languages.map((language) => (
                               <SelectItem
+                                className="focus:bg-transparent focus:font-bold focus:text-primary"
                                 key={language.value}
                                 value={language.value}
                               >
@@ -202,21 +205,25 @@ export default function SnippetForm({ snippet, action }: SnippetFormProps) {
                 />
               </div>
             </div>
-            <div className="-mt-8 flex h-16 w-24 shrink-0 items-center justify-end gap-2">
+            <div className="flex h-[calc(100vh-64px-64px-64px)] w-24 shrink-0 items-end justify-end gap-2">
+              {snippet && action === "edit" && (
+                <Link href={`/dashboard/snippets/${snippet.id}`}>
+                  <Button size="sm" variant="outline">
+                    Cancel
+                  </Button>
+                </Link>
+              )}
               <Button
-                className="w-full"
+                className="w-[72px]"
                 disabled={isSubmitting}
                 size="sm"
                 type="submit"
               >
                 {isSubmitting && (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  <Loader2 className="mr-1 h-4 w-4 animate-spin" />
                 )}
                 {action === "create" ? "Create" : "Save"}
               </Button>
-              {snippet && action === "edit" && (
-                <DeleteSnippetButton snippet={snippet} />
-              )}
             </div>
           </div>
         </form>

@@ -24,7 +24,7 @@ export default function Content({ snippet }: SnippetContentProps) {
 
   return (
     <div className="flex h-full">
-      <div className="mx-auto mt-8 h-[calc(100%-32px-64px)] max-w-[750px] justify-center">
+      <div className="mx-auto mt-8 h-[calc(100%-64px)] max-w-[750px] grow justify-center">
         <div className="flex h-full flex-col space-y-2">
           <h2 className="flex text-3xl font-medium leading-none tracking-tighter">
             {upperFirst(snippet.title)}
