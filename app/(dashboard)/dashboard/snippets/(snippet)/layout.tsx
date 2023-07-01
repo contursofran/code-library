@@ -6,7 +6,7 @@ interface SnippetLayoutProps {
 
 export default async function SnippetLayout({ children }: SnippetLayoutProps) {
   return (
-    <div className="container mt-8 flex max-h-[calc(100vh-64px-64px)] w-full justify-between">
+    <div className="container mt-8 flex w-full justify-between">
       <div className="flex w-full grow">
         <BackButton />
         <div className="w-full">

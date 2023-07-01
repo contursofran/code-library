@@ -22,7 +22,7 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="flex h-screen flex-col">
+    <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-30 w-full border-b bg-background">
         <div className="container flex gap-3">
           <MainNav items={tabsItems} />
@@ -34,7 +34,7 @@ export default async function DashboardLayout({
           <Header />
           {children}
         </div>
-        {/* <Footer /> */}
+        <Footer />
       </main>
     </div>
   )
