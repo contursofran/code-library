@@ -1,18 +1,19 @@
 /** @type {import('prettier').Config} */
 
-const tailwindPlugin = require("prettier-plugin-tailwindcss")
+// const tailwindPlugin = require("prettier-plugin-tailwindcss")
 const importsPlugin = require("@ianvs/prettier-plugin-sort-imports")
 
+// disable tailwind plugin for now until vscode 1.80 is released https://github.com/tailwindlabs/prettier-plugin-tailwindcss/issues/168
 const plugins = [
   {
     parsers: {
       typescript: {
-        ...tailwindPlugin.parsers.typescript,
+        // ...tailwindPlugin.parsers.typescript,
         preprocess: importsPlugin.parsers.typescript.preprocess,
       },
     },
     options: {
-      ...tailwindPlugin.options,
+      // ...tailwindPlugin.options,
       ...importsPlugin.options,
     },
   },
@@ -41,7 +42,7 @@ module.exports = {
     "",
     "^[./]",
   ],
-  plugins,
+  // plugins,
   importOrderSeparation: false,
   importOrderSortSpecifiers: true,
   importOrderBuiltinModulesToTop: true,
