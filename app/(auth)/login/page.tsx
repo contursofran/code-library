@@ -33,7 +33,7 @@ export default function LoginPage() {
             Welcome back
           </h1>
           <p className="text-sm text-muted-foreground">
-            Enter your email to sign in to your account
+            Please continue with your github account
           </p>
         </div>
         <UserAuthForm />
