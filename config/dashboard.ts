@@ -6,7 +6,7 @@ export const tabsItems: NavItem[] = [
     href: "/dashboard/snippets",
   },
   {
-    title: "Bugs",
-    href: "/dashboard/bugs",
+    title: "Posts",
+    href: "/dashboard/posts",
   },
 ]

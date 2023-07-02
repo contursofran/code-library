@@ -22,7 +22,7 @@ export const snippetSchemaForm = z.object({
     .string()
     .max(200)
     .min(3, { message: "Description must be at least 3 characters." }),
-  code: z.string().min(1, { message: "You must provide some code." }).max(1000),
+  code: z.string().min(1, { message: "You must provide some code." }).max(5000),
   language: z
     .string({ required_error: "You must select a language." })
     .refine((val) => languages.some((lang) => lang.value === val)),

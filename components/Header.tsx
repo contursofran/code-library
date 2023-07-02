@@ -11,7 +11,7 @@ export default function PageHeader() {
   return (
     <>
       {pageName === "/dashboard/snippets" && <SnippetsPageHeader />}
-      {pageName === "/dashboard/bugs" && <BugsPageHeader />}
+      {pageName === "/dashboard/posts" && <PostsPageHeader />}
     </>
   )
 }
@@ -34,14 +34,15 @@ function SnippetsPageHeader() {
   )
 }
 
-function BugsPageHeader() {
+function PostsPageHeader() {
   return (
-    <div className="w-full">
+    <div className="container flex w-full items-center justify-between pt-8">
       <div className="flex items-center justify-between">
-        <div className="flex flex-col gap-1 py-8">
-          <h1 className="text-2xl font-medium">Bugs</h1>
+        <div className="flex flex-col gap-1">
+          <h1 className="text-2xl font-medium">Posts</h1>
           <div className="pt-1 text-muted-foreground">
-            A place where you can store bugs and errors.
+            Here you can create blog posts and link them to your snippets and
+            vice versa.
           </div>
         </div>
       </div>
