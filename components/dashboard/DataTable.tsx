@@ -5,10 +5,12 @@ import { Snippet } from "@/types"
 import {
   ColumnDef,
   ColumnFiltersState,
+  SortingState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
+  getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table"
 
@@ -23,6 +25,9 @@ interface DataTableProps<TData> {
 
 export function DataTable<TData>({ data }: DataTableProps<TData>) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
+  const [sorting, setSorting] = useState<SortingState>([
+    { id: "date", desc: false },
+  ])
 
   const table = useReactTable({
     data: data,
@@ -30,10 +35,13 @@ export function DataTable<TData>({ data }: DataTableProps<TData>) {
     getCoreRowModel: getCoreRowModel(),
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
+    onSortingChange: setSorting,
     state: {
       columnFilters,
+      sorting,
     },
     getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
   })
 
   return (

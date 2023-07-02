@@ -28,7 +28,7 @@ export const columns = [
     },
   }),
   columnHelper.accessor("date", {
-    header: "Date",
+    id: "date",
     cell: (row) => <div>{formatDate(row.getValue())}</div>,
   }),
   columnHelper.accessor("code", {
