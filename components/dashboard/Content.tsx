@@ -35,8 +35,8 @@ export default function Content({ snippet }: SnippetContentProps) {
             <div className="h-full min-h-[80px] w-full rounded-lg border p-1">
               <div className="flex h-full w-full justify-between ">
                 <Code
-                  className="w-full text-sm"
-                  codeClassName="-my-2 mx-2"
+                  className="flex w-full items-center text-sm"
+                  codeClassName="flex item-center h-full"
                   lang={snippet.language}
                   theme={{
                     dark: tokyoNightTheme,
@@ -46,7 +46,7 @@ export default function Content({ snippet }: SnippetContentProps) {
                 >
                   {code}
                 </Code>
-                <CopyButton className="z-20 p-4" code={code} />
+                <CopyButton className="z-20 p-5" code={code} />
               </div>
             </div>
           </div>
