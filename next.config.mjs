@@ -1,5 +1,11 @@
 //eslint-disable-next-line
-import "./env.mjs"
+// import "./env.mjs"
+
+import mdx from "@next/mdx"
+
+const withMDX = mdx({
+  extension: /\.mdx?$/,
+})
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
@@ -9,6 +15,7 @@ const nextConfig = {
   },
   experimental: {
     appDir: true,
+    mdxRs: true,
   },
   redirects: async () => {
     return [
@@ -26,4 +33,7 @@ const nextConfig = {
   },
 }
 
-export default nextConfig
+export default withMDX({
+  ...nextConfig,
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+})
