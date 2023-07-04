@@ -6,8 +6,9 @@ import tokyoNightTheme from "public/tokyo-night-theme.json"
 import { upperFirst } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import CopyButton from "@/components/CopyButton"
-import { DeleteSnippetButton } from "@/components/dashboard/DeleteSnippet"
+import CopyButton from "@/components/copy-button"
+import { DeleteSnippetButton } from "@/components/dashboard/delete-button"
+
 interface SnippetContentProps {
   snippet: Snippet
 }

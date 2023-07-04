@@ -4,9 +4,8 @@ import { tabsItems } from "@/config/dashboard"
 import { authOptions } from "@/lib/auth"
 import { getCurrentUser } from "@/lib/session"
 import Footer from "@/components/Footer"
-import Header from "@/components/Header"
-import MainNav from "@/components/MainNav"
-import UserAccount from "@/components/UserAccount"
+import MainNav from "@/components/main-nav"
+import UserAccount from "@/components/user-account"
 
 interface DashboardLayoutProps {
   children: React.ReactNode

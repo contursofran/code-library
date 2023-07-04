@@ -7,7 +7,7 @@ import { CellContext, createColumnHelper } from "@tanstack/react-table"
 
 import { cn, formatDate, upperFirst } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
-import CopyButton from "@/components/CopyButton"
+import CopyButton from "@/components/copy-button"
 
 const columnHelper = createColumnHelper<Snippet>()
 

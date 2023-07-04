@@ -29,7 +29,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { DeleteSnippetButton } from "@/components/dashboard/DeleteSnippet"
+import { DeleteSnippetButton } from "@/components/dashboard/delete-button"
 
 interface SnippetFormProps {
   snippet?: Snippet

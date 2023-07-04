@@ -1,5 +1,5 @@
 //eslint-disable-next-line
-// import "./env.mjs"
+import "./env.mjs"
 
 import mdx from "@next/mdx"
 
