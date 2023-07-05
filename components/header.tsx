@@ -4,7 +4,7 @@ interface HeaderProps {
   description?: string
 }
 
-export default function Header({ title, description, children }: HeaderProps) {
+export function Header({ title, description, children }: HeaderProps) {
   return (
     <div className="container flex w-full items-center justify-between pt-8">
       <div className="flex items-center justify-between">

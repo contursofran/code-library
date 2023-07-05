@@ -3,9 +3,9 @@ import { redirect } from "next/navigation"
 import { tabsItems } from "@/config/dashboard"
 import { authOptions } from "@/lib/auth"
 import { getCurrentUser } from "@/lib/session"
-import Footer from "@/components/Footer"
-import MainNav from "@/components/main-nav"
-import UserAccount from "@/components/user-account"
+import { Footer } from "@/components/footer"
+import { MainNav } from "@/components/main-nav"
+import { UserAccount } from "@/components/user-account"
 
 interface DashboardLayoutProps {
   children: React.ReactNode

@@ -2,7 +2,7 @@ import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
 import { Button } from "@/components/ui/button"
-import Hero from "@/app/(landing)/components/Hero"
+import { Hero } from "@/app/(landing)/components/Hero"
 
 export default function Home({}) {
   return (

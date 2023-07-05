@@ -1,15 +1,9 @@
-import { Search } from "tabler-icons-react"
+import { Input } from "@/components/ui/input"
 
-import { Input } from "./ui/input"
-
-export default function SearchBar({}) {
+export function SearchBar({}) {
   return (
     <div className=" w-96 ">
-      <Input
-        className="h-9"
-        icon={<Search size={17} />}
-        placeholder="Search snippet"
-      />
+      <Input className="h-9" placeholder="Search snippet" />
     </div>
   )
 }

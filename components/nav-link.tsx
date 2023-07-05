@@ -6,7 +6,7 @@ import { NavItem } from "@/types"
 
 import { cn } from "@/lib/utils"
 
-export default function NavLink({ href, title }: NavItem) {
+export function NavLink({ href, title }: NavItem) {
   const isCurrentPage = usePathname()?.includes(href)
 
   const baseLinkStyles = "flex items-center text-lg font-medium transition-all"

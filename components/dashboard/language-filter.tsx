@@ -27,7 +27,7 @@ interface DataTableFacetedFilter<TData, TValue> {
   languages: Languages
 }
 
-export default function LanguageFilter<TData, TValue>({
+export function LanguageFilter<TData, TValue>({
   column,
   languages,
 }: DataTableFacetedFilter<TData, TValue>) {

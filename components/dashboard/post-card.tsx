@@ -1,5 +1,6 @@
-import { formatDate } from "@/lib/utils"
 import Link from "next/link"
+
+import { formatDate } from "@/lib/utils"
 
 interface PostCardProps {
   title: string
@@ -8,12 +9,7 @@ interface PostCardProps {
   href: string
 }
 
-export default function PostCard({
-  title,
-  description,
-  date,
-  href,
-}: PostCardProps) {
+export function PostCard({ title, description, date, href }: PostCardProps) {
   return (
     <Link href={href}>
       <div className="flex h-28 w-96 rounded-md border p-4 hover:border-primary/80">

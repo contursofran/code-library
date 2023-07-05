@@ -36,7 +36,7 @@ interface SnippetFormProps {
   action: "create" | "edit"
 }
 
-export default function SnippetForm({ snippet, action }: SnippetFormProps) {
+export function SnippetForm({ snippet, action }: SnippetFormProps) {
   const { form, handleSnippetCreation, handleSnippetEdition, isSubmitting } =
     useSnippetForm(snippet)
   const [showDialog, setShowDialog] = useState<boolean>(false)

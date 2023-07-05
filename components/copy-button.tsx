@@ -14,7 +14,7 @@ const copyToClipboard = (code: string) => {
   navigator.clipboard.writeText(code)
 }
 
-export default function CopyButton({ className, code }: CopyButtonProps) {
+export function CopyButton({ className, code }: CopyButtonProps) {
   const [hasCopied, setHasCopied] = useState(false)
 
   useEffect(() => {

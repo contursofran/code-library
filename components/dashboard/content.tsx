@@ -5,8 +5,7 @@ import tokyoNightTheme from "public/tokyo-night-theme.json"
 
 import { upperFirst } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import CopyButton from "@/components/copy-button"
+import { CopyButton } from "@/components/copy-button"
 import { DeleteSnippetButton } from "@/components/dashboard/delete-button"
 
 interface SnippetContentProps {
@@ -19,7 +18,7 @@ function fixCode(code: string) {
   return formatedCode
 }
 
-export default function Content({ snippet }: SnippetContentProps) {
+export function Content({ snippet }: SnippetContentProps) {
   const code = fixCode(snippet.code)
 
   return (

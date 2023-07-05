@@ -15,15 +15,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import NavLink from "@/components/nav-link"
-import ThemeToggle from "@/components/theme-toggle"
+import { NavLink } from "@/components/nav-link"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 interface MainNavProps {
   isLandingPage?: boolean
   items?: NavItem[]
 }
 
-export default function MainNav({ isLandingPage, items }: MainNavProps) {
+export function MainNav({ isLandingPage, items }: MainNavProps) {
   return (
     <div className="flex h-16 w-full items-center gap-6 py-4 md:gap-10">
       {isLandingPage && (
