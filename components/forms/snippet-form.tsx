@@ -29,14 +29,14 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { DeleteSnippetButton } from "@/components/dashboard/DeleteSnippet"
+import { DeleteSnippetButton } from "@/components/dashboard/delete-button"
 
 interface SnippetFormProps {
   snippet?: Snippet
   action: "create" | "edit"
 }
 
-export default function SnippetForm({ snippet, action }: SnippetFormProps) {
+export function SnippetForm({ snippet, action }: SnippetFormProps) {
   const { form, handleSnippetCreation, handleSnippetEdition, isSubmitting } =
     useSnippetForm(snippet)
   const [showDialog, setShowDialog] = useState<boolean>(false)

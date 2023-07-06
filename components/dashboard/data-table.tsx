@@ -5,18 +5,18 @@ import { Snippet } from "@/types"
 import {
   ColumnDef,
   ColumnFiltersState,
-  SortingState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  SortingState,
   useReactTable,
 } from "@tanstack/react-table"
 
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
-import { columns } from "@/components/dashboard/DataTableColumns"
-import { DataTableToolbar } from "@/components/dashboard/DataTableToolbar"
+import { columns } from "@/components/dashboard/data-table-columns"
+import { DataTableToolbar } from "@/components/dashboard/data-table-toolbar"
 
 interface DataTableProps<TData> {
   columns: ColumnDef<TData, any>[]

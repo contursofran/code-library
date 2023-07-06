@@ -1,6 +1,6 @@
-import Header from "@/components/Header"
-import Shell from "@/components/Shell"
 import { Skeleton } from "@/components/ui/skeleton"
+import { Header } from "@/components/header"
+import { Shell } from "@/components/shell"
 
 export default function Loading() {
   return (

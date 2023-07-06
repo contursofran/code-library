@@ -3,7 +3,7 @@ import { ChevronLeft } from "tabler-icons-react"
 
 import { Button } from "@/components/ui/button"
 
-export default function BackButton() {
+export function BackButton() {
   return (
     <div className="flex h-fit w-24 shrink-0">
       <Link
