@@ -1,20 +1,7 @@
-import { redirect } from "next/navigation"
-
-import { authOptions } from "@/lib/auth"
+import { navItems } from "@/config/site"
 import { getCurrentUser } from "@/lib/session"
 import { MainNav } from "@/components/main-nav"
 import { UserAccount } from "@/components/user-account"
-
-const NavItems = [
-  {
-    title: "Home",
-    href: "/home",
-  },
-  {
-    title: "Features",
-    href: "/features",
-  },
-]
 
 interface HomeLayoutProps {
   children: React.ReactNode
@@ -27,7 +14,7 @@ export default async function HomeLayout({ children }: HomeLayoutProps) {
     <div className="flex h-screen flex-col">
       <header className="sticky top-0 z-40 w-full bg-background">
         <div className="container flex h-16 items-center gap-3 space-x-4 sm:justify-between sm:space-x-0">
-          <MainNav isLandingPage items={NavItems} />
+          <MainNav isLandingPage items={navItems} />
           {user && <UserAccount isLandingPage user={user} />}
         </div>
       </header>

@@ -1,3 +1,5 @@
+import { NavItem } from "@/types"
+
 interface SiteConfig {
   description: string
   links: {
@@ -13,3 +15,18 @@ export const siteConfig: SiteConfig = {
     github: "https://github.com/fconturso/code-library",
   },
 }
+
+export const navItems: NavItem[] = [
+  {
+    title: "Home",
+    href: "/home",
+  },
+  {
+    title: "Features",
+    href: "/features",
+  },
+  {
+    title: "Docs",
+    href: "/docs",
+  },
+]
