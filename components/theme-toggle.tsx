@@ -19,7 +19,7 @@ export function ThemeToggle() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          className="h-9 w-9 rounded-full px-0"
+          className="h-8 w-8 rounded-full px-0"
           size="sm"
           variant={"outline"}
         >

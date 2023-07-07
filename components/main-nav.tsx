@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { NavItem } from "@/types"
-import { Music } from "tabler-icons-react"
+import { Bell, Home, Music } from "tabler-icons-react"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
@@ -80,9 +80,20 @@ export function MainNav({ isLandingPage, items }: MainNavProps) {
           )}
         </DropdownMenuContent>
       </DropdownMenu>
-      <div className="flex-1 gap-2 text-right">
-        <div className="flex items-center justify-end">
-          {isLandingPage ? <ThemeToggle /> : <ThemeToggle />}
+      <div className="flex-1 gap-3 text-right">
+        <div className="flex items-center justify-end gap-2">
+          {!isLandingPage && (
+            <Link href="/home">
+              <Button
+                className="h-8 w-8 rounded-full px-0"
+                size="icon"
+                variant="outline"
+              >
+                <Home className="h-4 w-4" />
+              </Button>
+            </Link>
+          )}
+          <ThemeToggle />
         </div>
       </div>
     </div>

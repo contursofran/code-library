@@ -1,5 +1,7 @@
 "use client"
 
+import Link from "next/link"
+import { redirect } from "next/navigation"
 import { User } from "next-auth"
 import { signOut } from "next-auth/react"
 
@@ -14,14 +16,15 @@ import { UserAvatar } from "@/components/user-avatar"
 
 interface UserAccountNavProps {
   user: Pick<User, "name" | "image" | "email">
+  isLandingPage?: boolean
 }
 
-export function UserAccount({ user }: UserAccountNavProps) {
+export function UserAccount({ user, isLandingPage }: UserAccountNavProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
         <UserAvatar
-          className="h-9 w-9 border"
+          className="h-8 w-8 border"
           user={{ name: user.name || null, image: user.image || null }}
         />
       </DropdownMenuTrigger>
@@ -37,6 +40,13 @@ export function UserAccount({ user }: UserAccountNavProps) {
           </div>
         </div>
         <DropdownMenuSeparator />
+        {isLandingPage && (
+          <Link href="/dashboard">
+            <DropdownMenuItem className="cursor-pointer">
+              Go to dashboard
+            </DropdownMenuItem>
+          </Link>
+        )}
         <DropdownMenuItem
           className="cursor-pointer"
           onSelect={(event) => {
