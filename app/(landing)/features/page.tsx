@@ -1,6 +1,6 @@
 import { BrandAdobe, BrandReact, BrandTailwind } from "tabler-icons-react"
 
-import { FeaturesCard } from "@/app/(landing)/components/FeaturesCard"
+import { FeaturesCard } from "@/components/features-card"
 
 export default function Features({}) {
   return (
