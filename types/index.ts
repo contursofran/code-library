@@ -17,4 +17,10 @@ export interface SnippetContent {
 export interface NavItem {
   href: string
   title: string
+  disabled?: boolean
+}
+
+export interface SidebarNavItem {
+  title: string
+  items: NavItem[]
 }

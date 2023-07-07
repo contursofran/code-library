@@ -6,7 +6,11 @@ import { NavItem } from "@/types"
 
 import { cn } from "@/lib/utils"
 
-export function NavLink({ href, title }: NavItem) {
+interface NavLinkProps extends NavItem {
+  className?: string
+}
+
+export function NavLink({ href, title, className }: NavLinkProps) {
   const isCurrentPage = usePathname()?.includes(href)
 
   const baseLinkStyles = "flex items-center text-lg font-medium transition-all"
@@ -15,6 +19,7 @@ export function NavLink({ href, title }: NavItem) {
   const hoverLinkStyles = "hover:text-foreground/80"
 
   const linkStyle = cn(
+    className,
     baseLinkStyles,
     isCurrentPage ? activeLinkStyles : inactiveLinkStyles,
     hoverLinkStyles
