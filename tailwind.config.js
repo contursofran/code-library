@@ -33,6 +33,7 @@ module.exports = {
         sans: ["var(--font-inter)", ...fontFamily.sans],
       },
       colors: {
+        codeblock: "hsl(var(--code-background))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

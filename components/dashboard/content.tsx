@@ -1,7 +1,8 @@
 import Link from "next/link"
 import { Snippet } from "@/types"
 import { Code } from "bright"
-import tokyoNightTheme from "public/tokyo-night-theme.json"
+import darkTheme from "styles/themes/dark-theme.json"
+import lightTheme from "styles/themes/light-theme.json"
 
 import { upperFirst } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -32,21 +33,25 @@ export function Content({ snippet }: SnippetContentProps) {
             {snippet.description}
           </p>
           <div className="!mt-6 flex h-full w-full justify-center">
-            <div className="h-full min-h-[80px] w-full rounded-lg border p-1">
+            <div className="h-full min-h-[80px] w-full rounded-lg border bg-codeblock p-1">
               <div className="flex h-full w-full justify-between ">
                 <Code
                   className="flex w-full items-center text-sm"
                   codeClassName="flex item-center h-full"
                   lang={snippet.language}
                   theme={{
-                    dark: tokyoNightTheme,
-                    light: "min-light",
+                    dark: darkTheme,
+                    light: lightTheme,
                     lightSelector: "html.light",
                   }}
                 >
                   {code}
                 </Code>
-                <CopyButton className="z-20 p-5" code={code} />
+                <CopyButton
+                  buttonClassName="bg-codeblock"
+                  className="z-20 p-5"
+                  code={code}
+                />
               </div>
             </div>
           </div>
