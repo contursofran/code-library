@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation"
+import { notFound, redirect } from "next/navigation"
 
 import { authOptions } from "@/lib/auth"
 import prisma from "@/lib/prisma"
@@ -34,7 +34,9 @@ export default async function SnippetsPage({ params }: SnippetsPageProps) {
 
   const snippet = await getUserSnippet(params.id, user.id)
 
-  if (snippet) {
-    return <Content snippet={snippet} />
+  if (!snippet) {
+    notFound()
   }
+
+  return <Content snippet={snippet} />
 }
