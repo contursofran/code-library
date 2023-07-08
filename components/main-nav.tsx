@@ -16,6 +16,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { NavLink } from "@/components/nav-link"
+import { NotificationMenu } from "@/components/notification-menu"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 interface MainNavProps {
@@ -94,6 +95,7 @@ export function MainNav({ isLandingPage, items }: MainNavProps) {
             </Link>
           )}
           <ThemeToggle />
+          {!isLandingPage && <NotificationMenu />}
         </div>
       </div>
     </div>
