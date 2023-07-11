@@ -6,6 +6,7 @@ import { Snippet } from "@/types"
 import { Loader2 } from "tabler-icons-react"
 
 import { languages } from "@/lib/languages"
+import { setNotifications } from "@/lib/notifications"
 import { toast } from "@/hooks/use-toast"
 import { useSnippetForm } from "@/hooks/useSnippetForm"
 import {
@@ -58,6 +59,16 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
         ),
       })
     } else {
+      setNotifications([
+        {
+          date: new Date().toISOString(),
+          message: `Your snippet has been ${
+            action === "edit" ? "edited" : "created"
+          } successfully!`,
+          type: "success",
+        },
+      ])
+
       return toast({
         toastType: "success",
         description: (

@@ -1,5 +1,10 @@
+"use client"
+
+import { useEffect, useState } from "react"
 import { Bell } from "tabler-icons-react"
 
+import { getNotifications } from "@/lib/notifications"
+import { Notifications } from "@/lib/validations/notifications"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -13,6 +18,16 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Notification } from "@/components/notification"
 
 export function NotificationMenu() {
+  const [notifications, setNotifications] = useState<Notifications>()
+
+  useEffect(() => {
+    const notifications = getNotifications()
+
+    if (notifications) {
+      setNotifications(notifications)
+    }
+  }, [])
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -24,7 +39,7 @@ export function NotificationMenu() {
           <div className="flex gap-1">
             <Bell className="h-4 w-4" />
             <div className="flex h-4 w-5 items-center justify-center rounded-full bg-white p-1 text-xs text-black">
-              4
+              {notifications?.length}
             </div>
           </div>
         </Button>
