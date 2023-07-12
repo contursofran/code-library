@@ -61,6 +61,7 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
     } else {
       setNotifications([
         {
+          id: Math.random().toString(),
           date: new Date().toISOString(),
           message: `Your snippet has been ${
             action === "edit" ? "edited" : "created"
