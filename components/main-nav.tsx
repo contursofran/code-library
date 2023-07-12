@@ -5,7 +5,9 @@ import { NavItem } from "@/types"
 import { Bell, Home, Music } from "tabler-icons-react"
 
 import { siteConfig } from "@/config/site"
+import { setNotifications } from "@/lib/notifications"
 import { cn } from "@/lib/utils"
+import { toast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -16,7 +18,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { NavLink } from "@/components/nav-link"
-import { NotificationMenu } from "@/components/notification-menu"
+import { NotificationsMenu } from "@/components/notifications-menu"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 interface MainNavProps {
@@ -34,6 +36,16 @@ export function MainNav({ isLandingPage, items }: MainNavProps) {
           </span>
         </div>
       )}
+      <Button
+        onClick={() =>
+          toast({
+            toastType: "failure",
+            description: (
+              <>An error occurred while trying to fetch notifications. Please</>
+            ),
+          })
+        }
+      />
       {items?.length ? (
         <nav
           className={cn(
@@ -95,7 +107,7 @@ export function MainNav({ isLandingPage, items }: MainNavProps) {
             </Link>
           )}
           <ThemeToggle />
-          {!isLandingPage && <NotificationMenu />}
+          {!isLandingPage && <NotificationsMenu />}
         </div>
       </div>
     </div>

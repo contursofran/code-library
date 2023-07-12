@@ -4,11 +4,11 @@ import {
 } from "@/lib/validations/notifications"
 
 const localStorageKeys = {
-  notification: "notification",
+  notifications: "notifications",
 }
 
 export const getNotifications = (): Notifications | null => {
-  const notification = localStorage.getItem(localStorageKeys.notification)
+  const notification = localStorage.getItem(localStorageKeys.notifications)
 
   if (!notification) {
     return null
@@ -17,13 +17,13 @@ export const getNotifications = (): Notifications | null => {
   const validatedNotification = notificationsSchema.safeParse(
     JSON.parse(notification)
   )
-
+  console.log(validatedNotification)
   return validatedNotification.success ? validatedNotification.data : null
 }
 
 export const setNotifications = (notifications: Notifications): void => {
   localStorage.setItem(
-    localStorageKeys.notification,
+    localStorageKeys.notifications,
     JSON.stringify(notifications)
   )
 }

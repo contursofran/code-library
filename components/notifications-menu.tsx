@@ -4,7 +4,9 @@ import { useEffect, useState } from "react"
 import { Bell } from "tabler-icons-react"
 
 import { getNotifications } from "@/lib/notifications"
+import { cn } from "@/lib/utils"
 import { Notifications } from "@/lib/validations/notifications"
+import { toast, useToast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -15,32 +17,34 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Notification } from "@/components/notification"
+import { NotificationsItem } from "@/components/notifications-item"
 
-export function NotificationMenu() {
-  const [notifications, setNotifications] = useState<Notifications>()
+export function NotificationsMenu() {
+  const [notifications, setNotifications] = useState<Notifications>([])
+  const { toast } = useToast()
 
   useEffect(() => {
-    const notifications = getNotifications()
-
-    if (notifications) {
-      setNotifications(notifications)
-    }
-  }, [])
+    console.log(toast)
+  }, [toast])
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          className="h-8 w-12 rounded-full px-0"
+          className={cn(
+            notifications.length > 0 ? "w-12" : "w-8",
+            "h-8 rounded-full px-0"
+          )}
           size="sm"
           variant="outline"
         >
           <div className="flex gap-1">
             <Bell className="h-4 w-4" />
-            <div className="flex h-4 w-5 items-center justify-center rounded-full bg-white p-1 text-xs text-black">
-              {notifications?.length}
-            </div>
+            {notifications?.length > 0 && (
+              <div className="flex h-4 w-5 items-center justify-center rounded-full bg-white p-1 text-xs text-black">
+                {notifications?.length}
+              </div>
+            )}
           </div>
         </Button>
       </DropdownMenuTrigger>
@@ -53,26 +57,14 @@ export function NotificationMenu() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <ScrollArea className="h-[300px]">
-          <DropdownMenuItem className="focus:bg-transparent">
-            <Notification />
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem className="focus:bg-transparent">
-            <Notification />
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem className="focus:bg-transparent">
-            <Notification />
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem className="focus:bg-transparent">
-            <Notification />
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem className="focus:bg-transparent">
-            <Notification />
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
+          {notifications?.map((notification) => (
+            <>
+              <DropdownMenuItem className="focus:bg-transparent">
+                <NotificationsItem {...notification} key={notification.id} />
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+            </>
+          ))}
         </ScrollArea>
       </DropdownMenuContent>
     </DropdownMenu>
