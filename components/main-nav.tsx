@@ -2,12 +2,12 @@
 
 import Link from "next/link"
 import { NavItem } from "@/types"
-import { Bell, Home, Music } from "tabler-icons-react"
+import { Home, Music } from "tabler-icons-react"
+import { useStore } from "zustand"
 
 import { siteConfig } from "@/config/site"
-import { setNotifications } from "@/lib/notifications"
-import { cn } from "@/lib/utils"
-import { toast } from "@/hooks/use-toast"
+import { useNotificationsStore } from "@/lib/store"
+import { cn, randomId } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -27,6 +27,11 @@ interface MainNavProps {
 }
 
 export function MainNav({ isLandingPage, items }: MainNavProps) {
+  const addNotification = useStore(
+    useNotificationsStore,
+    (state) => state.addNotification
+  )
+
   return (
     <div className="flex h-16 w-full items-center gap-6 py-4 md:gap-10">
       {isLandingPage && (
@@ -38,11 +43,11 @@ export function MainNav({ isLandingPage, items }: MainNavProps) {
       )}
       <Button
         onClick={() =>
-          toast({
-            toastType: "failure",
-            description: (
-              <>An error occurred while trying to fetch notifications. Please</>
-            ),
+          addNotification({
+            date: new Date().toString(),
+            id: randomId(),
+            message: "Your snippet has been created",
+            type: "success",
           })
         }
       />

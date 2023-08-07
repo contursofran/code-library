@@ -20,6 +20,7 @@ import { Notification, Notifications } from "@/lib/validations/notifications"
 interface NotificationsState {
   notifications: Notifications
   addNotification: (notification: Notification) => void
+  clearNotifications: () => void
 }
 
 export const useNotificationsStore = create(
@@ -29,6 +30,10 @@ export const useNotificationsStore = create(
       addNotification: (notification: Notification) =>
         set((state) => ({
           notifications: [...state.notifications, notification],
+        })),
+      clearNotifications: () =>
+        set((state) => ({
+          notifications: [],
         })),
     }),
     {

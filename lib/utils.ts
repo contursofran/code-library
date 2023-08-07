@@ -25,3 +25,7 @@ export function formatDate(date: string): string {
 
   return Intl.DateTimeFormat("en-US", options).format(dateObj)
 }
+
+export function randomId() {
+  return Math.random().toString(16).slice(2)
+}

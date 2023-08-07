@@ -1,9 +1,12 @@
 "use client"
 
+import { clear } from "console"
 import { useEffect, useState } from "react"
 import { Bell } from "tabler-icons-react"
+import { useStore } from "zustand"
 
 import { getNotifications } from "@/lib/notifications"
+import { useNotificationsStore } from "@/lib/store"
 import { cn } from "@/lib/utils"
 import { Notifications } from "@/lib/validations/notifications"
 import { toast, useToast } from "@/hooks/use-toast"
@@ -20,12 +23,14 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { NotificationsItem } from "@/components/notifications-item"
 
 export function NotificationsMenu() {
-  const [notifications, setNotifications] = useState<Notifications>([])
-  const { toast } = useToast()
-
-  useEffect(() => {
-    console.log(toast)
-  }, [toast])
+  const notifications = useStore(
+    useNotificationsStore,
+    (state) => state.notifications
+  )
+  const clearNotifications = useStore(
+    useNotificationsStore,
+    (state) => state.clearNotifications
+  )
 
   return (
     <DropdownMenu>
@@ -51,19 +56,22 @@ export function NotificationsMenu() {
       <DropdownMenuContent className="mr-8 w-[350px]">
         <DropdownMenuLabel className="flex w-full items-center justify-between">
           <div className="text-base">Notifications</div>
-          <button className="text-xs font-medium text-muted-foreground hover:underline">
+          <button
+            className="text-xs font-medium text-muted-foreground hover:underline"
+            onClick={() => clearNotifications()}
+          >
             Mark all as read
           </button>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <ScrollArea className="h-[300px]">
-          {notifications?.map((notification) => (
-            <>
+        <ScrollArea className="-mx-1 h-[300px]">
+          {notifications?.map((notification, index) => (
+            <div key={notification.id}>
               <DropdownMenuItem className="focus:bg-transparent">
                 <NotificationsItem {...notification} key={notification.id} />
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-            </>
+            </div>
           ))}
         </ScrollArea>
       </DropdownMenuContent>
