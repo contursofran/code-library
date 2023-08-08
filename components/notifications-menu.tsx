@@ -46,14 +46,14 @@ export function NotificationsMenu() {
           <div className="flex gap-1">
             <Bell className="h-4 w-4" />
             {notifications?.length > 0 && (
-              <div className="flex h-4 w-5 items-center justify-center rounded-full bg-white p-1 text-xs text-black">
+              <div className="flex h-4 w-5 items-center justify-center rounded-full bg-black p-1 text-xs text-white dark:bg-white dark:text-black">
                 {notifications?.length}
               </div>
             )}
           </div>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="mr-8 w-[350px]">
+      <DropdownMenuContent className="mr-8 w-[350px] pb-2">
         <DropdownMenuLabel className="flex w-full items-center justify-between">
           <div className="text-base">Notifications</div>
           <button
@@ -63,8 +63,8 @@ export function NotificationsMenu() {
             Mark all as read
           </button>
         </DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <ScrollArea className="-mx-1 h-[300px]">
+        <DropdownMenuSeparator className="shadow-sm" />
+        <ScrollArea className="-mx-1 h-[300px]" scrollBarClassName="mx-1">
           {notifications?.map((notification, index) => (
             <div key={notification.id}>
               <DropdownMenuItem className="focus:bg-transparent">
