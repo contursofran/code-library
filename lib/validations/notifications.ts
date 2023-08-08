@@ -5,6 +5,7 @@ const notificationSchema = z.object({
   type: z.enum(["success", "error"]),
   message: z.string(),
   date: z.string(),
+  snippet: z.string().optional(),
 })
 
 export const notificationsSchema = z.array(notificationSchema)
