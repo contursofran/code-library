@@ -1,15 +1,10 @@
 "use client"
 
-import { clear } from "console"
-import { useEffect, useState } from "react"
 import { Bell } from "tabler-icons-react"
 import { useStore } from "zustand"
 
-import { getNotifications } from "@/lib/notifications"
 import { useNotificationsStore } from "@/lib/store"
 import { cn } from "@/lib/utils"
-import { Notifications } from "@/lib/validations/notifications"
-import { toast, useToast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
