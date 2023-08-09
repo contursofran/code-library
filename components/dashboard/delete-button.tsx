@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { Snippet } from "@prisma/client"
 import { Loader2, Trash } from "tabler-icons-react"
 
-import { toast } from "@/hooks/use-toast"
+import { toast } from "@/hooks/useToast"
 import {
   AlertDialog,
   AlertDialogAction,

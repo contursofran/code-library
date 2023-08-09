@@ -7,8 +7,8 @@ import { Loader2 } from "tabler-icons-react"
 
 import { languages } from "@/lib/languages"
 import { setNotifications } from "@/lib/notifications"
-import { toast } from "@/hooks/use-toast"
 import { useSnippetForm } from "@/hooks/useSnippetForm"
+import { toast } from "@/hooks/useToast"
 import {
   AlertDialog,
   AlertDialogAction,
