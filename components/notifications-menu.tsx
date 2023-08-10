@@ -1,10 +1,10 @@
 "use client"
 
 import { Bell } from "tabler-icons-react"
-import { useStore } from "zustand"
 
 import { useNotificationsStore } from "@/lib/store"
 import { cn } from "@/lib/utils"
+import useStore from "@/hooks/useStore"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -18,21 +18,17 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { NotificationsItem } from "@/components/notifications-item"
 
 export function NotificationsMenu() {
-  const notifications = useStore(
-    useNotificationsStore,
-    (state) => state.notifications
-  )
-  const clearNotifications = useStore(
-    useNotificationsStore,
-    (state) => state.clearNotifications
-  )
+  const notificationsState = useStore(useNotificationsStore, (state) => state)
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
           className={cn(
-            notifications.length > 0 ? "w-12" : "w-8",
+            notificationsState?.notifications &&
+              notificationsState?.notifications.length > 0
+              ? "w-12"
+              : "w-8",
             "h-8 rounded-full px-0"
           )}
           size="sm"
@@ -40,11 +36,12 @@ export function NotificationsMenu() {
         >
           <div className="flex gap-1">
             <Bell className="h-4 w-4" />
-            {notifications?.length > 0 && (
-              <div className="flex h-4 w-5 items-center justify-center rounded-full bg-black p-1 text-xs text-white dark:bg-white dark:text-black">
-                {notifications?.length}
-              </div>
-            )}
+            {notificationsState?.notifications &&
+              notificationsState?.notifications?.length > 0 && (
+                <div className="flex h-4 w-5 items-center justify-center rounded-full bg-black p-1 text-xs text-white dark:bg-white dark:text-black">
+                  {notificationsState?.notifications?.length}
+                </div>
+              )}
           </div>
         </Button>
       </DropdownMenuTrigger>
@@ -53,14 +50,14 @@ export function NotificationsMenu() {
           <div className="text-base">Notifications</div>
           <button
             className="text-xs font-medium text-muted-foreground hover:underline"
-            onClick={() => clearNotifications()}
+            onClick={() => notificationsState?.clearNotifications()}
           >
             Mark all as read
           </button>
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="shadow-sm" />
         <ScrollArea className="-mx-1 h-[300px]" scrollBarClassName="mx-1">
-          {notifications?.map((notification, index) => (
+          {notificationsState?.notifications?.map((notification, index) => (
             <div key={notification.id}>
               <DropdownMenuItem className="focus:bg-transparent">
                 <NotificationsItem {...notification} key={notification.id} />
