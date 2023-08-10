@@ -4,9 +4,11 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Snippet } from "@/types"
 import { Loader2 } from "tabler-icons-react"
+import { useStore } from "zustand"
 
 import { languages } from "@/lib/languages"
 import { setNotifications } from "@/lib/notifications"
+import { useNotificationsStore } from "@/lib/store"
 import { useSnippetForm } from "@/hooks/useSnippetForm"
 import { toast } from "@/hooks/useToast"
 import {
@@ -41,6 +43,10 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
   const { form, handleSnippetCreation, handleSnippetEdition, isSubmitting } =
     useSnippetForm(snippet)
   const [showDialog, setShowDialog] = useState<boolean>(false)
+  const addNotification = useStore(
+    useNotificationsStore,
+    (state) => state.addNotification
+  )
 
   const handleFunction =
     action === "create" ? handleSnippetCreation : handleSnippetEdition
@@ -49,6 +55,16 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
     const res = await handleFunction()
 
     if (!res) {
+      addNotification({
+        id: Math.random().toString(),
+        date: new Date().toISOString(),
+        message: `had an error while ${
+          action === "edit" ? "edited" : "created"
+        }, please try again later`,
+        type: "failure",
+        snippet: form.getValues().title,
+      })
+
       return toast({
         toastType: "failure",
         description: (
@@ -59,16 +75,13 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
         ),
       })
     } else {
-      setNotifications([
-        {
-          id: Math.random().toString(),
-          date: new Date().toISOString(),
-          message: `Your snippet has been ${
-            action === "edit" ? "edited" : "created"
-          } successfully!`,
-          type: "success",
-        },
-      ])
+      addNotification({
+        id: Math.random().toString(),
+        date: new Date().toISOString(),
+        message: `has been ${action === "edit" ? "edited" : "created"}`,
+        type: "success",
+        snippet: form.getValues().title,
+      })
 
       return toast({
         toastType: "success",
