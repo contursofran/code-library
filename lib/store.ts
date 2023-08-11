@@ -27,10 +27,13 @@ export const useNotificationsStore = create(
   persist<NotificationsState>(
     (set, get) => ({
       notifications: [],
-      addNotification: (notification: Notification) =>
-        set((state) => ({
-          notifications: [...state.notifications, notification],
-        })),
+      addNotification: (notification: Notification) => {
+        if (notification) {
+          set((state) => ({
+            notifications: [...state.notifications, notification],
+          }))
+        }
+      },
       clearNotifications: () =>
         set((state) => ({
           notifications: [],
