@@ -17,25 +17,6 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { NotificationsItem } from "@/components/notifications-item"
 
-function NotificationsMenuButton({ count }: { count: number }) {
-  return (
-    <Button
-      className={cn(count > 0 ? "w-12" : "w-8", "h-8 rounded-full px-0")}
-      size="sm"
-      variant="outline"
-    >
-      <div className="flex gap-1">
-        <Bell className="h-4 w-4" />
-        {count > 0 && (
-          <div className="flex h-4 w-5 items-center justify-center rounded-full bg-black p-1 text-xs text-white dark:bg-white dark:text-black">
-            {count}
-          </div>
-        )}
-      </div>
-    </Button>
-  )
-}
-
 export function NotificationsMenu() {
   const notificationsState = useStore(useNotificationsStore, (state) => state)
 
@@ -44,7 +25,23 @@ export function NotificationsMenu() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <NotificationsMenuButton count={notificationsCount} />
+        <Button
+          className={cn(
+            notificationsCount > 0 ? "w-12" : "w-8",
+            "h-8 rounded-full px-0"
+          )}
+          size="sm"
+          variant="outline"
+        >
+          <div className="flex gap-1">
+            <Bell className="h-4 w-4" />
+            {notificationsCount > 0 && (
+              <div className="flex h-4 w-5 items-center justify-center rounded-full bg-black p-1 text-xs text-white dark:bg-white dark:text-black">
+                {notificationsCount}
+              </div>
+            )}
+          </div>
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="mr-8 w-[350px] pb-2">
         <DropdownMenuLabel className="flex w-full items-center justify-between">
