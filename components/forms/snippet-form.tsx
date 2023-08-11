@@ -7,7 +7,6 @@ import { Loader2 } from "tabler-icons-react"
 import { useStore } from "zustand"
 
 import { languages } from "@/lib/languages"
-import { setNotifications } from "@/lib/notifications"
 import { useNotificationsStore } from "@/lib/store"
 import { useSnippetForm } from "@/hooks/useSnippetForm"
 import { toast } from "@/hooks/useToast"
@@ -32,7 +31,6 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { DeleteSnippetButton } from "@/components/dashboard/delete-button"
 
 interface SnippetFormProps {
   snippet?: Snippet

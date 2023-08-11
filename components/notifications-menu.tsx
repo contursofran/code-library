@@ -48,24 +48,40 @@ export function NotificationsMenu() {
       <DropdownMenuContent className="mr-8 w-[350px] pb-2">
         <DropdownMenuLabel className="flex w-full items-center justify-between">
           <div className="text-base">Notifications</div>
-          <button
-            className="text-xs font-medium text-muted-foreground hover:underline"
-            onClick={() => notificationsState?.clearNotifications()}
-          >
-            Mark all as read
-          </button>
+          {notificationsState?.notifications &&
+            notificationsState?.notifications?.length > 0 && (
+              <button
+                className="text-xs font-medium text-muted-foreground hover:underline"
+                onClick={() => notificationsState?.clearNotifications()}
+              >
+                Mark all as read
+              </button>
+            )}
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="shadow-sm" />
-        <ScrollArea className="-mx-1 h-[300px]" scrollBarClassName="mx-1">
-          {notificationsState?.notifications?.map((notification, index) => (
-            <div key={notification.id}>
-              <DropdownMenuItem className="focus:bg-transparent">
-                <NotificationsItem {...notification} key={notification.id} />
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-            </div>
-          ))}
-        </ScrollArea>
+        {notificationsState?.notifications?.length === 0 ? (
+          <div className="flex h-[300px] justify-center p-2 text-center text-sm text-gray-500">
+            <p className="flex items-center justify-center">
+              You have no new notifications
+            </p>
+          </div>
+        ) : (
+          <ScrollArea className="-mx-1 h-[300px]" scrollBarClassName="mx-1">
+            {notificationsState?.notifications?.map((notification) => (
+              <div key={notification.id}>
+                <DropdownMenuItem className="focus:bg-transparent">
+                  {notification != null && (
+                    <NotificationsItem
+                      {...notification}
+                      key={notification.id}
+                    />
+                  )}
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+              </div>
+            ))}
+          </ScrollArea>
+        )}
       </DropdownMenuContent>
     </DropdownMenu>
   )

@@ -1,10 +1,12 @@
 "use client"
 
-import { Dispatch, SetStateAction, useState } from "react"
+import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { Snippet } from "@prisma/client"
+import { Snippet } from "@/types"
 import { Loader2, Trash } from "tabler-icons-react"
+import { useStore } from "zustand"
 
+import { useNotificationsStore } from "@/lib/store"
 import { toast } from "@/hooks/useToast"
 import {
   AlertDialog,
@@ -20,7 +22,7 @@ import {
 import { Button } from "@/components/ui/button"
 
 interface DeleteSnippetButtonProps {
-  snippet: Pick<Snippet, "id">
+  snippet: Snippet
 }
 
 async function deleteSnippet(snippetId: string) {
@@ -41,6 +43,10 @@ async function deleteSnippet(snippetId: string) {
 export function DeleteSnippetButton({ snippet }: DeleteSnippetButtonProps) {
   const [isDeleting, setIsDeleting] = useState<boolean>(false)
   const [isOpen, setIsOpen] = useState<boolean>(false)
+  const addNotification = useStore(
+    useNotificationsStore,
+    (state) => state.addNotification
+  )
 
   const router = useRouter()
 
@@ -49,6 +55,14 @@ export function DeleteSnippetButton({ snippet }: DeleteSnippetButtonProps) {
     const deleted = await deleteSnippet(snippet.id)
 
     if (deleted) {
+      addNotification({
+        id: Math.random().toString(),
+        date: new Date().toISOString(),
+        snippet: snippet.title,
+        message: "has been deleted successfully.",
+        type: "success",
+      })
+
       toast({
         description: "Snippet deleted.",
         toastType: "success",
