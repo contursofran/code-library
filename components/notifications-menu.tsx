@@ -17,49 +17,49 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { NotificationsItem } from "@/components/notifications-item"
 
+function NotificationsMenuButton({ count }: { count: number }) {
+  return (
+    <Button
+      className={cn(count > 0 ? "w-12" : "w-8", "h-8 rounded-full px-0")}
+      size="sm"
+      variant="outline"
+    >
+      <div className="flex gap-1">
+        <Bell className="h-4 w-4" />
+        {count > 0 && (
+          <div className="flex h-4 w-5 items-center justify-center rounded-full bg-black p-1 text-xs text-white dark:bg-white dark:text-black">
+            {count}
+          </div>
+        )}
+      </div>
+    </Button>
+  )
+}
+
 export function NotificationsMenu() {
   const notificationsState = useStore(useNotificationsStore, (state) => state)
+
+  const notificationsCount = notificationsState?.notifications?.length || 0
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          className={cn(
-            notificationsState?.notifications &&
-              notificationsState?.notifications.length > 0
-              ? "w-12"
-              : "w-8",
-            "h-8 rounded-full px-0"
-          )}
-          size="sm"
-          variant="outline"
-        >
-          <div className="flex gap-1">
-            <Bell className="h-4 w-4" />
-            {notificationsState?.notifications &&
-              notificationsState?.notifications?.length > 0 && (
-                <div className="flex h-4 w-5 items-center justify-center rounded-full bg-black p-1 text-xs text-white dark:bg-white dark:text-black">
-                  {notificationsState?.notifications?.length}
-                </div>
-              )}
-          </div>
-        </Button>
+        <NotificationsMenuButton count={notificationsCount} />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="mr-8 w-[350px] pb-2">
         <DropdownMenuLabel className="flex w-full items-center justify-between">
           <div className="text-base">Notifications</div>
-          {notificationsState?.notifications &&
-            notificationsState?.notifications?.length > 0 && (
-              <button
-                className="text-xs font-medium text-muted-foreground hover:underline"
-                onClick={() => notificationsState?.clearNotifications()}
-              >
-                Mark all as read
-              </button>
-            )}
+          {notificationsCount > 0 && (
+            <button
+              className="text-xs font-medium text-muted-foreground hover:underline"
+              onClick={() => notificationsState?.clearNotifications()}
+            >
+              Mark all as read
+            </button>
+          )}
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="shadow-sm" />
-        {notificationsState?.notifications?.length === 0 ? (
+        {notificationsCount === 0 ? (
           <div className="flex h-[300px] justify-center p-2 text-center text-sm text-gray-500">
             <p className="flex items-center justify-center">
               You have no new notifications
