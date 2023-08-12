@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { NavItem } from "@/types"
-import { Bell, Home, Music } from "tabler-icons-react"
+import { Home, Music } from "tabler-icons-react"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
@@ -16,6 +16,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { NavLink } from "@/components/nav-link"
+import { NotificationsMenu } from "@/components/notifications-menu"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 interface MainNavProps {
@@ -94,6 +95,7 @@ export function MainNav({ isLandingPage, items }: MainNavProps) {
             </Link>
           )}
           <ThemeToggle />
+          {!isLandingPage && <NotificationsMenu />}
         </div>
       </div>
     </div>
