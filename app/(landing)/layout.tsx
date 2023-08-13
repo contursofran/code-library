@@ -18,7 +18,7 @@ export default async function HomeLayout({ children }: HomeLayoutProps) {
           {user && <UserAccount isLandingPage user={user} />}
         </div>
       </header>
-      <main className="mx-10 flex-1 md:mx-12 lg:mx-20">{children}</main>
+      <main className="mx-10 flex-1 md:mx-12 xl:mx-20">{children}</main>
     </div>
   )
 }

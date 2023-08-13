@@ -22,7 +22,7 @@ export function Hero() {
     <Image
       priority
       alt="hero"
-      className="w-[230px] sm:w-[250px] md:w-[270px]  lg:w-[300px] "
+      className="hidden md:flex md:w-[245px] lg:w-[270px]  xl:w-[300px] "
       height={300}
       src={hero}
       width={300}
