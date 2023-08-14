@@ -1,6 +1,5 @@
-import { BrandAdobe, BrandReact, BrandTailwind } from "tabler-icons-react"
-
 import { FeaturesCard } from "@/components/features-card"
+import { Icons } from "@/components/icons"
 
 export default function Features({}) {
   return (
@@ -16,88 +15,7 @@ export default function Features({}) {
           </p>
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 ">
-        <FeaturesCard
-          description="Lastest version of React."
-          icon={
-            <BrandReact
-              className="h-[22px] w-[22px]"
-              style={{ strokeWidth: "1.5" }}
-            />
-          }
-          title={"React"}
-        />
-        <FeaturesCard
-          description="App dir, api routes, etc."
-          icon={
-            <BrandAdobe
-              className="h-[22px] w-[22px]"
-              style={{ strokeWidth: "1.5" }}
-            />
-          }
-          title={"Next.js 13"}
-        />
-        <FeaturesCard
-          description="Components from Radix UI"
-          icon={
-            <BrandTailwind
-              className="h-[22px] w-[22px]"
-              style={{ strokeWidth: "1.5" }}
-            />
-          }
-          title={"Tailwind"}
-        />
-        <FeaturesCard
-          description="test"
-          icon={
-            <BrandAdobe
-              className="h-[22px] w-[22px]"
-              style={{ strokeWidth: "1.5" }}
-            />
-          }
-          title={"Auth"}
-        />
-        <FeaturesCard
-          description="test"
-          icon={
-            <BrandAdobe
-              className="h-[22px] w-[22px]"
-              style={{ strokeWidth: "1.5" }}
-            />
-          }
-          title={"tRPC"}
-        />
-        <FeaturesCard
-          description="test"
-          icon={
-            <BrandAdobe
-              className="h-[22px] w-[22px]"
-              style={{ strokeWidth: "1.5" }}
-            />
-          }
-          title={"Prisma"}
-        />
-        <FeaturesCard
-          description="test"
-          icon={
-            <BrandAdobe
-              className="h-[22px] w-[22px]"
-              style={{ strokeWidth: "1.5" }}
-            />
-          }
-          title={"Prisma"}
-        />
-        <FeaturesCard
-          description="test"
-          icon={
-            <BrandAdobe
-              className="h-[22px] w-[22px]"
-              style={{ strokeWidth: "1.5" }}
-            />
-          }
-          title={"Prisma"}
-        />
-      </div>
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 "></div>
     </section>
   )
 }

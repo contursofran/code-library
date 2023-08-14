@@ -4,12 +4,12 @@ import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { signIn } from "next-auth/react"
 import { useForm } from "react-hook-form"
-import { BrandGithub, Loader2 } from "tabler-icons-react"
 import { z } from "zod"
 
 import { cn } from "@/lib/utils"
 import { userAuthSchema } from "@/lib/validations/auth"
 import { buttonVariants } from "@/components/ui/button"
+import { Icons } from "@/components/icons"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -43,9 +43,9 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         }}
       >
         {isGitHubLoading ? (
-          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
-          <BrandGithub className="mr-2 h-4 w-4" />
+          <Icons.github className="mr-2 h-4 w-4" />
         )}{" "}
         Github
       </button>

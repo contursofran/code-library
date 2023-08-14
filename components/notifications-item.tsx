@@ -1,7 +1,6 @@
-import { Check, X } from "tabler-icons-react"
-
 import { formatDate, upperFirst } from "@/lib/utils"
 import { Notification } from "@/lib/validations/notifications"
+import { Icons } from "@/components/icons"
 
 export function NotificationsItem({
   date,
@@ -9,7 +8,7 @@ export function NotificationsItem({
   type,
   snippet,
 }: Notification) {
-  const Icon = type === "success" ? Check : X
+  const Icon = type === "success" ? Icons.check : Icons.close
 
   return (
     <div className="flex h-14 w-full">

@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Snippet } from "@/types"
-import { Loader2 } from "tabler-icons-react"
 import { useStore } from "zustand"
 
 import { languages } from "@/lib/languages"
@@ -31,6 +30,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
+import { Icons } from "@/components/icons"
 
 interface SnippetFormProps {
   snippet?: Snippet
@@ -243,7 +243,7 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
                 type="submit"
               >
                 {isSubmitting && (
-                  <Loader2 className="mr-1 h-4 w-4 animate-spin" />
+                  <Icons.spinner className="mr-1 h-4 w-4 animate-spin" />
                 )}
                 {action === "create" ? "Create" : "Save"}
               </Button>

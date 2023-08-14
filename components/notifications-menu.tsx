@@ -1,7 +1,5 @@
 "use client"
 
-import { Bell } from "tabler-icons-react"
-
 import { useNotificationsStore } from "@/lib/store"
 import { cn } from "@/lib/utils"
 import useStore from "@/hooks/useStore"
@@ -15,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { Icons } from "@/components/icons"
 import { NotificationsItem } from "@/components/notifications-item"
 
 export function NotificationsMenu() {
@@ -34,7 +33,7 @@ export function NotificationsMenu() {
           variant="outline"
         >
           <div className="flex gap-1">
-            <Bell className="h-4 w-4" />
+            <Icons.bell className="h-4 w-4" />
             {notificationsCount > 0 && (
               <div className="flex h-4 w-5 items-center justify-center rounded-full bg-black p-1 text-xs text-white dark:bg-white dark:text-black">
                 {notificationsCount}

@@ -1,9 +1,9 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Check, Copy } from "tabler-icons-react"
 
 import { Button } from "@/components/ui/button"
+import { Icons } from "@/components/icons"
 
 interface CopyButtonProps {
   buttonClassName?: string
@@ -42,9 +42,9 @@ export function CopyButton({
       >
         <span className="sr-only">Copy</span>
         {hasCopied ? (
-          <Check className="h-4 w-4" />
+          <Icons.check className="h-4 w-4" />
         ) : (
-          <Copy className="h-4 w-4" />
+          <Icons.copy className="h-4 w-4" />
         )}
       </Button>
     </div>
