@@ -1,12 +1,7 @@
 import { Table } from "@tanstack/react-table"
-import {
-  ChevronLeft,
-  ChevronRight,
-  ChevronsLeft,
-  ChevronsRight,
-} from "tabler-icons-react"
 
 import { Button } from "@/components/ui/button"
+import { Icons } from "@/components/icons"
 
 interface DataTablePaginationProps<TData> {
   table: Table<TData>
@@ -30,7 +25,7 @@ export function DataTablePagination<TData>({
             onClick={() => table.setPageIndex(0)}
           >
             <span className="sr-only">Go to first page</span>
-            <ChevronsLeft className="h-4 w-4" />
+            <Icons.chevronsLeft className="h-4 w-4" />
           </Button>
           <Button
             className="h-7 w-7 p-0"
@@ -39,7 +34,7 @@ export function DataTablePagination<TData>({
             onClick={() => table.previousPage()}
           >
             <span className="sr-only">Go to previous page</span>
-            <ChevronLeft className="h-4 w-4" />
+            <Icons.chevronLeft className="h-4 w-4" />
           </Button>
           <Button
             className="h-7 w-7 p-0"
@@ -54,7 +49,7 @@ export function DataTablePagination<TData>({
             }}
           >
             <span className="sr-only">Go to next page</span>
-            <ChevronRight className="h-4 w-4" />
+            <Icons.ChevronRight className="h-4 w-4" />
           </Button>
           <Button
             className="hidden h-7 w-7 p-0 lg:flex"
@@ -63,7 +58,7 @@ export function DataTablePagination<TData>({
             onClick={() => table.setPageIndex(table.getPageCount() - 1)}
           >
             <span className="sr-only">Go to last page</span>
-            <ChevronsRight className="h-4 w-4" />
+            <Icons.chevronsRight className="h-4 w-4" />
           </Button>
         </div>
       </div>

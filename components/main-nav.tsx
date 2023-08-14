@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import { NavItem } from "@/types"
-import { Home, Music } from "tabler-icons-react"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
@@ -15,6 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Icons } from "@/components/icons"
 import { NavLink } from "@/components/nav-link"
 import { NotificationsMenu } from "@/components/notifications-menu"
 import { ThemeToggle } from "@/components/theme-toggle"
@@ -67,7 +67,7 @@ export function MainNav({ isLandingPage, items }: MainNavProps) {
         >
           <DropdownMenuLabel>
             <Link className="flex items-center" href="/">
-              <Music className="mr-2 h-4 w-4" /> {siteConfig.name}
+              {siteConfig.name}
             </Link>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
@@ -90,7 +90,7 @@ export function MainNav({ isLandingPage, items }: MainNavProps) {
                 size="icon"
                 variant="outline"
               >
-                <Home className="h-4 w-4" />
+                <Icons.home className="h-4 w-4" />
               </Button>
             </Link>
           )}

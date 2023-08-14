@@ -1,7 +1,7 @@
 import Link from "next/link"
-import { ChevronLeft } from "tabler-icons-react"
 
 import { Button } from "@/components/ui/button"
+import { Icons } from "@/components/icons"
 
 export function BackButton() {
   return (
@@ -11,7 +11,7 @@ export function BackButton() {
         href={"/dashboard/snippets"}
       >
         <Button size="sm" variant="outline">
-          <ChevronLeft className="mr-1 flex h-4 w-4" />
+          <Icons.chevronLeft className="mr-1 flex h-4 w-4" />
           <div className="text-sm font-medium">Back</div>
         </Button>
       </Link>

@@ -1,10 +1,10 @@
 import { Metadata } from "next"
 import Link from "next/link"
-import { ChevronLeft } from "tabler-icons-react"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { UserAuthForm } from "@/components/forms/user-auth-form"
+import { Icons } from "@/components/icons"
 
 export const metadata: Metadata = {
   title: "Login",
@@ -22,7 +22,7 @@ export default function LoginPage() {
         href="/"
       >
         <>
-          <ChevronLeft className="mr-2 h-4 w-4" />
+          <Icons.chevronLeft className="mr-2 h-4 w-4" />
           Back
         </>
       </Link>

@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Snippet } from "@/types"
-import { Loader2, Trash } from "tabler-icons-react"
 import { useStore } from "zustand"
 
 import { useNotificationsStore } from "@/lib/store"
@@ -20,6 +19,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
+import { Icons } from "@/components/icons"
 
 interface DeleteSnippetButtonProps {
   snippet: Snippet
@@ -79,7 +79,7 @@ export function DeleteSnippetButton({ snippet }: DeleteSnippetButtonProps) {
     <AlertDialog defaultOpen={false} open={isOpen} onOpenChange={setIsOpen}>
       <AlertDialogTrigger asChild>
         <Button className="shrink-0" size="icon" variant="outline">
-          <Trash className="h-4 w-4" />
+          <Icons.trash className="h-4 w-4" />
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
@@ -100,7 +100,9 @@ export function DeleteSnippetButton({ snippet }: DeleteSnippetButtonProps) {
               handleDeletion()
             }}
           >
-            {isDeleting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+            {isDeleting && (
+              <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+            )}
             <span>Delete</span>
           </AlertDialogAction>
         </AlertDialogFooter>
