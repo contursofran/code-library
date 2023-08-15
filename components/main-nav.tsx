@@ -65,17 +65,17 @@ export function MainNav({ isLandingPage, items }: MainNavProps) {
           className="w-[300px] overflow-scroll"
           sideOffset={24}
         >
-          <DropdownMenuLabel>
-            <Link className="flex items-center" href="/">
-              {siteConfig.name}
-            </Link>
-          </DropdownMenuLabel>
-          <DropdownMenuSeparator />
+          <DropdownMenuLabel>{siteConfig.name}</DropdownMenuLabel>
           {items?.map(
             (item, index) =>
               item.href && (
                 <DropdownMenuItem asChild key={index}>
-                  <Link href={item.href}>{item.title}</Link>
+                  <Link
+                    className="cursor-pointer underline-offset-4 focus:bg-transparent focus:underline"
+                    href={item.href}
+                  >
+                    {item.title}
+                  </Link>
                 </DropdownMenuItem>
               )
           )}
