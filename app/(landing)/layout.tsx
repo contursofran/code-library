@@ -12,8 +12,8 @@ export default async function HomeLayout({ children }: HomeLayoutProps) {
 
   return (
     <div className="flex h-screen flex-col">
-      <header className="sticky top-0 z-40 w-full bg-background">
-        <div className="container flex h-16 items-center gap-3 space-x-4 sm:justify-between sm:space-x-0">
+      <header className="w-full bg-background">
+        <div className="container flex h-16 items-center gap-3 space-x-2 sm:justify-between ">
           <MainNav isLandingPage items={navItems} />
           {user && <UserAccount isLandingPage user={user} />}
         </div>
