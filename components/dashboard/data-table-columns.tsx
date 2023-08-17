@@ -20,7 +20,7 @@ export const columns = [
     id: "language",
     cell: (row) => (
       <Badge className="text-xs" variant="outline">
-        <div className="p-1">{upperFirst(row.getValue())}</div>
+        <div className="p-1 text-xs">{upperFirst(row.getValue())}</div>
       </Badge>
     ),
     filterFn: (row, id, value) => {
@@ -29,17 +29,22 @@ export const columns = [
   }),
   columnHelper.accessor("date", {
     id: "date",
-    cell: (row) => <div>{formatDate(row.getValue())}</div>,
-  }),
-  columnHelper.accessor("code", {
-    id: "code",
     cell: (row) => (
-      <CopyButton
-        className="flex w-full justify-end align-middle"
-        code={row.getValue()}
-      />
+      <div className="truncate text-xs font-medium sm:text-sm">
+        {formatDate(row.getValue())}
+      </div>
     ),
   }),
+  // columnHelper.accessor("code", {
+  //   id: "code",
+  //   cell: (row) => (
+  //     <CopyButton
+  //       className="hidden w-full justify-end align-middle sm:flex"
+  //       code={row.getValue()}
+  //     />
+  //   ),
+  //   maxSize: 20,
+  // }),
 ]
 
 function SnippetTitle({ props }: { props: CellContext<Snippet, string> }) {
@@ -47,21 +52,23 @@ function SnippetTitle({ props }: { props: CellContext<Snippet, string> }) {
 
   return (
     <Link
-      className="flex flex-col space-y-1 hover:cursor-pointer"
+      className="hover:cursor-pointer"
       href={`/dashboard/snippets/${props.row.original.id}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div
-        className={cn(
-          isHovered && "underline",
-          "text-lg font-medium leading-none tracking-tight "
-        )}
-      >
-        {upperFirst(props.row.original.title)}
-      </div>
-      <div className="text-sm text-gray-500">
-        {upperFirst(props.row.original.description)}
+      <div className="flex flex-col gap-1">
+        <div
+          className={cn(
+            isHovered && "underline",
+            "max-h-8 text-sm font-medium tracking-tight sm:text-lg sm:leading-none"
+          )}
+        >
+          {upperFirst(props.row.original.title)}
+        </div>
+        <div className="max-h-4 truncate text-xs font-medium text-gray-500 sm:text-sm">
+          {upperFirst(props.row.original.description)}
+        </div>
       </div>
     </Link>
   )

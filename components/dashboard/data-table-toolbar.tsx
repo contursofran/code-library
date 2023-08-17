@@ -24,8 +24,8 @@ export function DataTableToolbar<TData>({
       ref={stickyRef}
     >
       <div className="container flex h-20 items-center justify-between">
-        <div className="flex items-center justify-between">
-          <div className="flex flex-1 items-center space-x-2">
+        <div className="flex max-w-xl grow items-center justify-between md:max-w-lg">
+          <div className="flex flex-1 items-center gap-8 sm:gap-4">
             <Input
               className="h-9"
               placeholder="Search snippets..."
@@ -44,7 +44,9 @@ export function DataTableToolbar<TData>({
             )}
           </div>
         </div>
-        <DataTablePagination table={table} />
+        <div className="hidden sm:flex">
+          <DataTablePagination table={table} />
+        </div>
       </div>
     </div>
   )

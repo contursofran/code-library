@@ -16,6 +16,7 @@ import {
 
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
 import { columns } from "@/components/dashboard/data-table-columns"
+import { DataTablePagination } from "@/components/dashboard/data-table-pagination"
 import { DataTableToolbar } from "@/components/dashboard/data-table-toolbar"
 
 interface DataTableProps<TData> {
@@ -79,6 +80,9 @@ export function DataTable<TData>({ data }: DataTableProps<TData>) {
               )}
             </TableBody>
           </Table>
+        </div>
+        <div className="mt-8 flex w-full items-end justify-end sm:hidden">
+          <DataTablePagination table={table} />
         </div>
       </div>
     </>

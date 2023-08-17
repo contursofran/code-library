@@ -95,3 +95,19 @@
     }
   }
 }
+
+td > a {
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+td > a > span {
+  white-space: nowrap;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+}

@@ -46,9 +46,9 @@ export default async function SnippetsPage({}) {
         description="Here you can create and manage your snippets."
         title="Snippets"
       >
-        <Link href={"/dashboard/snippets/editor"}>
-          <Button size="sm">New Snippet</Button>
-        </Link>
+        <Button className="shrink-0 text-xs sm:text-sm" size="sm">
+          <Link href={"/dashboard/snippets/editor"}>New Snippet</Link>
+        </Button>
       </Header>
       <DataTable columns={columns} data={data} />
     </Shell>
