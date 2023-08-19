@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 
+import { copyToClipboard } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 
@@ -9,10 +10,6 @@ interface CopyButtonProps {
   buttonClassName?: string
   className?: string
   code: string
-}
-
-const copyToClipboard = (code: string) => {
-  navigator.clipboard.writeText(code)
 }
 
 export function CopyButton({
@@ -33,10 +30,9 @@ export function CopyButton({
       <Button
         className={buttonClassName}
         size="sm"
-        variant="outline"
+        variant={"outline"}
         onClick={(event) => {
-          event.stopPropagation()
-          copyToClipboard(code)
+          copyToClipboard(code, event)
           setHasCopied(true)
         }}
       >

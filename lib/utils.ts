@@ -29,3 +29,11 @@ export function formatDate(date: string): string {
 export function randomId() {
   return Math.random().toString(16).slice(2)
 }
+
+export const copyToClipboard = (
+  code: string,
+  event?: React.MouseEvent<HTMLButtonElement>
+) => {
+  event && event.stopPropagation()
+  navigator.clipboard.writeText(code)
+}
