@@ -7,6 +7,7 @@ import {
   ColumnFiltersState,
   flexRender,
   getCoreRowModel,
+  getFacetedRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
@@ -18,6 +19,7 @@ import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
 import { columns } from "@/components/dashboard/data-table-columns"
 import { DataTablePagination } from "@/components/dashboard/data-table-pagination"
 import { DataTableToolbar } from "@/components/dashboard/data-table-toolbar"
+import MobileCard from "@/components/dashboard/mobile-card"
 
 interface DataTableProps<TData> {
   columns: ColumnDef<TData, any>[]
@@ -45,11 +47,13 @@ export function DataTable<TData>({ data }: DataTableProps<TData>) {
     getSortedRowModel: getSortedRowModel(),
   })
 
+  const tableFilteredData = table.getFilteredRowModel().rows
+
   return (
     <>
       <DataTableToolbar table={table} />
       <div className="container">
-        <div className="rounded-md border">
+        <div className="hidden rounded-md border sm:flex">
           <Table>
             <TableBody>
               {table.getRowModel().rows?.length ? (
@@ -80,6 +84,15 @@ export function DataTable<TData>({ data }: DataTableProps<TData>) {
               )}
             </TableBody>
           </Table>
+        </div>
+        <div className="flex flex-col gap-6 sm:hidden">
+          {tableFilteredData?.length ? (
+            tableFilteredData.map((row) => (
+              <MobileCard key={row.id} snippet={row.original} />
+            ))
+          ) : (
+            <div className="text-center">No snippets found</div>
+          )}
         </div>
         <div className="mt-8 flex w-full items-end justify-end sm:hidden">
           <DataTablePagination table={table} />

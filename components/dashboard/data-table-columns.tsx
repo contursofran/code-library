@@ -19,9 +19,11 @@ export const columns = [
   columnHelper.accessor("language", {
     id: "language",
     cell: (row) => (
-      <Badge className="text-xs" variant="outline">
-        <div className="p-1 text-xs">{upperFirst(row.getValue())}</div>
-      </Badge>
+      <div className="flex justify-center">
+        <Badge className="text-xs" variant="outline">
+          <div className="p-1 text-xs">{upperFirst(row.getValue())}</div>
+        </Badge>
+      </div>
     ),
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id))
@@ -30,21 +32,20 @@ export const columns = [
   columnHelper.accessor("date", {
     id: "date",
     cell: (row) => (
-      <div className="truncate text-xs font-medium sm:text-sm">
+      <div className="flex justify-center text-xs font-medium sm:text-sm">
         {formatDate(row.getValue())}
       </div>
     ),
   }),
-  // columnHelper.accessor("code", {
-  //   id: "code",
-  //   cell: (row) => (
-  //     <CopyButton
-  //       className="hidden w-full justify-end align-middle sm:flex"
-  //       code={row.getValue()}
-  //     />
-  //   ),
-  //   maxSize: 20,
-  // }),
+  columnHelper.accessor("code", {
+    id: "code",
+    cell: (row) => (
+      <CopyButton
+        className="flex w-full justify-end align-middle"
+        code={row.getValue()}
+      />
+    ),
+  }),
 ]
 
 function SnippetTitle({ props }: { props: CellContext<Snippet, string> }) {
