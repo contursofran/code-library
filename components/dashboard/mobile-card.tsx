@@ -1,8 +1,9 @@
 import Link from "next/link"
+import { redirect } from "next/navigation"
 import { Snippet } from "@/types"
 import { CircleIcon } from "lucide-react"
 
-import { cn, formatDate, upperFirst } from "@/lib/utils"
+import { cn, copyToClipboard, formatDate, upperFirst } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
@@ -12,6 +13,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import { CopyButton } from "@/components/copy-button"
 import { Icons } from "@/components/icons"
 
@@ -31,11 +39,33 @@ export default function MobileCard({ snippet }: MobileCardProps) {
             {upperFirst(snippet.description)}
           </CardDescription>
         </div>
-        <div className="flex shrink-0 items-end justify-end gap-4 ">
-          <CopyButton code={snippet.code} />
-          <Button size="sm" variant="outline">
-            <Icons.ChevronRight className="h-4 w-4" />
-          </Button>
+        <div className="flex shrink-0 items-end justify-end ">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button size="sm" variant="outline">
+                <Icons.veritcalDots className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem
+                className="flex items-center justify-start"
+                onClick={() => copyToClipboard(snippet.code)}
+              >
+                <Icons.copy className="h-3 w-3" />
+                <span className="ml-2 font-normal">Copy</span>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <Link
+                  className="flex items-center justify-start"
+                  href={`/dashboard/snippets/${snippet.id}`}
+                >
+                  <Icons.edit className="h-3 w-3" />
+                  <span className="ml-2 font-normal">Edit</span>
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </CardHeader>
       <CardContent>

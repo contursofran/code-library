@@ -12,6 +12,8 @@ import {
   Laptop,
   Loader2,
   Moon,
+  MoreVertical,
+  Pencil,
   Plus,
   Search,
   SunMedium,
@@ -31,6 +33,7 @@ export const Icons = {
   ChevronRight: ChevronRight,
   chevronsRight: ChevronsRight,
   circle: Circle,
+  veritcalDots: MoreVertical,
   close: X,
   copy: Copy,
   laptop: Laptop,
@@ -42,6 +45,7 @@ export const Icons = {
   sun: SunMedium,
   trash: Trash,
   user: User,
+  edit: Pencil,
   github: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"
