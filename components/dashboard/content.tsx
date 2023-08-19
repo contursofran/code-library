@@ -23,13 +23,13 @@ export function Content({ snippet }: SnippetContentProps) {
   const code = fixCode(snippet.code)
 
   return (
-    <div className="flex h-fit">
-      <div className="mx-auto mt-8 max-w-[750px] grow justify-center">
+    <div className="flex h-fit flex-col-reverse lg:flex-row">
+      <div className="mx-auto mt-8 w-full grow justify-center lg:max-w-[750px]">
         <div className="flex h-full flex-col space-y-2">
-          <h2 className="flex text-3xl font-medium leading-none tracking-tighter">
+          <h2 className="flex text-xl font-medium leading-none tracking-tighter lg:text-3xl">
             {upperFirst(snippet.title)}
           </h2>
-          <p className="h-fit text-lg text-muted-foreground">
+          <p className="h-fit text-sm text-muted-foreground lg:text-lg">
             {snippet.description}
           </p>
           <div className="!mt-6 flex h-full w-full justify-center">
@@ -57,7 +57,7 @@ export function Content({ snippet }: SnippetContentProps) {
           </div>
         </div>
       </div>
-      <div className="flex h-fit w-24 shrink-0 items-center justify-end gap-3">
+      <div className="z-0 -mt-9 flex h-fit w-full shrink-0 items-center justify-end gap-3 lg:mt-0 lg:w-24">
         <Link href={`/dashboard/snippets/editor/${snippet.id}`}>
           <Button size="sm">Edit</Button>
         </Link>

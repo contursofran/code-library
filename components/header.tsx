@@ -10,7 +10,7 @@ export function Header({ title, description, children }: HeaderProps) {
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-1">
           <h1 className="text-xl font-medium sm:text-2xl">{title}</h1>
-          <div className="pt-1 text-sm text-muted-foreground sm:text-base">
+          <div className="line-clamp-2 pt-1 text-sm text-muted-foreground sm:text-base">
             {description}
           </div>
         </div>
