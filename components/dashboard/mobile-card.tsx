@@ -1,10 +1,8 @@
 import Link from "next/link"
-import { redirect } from "next/navigation"
 import { Snippet } from "@/types"
 import { CircleIcon } from "lucide-react"
 
-import { cn, copyToClipboard, formatDate, upperFirst } from "@/lib/utils"
-import { Badge } from "@/components/ui/badge"
+import { copyToClipboard, formatDate, upperFirst } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -20,7 +18,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { CopyButton } from "@/components/copy-button"
 import { Icons } from "@/components/icons"
 
 interface MobileCardProps {
@@ -29,13 +26,13 @@ interface MobileCardProps {
 
 export default function MobileCard({ snippet }: MobileCardProps) {
   return (
-    <Card className="max-h-[145.99px]">
+    <Card>
       <CardHeader className="grid grid-cols-[1fr_110px] items-start gap-4 space-y-0 font-medium">
         <div className="space-y-1">
-          <CardTitle className="truncate text-lg">
-            {upperFirst(snippet.description)}
+          <CardTitle className="line-clamp-1 text-lg hover:line-clamp-none">
+            {upperFirst(snippet.title)}
           </CardTitle>
-          <CardDescription className="truncate text-sm font-medium">
+          <CardDescription className="line-clamp-1 text-sm hover:line-clamp-none">
             {upperFirst(snippet.description)}
           </CardDescription>
         </div>
