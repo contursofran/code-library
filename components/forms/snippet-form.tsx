@@ -145,11 +145,11 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
       </AlertDialog>
       <Form {...form}>
         <form
-          className="mt-8 h-full space-y-2"
+          className="mr-0 mt-8 flex flex-1 justify-start space-y-2 md:mr-24 md:justify-center"
           onSubmit={form.handleSubmit(handleSubmit)}
         >
-          <div className="flex h-full">
-            <div className="mx-auto h-[calc(100vh-64px-64px-64px-80px-30px)] max-w-[750px] grow justify-center">
+          <div className="flex max-w-[750px] flex-1 flex-col">
+            <div className="flex w-full  flex-1 flex-col">
               <FormField
                 control={form.control}
                 name="title"
@@ -182,15 +182,21 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
                   </FormItem>
                 )}
               />
-              <div className="flex h-full min-h-0 items-start justify-between rounded-md border p-4">
+              <div className="flex flex-1 items-start justify-between rounded-md border p-4">
                 <FormField
                   control={form.control}
                   name="code"
                   render={({ field }) => (
-                    <FormItem className="h-full w-full">
-                      <FormControl>
+                    <FormItem
+                      className="flex h-full flex-1"
+                      id="text-area-parent-0"
+                    >
+                      <FormControl
+                        className="flex flex-1"
+                        id="text-area-parent"
+                      >
                         <Textarea
-                          className="no-scrollbar h-full max-h-fit w-full resize-none border-none p-0 text-gray-300"
+                          className="no-scrollbar flex flex-1 resize-none border-none p-0 text-gray-300"
                           placeholder="Your code snippet"
                           {...field}
                         />
@@ -228,25 +234,27 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
                 />
               </div>
             </div>
-            <div className="flex h-[calc(100vh-64px-64px-64px)] w-24 shrink-0 items-end justify-end gap-2">
-              {snippet && action === "edit" && (
-                <Link href={`/dashboard/snippets/${snippet.id}`}>
-                  <Button size="sm" variant="outline">
-                    Cancel
-                  </Button>
-                </Link>
-              )}
-              <Button
-                className="w-[72px]"
-                disabled={isSubmitting}
-                size="sm"
-                type="submit"
-              >
-                {isSubmitting && (
-                  <Icons.spinner className="mr-1 h-4 w-4 animate-spin" />
+            <div className="flex h-fit w-full items-end justify-end">
+              <div className="mt-12 flex h-fit justify-between gap-4">
+                {snippet && action === "edit" && (
+                  <Link href={`/dashboard/snippets/${snippet.id}`}>
+                    <Button size="sm" variant="outline">
+                      Cancel
+                    </Button>
+                  </Link>
                 )}
-                {action === "create" ? "Create" : "Save"}
-              </Button>
+                <Button
+                  className="w-[72px]"
+                  disabled={isSubmitting}
+                  size="sm"
+                  type="submit"
+                >
+                  {isSubmitting && (
+                    <Icons.spinner className="mr-1 h-4 w-4 animate-spin" />
+                  )}
+                  {action === "create" ? "Create" : "Save"}
+                </Button>
+              </div>
             </div>
           </div>
         </form>

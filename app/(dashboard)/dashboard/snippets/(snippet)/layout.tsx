@@ -6,16 +6,10 @@ interface SnippetLayoutProps {
 
 export default async function SnippetLayout({ children }: SnippetLayoutProps) {
   return (
-    <div className="container mt-8 flex w-full justify-between">
-      <div className="flex w-full grow flex-col lg:flex-row">
+    <div className="container mt-8 flex flex-1 justify-between">
+      <div className="flex flex-1 flex-col md:flex-row">
         <BackButton />
-        <div className="w-full">
-          <div className="h-full flex-col items-center justify-center">
-            <div className="h-full w-full flex-col justify-center">
-              {children}
-            </div>
-          </div>
-        </div>
+        <div className="flex flex-1 flex-col">{children}</div>
       </div>
     </div>
   )

@@ -33,11 +33,5 @@ export default async function NewSnippetPage({
 
   const snippet = await getUserSnippet(params.id, user.id)
 
-  return (
-    <div className="flex-col items-center justify-center">
-      <div className="w-full flex-col justify-center">
-        {snippet && <SnippetForm action="edit" snippet={snippet} />}
-      </div>
-    </div>
-  )
+  return <>{snippet && <SnippetForm action="edit" snippet={snippet} />}</>
 }
