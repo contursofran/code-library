@@ -158,7 +158,7 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
                     <FormControl>
                       <Input
                         autoFocus
-                        className="h-[30px] border-none p-0 text-3xl font-medium leading-none tracking-tighter"
+                        className="h-[30px] border-none p-0 text-3xl font-medium leading-none tracking-tighter focus-visible:ring-0"
                         {...field}
                       />
                     </FormControl>
@@ -173,7 +173,7 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
                     <FormControl>
                       <Textarea
                         aria-invalid="true"
-                        className="resize-none overflow-hidden border-none px-0 text-lg text-gray-400"
+                        className="resize-none overflow-hidden border-none px-0 text-lg text-gray-400 focus-visible:ring-0"
                         maxLength={127}
                         {...form.register("description", {})}
                         placeholder="Add a description"
@@ -196,7 +196,7 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
                         id="text-area-parent"
                       >
                         <Textarea
-                          className="no-scrollbar flex flex-1 resize-none border-none p-0 text-gray-300"
+                          className="no-scrollbar flex flex-1 resize-none border-none p-0 text-gray-300 focus-visible:ring-0 focus-visible:ring-background"
                           placeholder="Your code snippet"
                           {...field}
                         />
@@ -211,15 +211,15 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
                     <FormItem className="w-[100px]">
                       <Select onValueChange={field.onChange}>
                         <FormControl>
-                          <SelectTrigger className="items-start justify-end gap-1 border-0 p-0 text-xs font-medium">
+                          <SelectTrigger className="items-start justify-end gap-1 border-0 p-0 text-xs font-medium focus:ring-0 focus:ring-background">
                             <SelectValue placeholder="Language" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <ScrollArea className="h-[300px]">
+                          <ScrollArea className="h-[250px]">
                             {languages.map((language) => (
                               <SelectItem
-                                className="focus:bg-transparent focus:font-bold focus:text-primary"
+                                className="pl-2 focus:bg-transparent focus:font-bold focus:text-primary focus:ring-0 focus:ring-background"
                                 key={language.value}
                                 value={language.value}
                               >
