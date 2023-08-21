@@ -145,7 +145,7 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
       </AlertDialog>
       <Form {...form}>
         <form
-          className="mr-0 mt-8 flex flex-1 justify-start space-y-2 md:mr-24 md:justify-center"
+          className="mr-0 mt-8 flex flex-1 justify-start space-y-2 md:mr-24 md:mt-[72px] md:justify-center"
           onSubmit={form.handleSubmit(handleSubmit)}
         >
           <div className="flex max-w-[750px] flex-1 flex-col">

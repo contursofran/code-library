@@ -23,19 +23,19 @@ export function Content({ snippet }: SnippetContentProps) {
   const code = fixCode(snippet.code)
 
   return (
-    <div className="flex flex-1 flex-col">
+    <div className="flex flex-1 flex-col ">
       <div className="-mt-9 flex h-fit w-full shrink-0 items-center justify-end gap-3 md:mt-0 ">
         <Link href={`/dashboard/snippets/editor/${snippet.id}`}>
           <Button size="sm">Edit</Button>
         </Link>
         <DeleteSnippetButton snippet={snippet} />
       </div>
-      <div className="mt-8 flex flex-1 justify-start md:justify-center ">
+      <div className="mt-8 flex flex-1 justify-start md:mr-24 md:justify-center">
         <div className="flex flex-1 flex-col space-y-2 md:max-w-[750px]">
-          <h2 className="flex text-xl font-medium leading-none tracking-tighter md:text-3xl">
+          <h2 className="flex text-2xl font-medium leading-none tracking-tighter md:text-3xl">
             {upperFirst(snippet.title)}
           </h2>
-          <p className="h-fit text-sm text-muted-foreground md:text-lg">
+          <p className="h-fit text-base text-muted-foreground md:text-lg">
             {snippet.description}
           </p>
           <div className="!mt-6 flex flex-1 justify-center">
