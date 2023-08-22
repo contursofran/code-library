@@ -28,6 +28,7 @@ export function MainNav({ isLandingPage, items }: MainNavProps) {
     <div className="flex h-16 w-full items-center gap-6 py-4 md:gap-10">
       {isLandingPage && (
         <div className="hidden flex-1 items-center space-x-2 text-left md:flex">
+          <Icons.logo className="h-8 w-8" />
           <span className="hidden font-bold dark:text-white sm:inline-block">
             {siteConfig.name}
           </span>
@@ -56,7 +57,10 @@ export function MainNav({ isLandingPage, items }: MainNavProps) {
             className="-ml-4 text-base hover:bg-transparent md:hidden"
             variant="ghost"
           >
-            <span className="font-bold">Menu</span>
+            <div className="flex items-center gap-2">
+              <Icons.logo className="h-8 w-8" />
+              <span className="font-bold">Menu</span>
+            </div>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
@@ -64,7 +68,14 @@ export function MainNav({ isLandingPage, items }: MainNavProps) {
           className="w-[300px] overflow-scroll"
           sideOffset={24}
         >
-          <DropdownMenuLabel>{siteConfig.name}</DropdownMenuLabel>
+          <DropdownMenuLabel>
+            {
+              <div className="flex items-center gap-2">
+                <Icons.logo className="h-8 w-8" />
+                {siteConfig.name}
+              </div>
+            }
+          </DropdownMenuLabel>
           {items?.map(
             (item, index) =>
               item.href && (

@@ -20,7 +20,6 @@ import {
   Trash,
   User,
   X,
-  type LucideIcon,
   type LucideProps,
 } from "lucide-react"
 
@@ -46,6 +45,36 @@ export const Icons = {
   trash: Trash,
   user: User,
   edit: Pencil,
+  logo: ({ ...props }: LucideProps) => (
+    <svg
+      height="600.000000pt"
+      preserveAspectRatio="xMidYMid meet"
+      version="1.0"
+      viewBox="0 0 800.000000 600.000000"
+      width="800.000000pt"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <g
+        fill="currentColor"
+        stroke="none"
+        transform="translate(0.000000,600.000000) scale(0.100000,-0.100000)"
+      >
+        <path
+          d="M1095 4967 c-3 -7 -4 -127 -3 -267 l3 -255 1998 -3 1997 -2 0 270 0
+270 -1995 0 c-1602 0 -1997 -3 -2000 -13z"
+        />
+        <path
+          d="M3095 3257 c-3 -7 -4 -127 -3 -267 l3 -255 1998 -3 1997 -2 0 270 0
+270 -1995 0 c-1602 0 -1997 -3 -2000 -13z"
+        />
+        <path
+          d="M1095 1517 c-3 -7 -4 -127 -3 -267 l3 -255 1998 -3 1997 -2 0 270 0
+270 -1995 0 c-1602 0 -1997 -3 -2000 -13z"
+        />
+      </g>
+    </svg>
+  ),
   github: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"
