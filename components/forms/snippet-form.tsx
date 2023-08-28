@@ -209,7 +209,10 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
                   name="language"
                   render={({ field }) => (
                     <FormItem className="w-[100px]">
-                      <Select onValueChange={field.onChange}>
+                      <Select
+                        defaultValue={snippet?.language}
+                        onValueChange={field.onChange}
+                      >
                         <FormControl>
                           <SelectTrigger className="items-start justify-end gap-1 border-0 p-0 text-xs font-medium focus:ring-0 focus:ring-background">
                             <SelectValue placeholder="Language" />
@@ -244,7 +247,7 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
                   </Link>
                 )}
                 <Button
-                  className="w-[72px]"
+                  className="w-[100px]"
                   disabled={isSubmitting}
                   size="sm"
                   type="submit"
