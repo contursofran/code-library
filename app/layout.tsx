@@ -8,6 +8,7 @@ import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "@/components/theme-provider"
+import Provider from "@/app/_trpc/provider"
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -39,10 +40,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
           fontSans.variable
         )}
       >
-        <ThemeProvider enableSystem attribute="class" defaultTheme="system">
-          {children}
-          <Toaster />
-        </ThemeProvider>
+        <Provider>
+          <ThemeProvider enableSystem attribute="class" defaultTheme="system">
+            {children}
+            <Toaster />
+          </ThemeProvider>
+        </Provider>
       </body>
     </html>
   )
