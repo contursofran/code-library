@@ -18,8 +18,10 @@ import { NotificationsItem } from "@/components/notifications-item"
 
 export function NotificationsMenu() {
   const notificationsState = useStore(useNotificationsStore, (state) => state)
-
   const notificationsCount = notificationsState?.notifications?.length || 0
+  const sortedNotifications = notificationsState?.notifications?.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  )
 
   return (
     <DropdownMenu>
@@ -63,7 +65,7 @@ export function NotificationsMenu() {
           </div>
         ) : (
           <ScrollArea className="-mx-1 h-[300px]" scrollBarClassName="mx-1">
-            {notificationsState?.notifications?.map((notification) => (
+            {sortedNotifications?.map((notification) => (
               <div key={notification.id}>
                 <DropdownMenuItem className="focus:bg-transparent">
                   {notification != null && (

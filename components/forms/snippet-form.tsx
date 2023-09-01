@@ -49,7 +49,7 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
   const handleFunction =
     action === "create" ? handleSnippetCreation : handleSnippetEdition
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (title: string) => {
     const res = await handleFunction()
 
     if (!res) {
@@ -60,7 +60,7 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
           action === "edit" ? "edited" : "created"
         }, please try again later`,
         type: "failure",
-        snippet: form.getValues().title,
+        snippet: title,
       })
 
       return toast({
@@ -78,7 +78,7 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
         date: new Date().toISOString(),
         message: `has been ${action === "edit" ? "edited" : "created"}`,
         type: "success",
-        snippet: form.getValues().title,
+        snippet: title,
       })
 
       return toast({
@@ -146,7 +146,9 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
       <Form {...form}>
         <form
           className="mr-0 mt-8 flex flex-1 justify-start space-y-2 md:mr-24 md:mt-[72px] md:justify-center"
-          onSubmit={form.handleSubmit(handleSubmit)}
+          onSubmit={form.handleSubmit(() =>
+            handleSubmit(form.getValues().title)
+          )}
         >
           <div className="flex max-w-[750px] flex-1 flex-col">
             <div className="flex w-full  flex-1 flex-col">
