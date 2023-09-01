@@ -115,6 +115,16 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
             <AlertDialogDescription>
               Please check the fields and try again.
               <ul className="mx-8 mt-3 space-y-1">
+                {form.formState.errors.title && (
+                  <li className="list-disc text-red-500">
+                    {form.formState.errors.title.message}
+                  </li>
+                )}
+                {form.formState.errors.description && (
+                  <li className="list-disc text-red-500">
+                    {form.formState.errors.description.message}
+                  </li>
+                )}
                 {form.formState.errors.code && (
                   <li className="list-disc text-red-500">
                     {form.formState.errors.code.message}
@@ -123,16 +133,6 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
                 {form.formState.errors.language && (
                   <li className="list-disc text-red-500">
                     {form.formState.errors.language.message}
-                  </li>
-                )}
-                {form.formState.errors.description && (
-                  <li className="list-disc text-red-500">
-                    {form.formState.errors.description.message}
-                  </li>
-                )}
-                {form.formState.errors.title && (
-                  <li className="list-disc text-red-500">
-                    {form.formState.errors.title.message}
                   </li>
                 )}
               </ul>
@@ -161,6 +161,7 @@ export function SnippetForm({ snippet, action }: SnippetFormProps) {
                       <Input
                         autoFocus
                         className="h-[30px] border-none p-0 text-3xl font-medium leading-none tracking-tighter focus-visible:ring-0"
+                        placeholder="Add a title"
                         {...field}
                       />
                     </FormControl>
