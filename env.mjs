@@ -17,6 +17,7 @@ export const env = createEnv({
   },
   client: {
     NEXT_PUBLIC_APP_URL: z.string().min(1),
+    NODE_ENV: z.enum(["development", "test", "production"]),
   },
   runtimeEnv: {
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
@@ -31,5 +32,6 @@ export const env = createEnv({
     POSTGRES_PASSWORD: process.env.POSTGRES_PASSWORD,
     POSTGRES_HOST: process.env.POSTGRES_HOST,
     POSTGRES_DATABASE: process.env.POSTGRES_DATABASE,
+    NODE_ENV: process.env.NODE_ENV,
   },
 })
