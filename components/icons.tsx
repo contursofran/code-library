@@ -156,7 +156,7 @@ export const Icons = {
   ),
   vercel: ({ ...props }: LucideProps) => (
     <svg
-      fill="#000000"
+      fill="currentColor"
       height="800px"
       viewBox="0 0 512 512"
       width="800px"
