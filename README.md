@@ -1,78 +1,39 @@
-# next-template
+<a href="https://app.code-library.pub">
+  <img alt="Platforms Starter Kit" src="public/thumbnail.png">
+  <h1 align="center">Code library</h1>
+</a>
+<p align="center">
+  A dashboard where you can store your code snippets.
+</p>
 
-A Next.js 13 template for building apps with Radix UI and Tailwind CSS.
+## Introduction
+
+This is a personal project built to learn Next.js 13.
+
+### Tech Stack
+
+- **Framework:** [Next.js](https://nextjs.org)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com)
+- **User Management:** [NextAuth](https://next-auth.js.org/)
+- **ORM:** [Prisma](https://prisma.io)
+- **UI Components:** [Shadcn/ui](https://ui.shadcn.com)
+- **Database:** [Vercel Postgres](https://vercel.com/storage/postgres)
+- **Deployment:** [Vercel](https://vercel.com/)
 
 ## Features
 
-- Radix UI Primitives
-- Tailwind CSS
-- Fonts with `@next/font`
-- Icons from [Lucide](https://lucide.dev)
-- Dark mode with `next-themes`
-- Automatic import sorting with `@ianvs/prettier-plugin-sort-imports`
+- New **Nextjs** app dir
+- Routing, Layouts, Nested Layouts and Layout Groups
+- Server and Client Components
+- Data Fetching, Caching and Mutation
+- Route handlers
+- API Routes and Middlewares
+- Validations using **Zod**
+- State management using **Zustand**
+- Syntax highlighting using **Bright**
+- Written in **TypeScript**
 
-## Tailwind CSS Features
+## Images
 
-- Class merging with `taiwind-merge`
-- Animation with `tailwindcss-animate`
-- Conditional classes with `clsx`
-- Variants with `class-variance-authority`
-- Automatic class sorting with `eslint-plugin-tailwindcss`
-
-## Import Sort
-
-The starter comes with `@ianvs/prettier-plugin-sort-imports` for automatically sort your imports.
-
-### Input
-
-```tsx
-import * as React from "react"
-import Link from "next/link"
-
-import { siteConfig } from "@/config/site"
-import { buttonVariants } from "@/components/ui/button"
-import "@/styles/globals.css"
-import { twMerge } from "tailwind-merge"
-
-import { NavItem } from "@/types/nav"
-import { cn } from "@/lib/utils"
-```
-
-### Output
-
-```tsx
-import * as React from "react"
-// React is always first.
-import Link from "next/link"
-// Followed by next modules.
-import { twMerge } from "tailwind-merge"
-
-// Followed by third-party modules
-// Space
-import "@/styles/globals.css"
-// styles
-import { NavItem } from "@/types/nav"
-// types
-import { siteConfig } from "@/config/site"
-// config
-import { cn } from "@/lib/utils"
-// lib
-import { buttonVariants } from "@/components/ui/button"
-
-// components
-```
-
-### Class Merging
-
-The `cn` util handles conditional classes and class merging.
-
-### Input
-
-```ts
-cn("px-2 bg-slate-100 py-2 bg-slate-200")
-// Outputs `p-2 bg-slate-200`
-```
-
-## License
-
-Licensed under the [MIT license](https://github.com/shadcn/ui/blob/main/LICENSE.md).
+![code-library-image-1](./public/code-library-1-dark.png)
+![code-library-image-0](./public/code-library-0-dark.png)
