@@ -33,7 +33,10 @@ This is a personal project built to learn Next.js 13.
 - Syntax highlighting using **Bright**
 - Written in **TypeScript**
 
-## Images
+## Screenshots
 
 ![code-library-image-1](./public/code-library-1-dark.png)
+
+---
+
 ![code-library-image-0](./public/code-library-0-dark.png)
